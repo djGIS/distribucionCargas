@@ -1,194 +1,194 @@
+// Parametros de ajuste de ubicación en pantalla
+var posBaseLine = 100;
+var posCajaLine = 60;
+var posEjesLine = 370;
+var posPisoCaja = 250;
 
-  //google.load('visualization', '1.1', {packages: ['line']});
-    
-	var posBaseLine = 100;
-	var posCajaLine = 60;
-	var posEjesLine = 370;
-	var posPisoCaja = 250;
+// Parametros de inicialización
+var sepGrp1init = 0;
+var distGrp12init = 4700;
+var sepGrp2init = 0;
+var distCarga0init = 720;
+var distCargaFinit = 6000;
 	
-	var sepGrp1init = 0;
-	var distGrp12init = 4700;
-	var sepGrp2init = 0;
-	var distCarga0init = 720;
-	var distCargaFinit = 6000;
+var inputBoxPad = "text-align: right;";
 	
-	var inputBoxPad = "text-align: right;";
+var tiposVeh = ['Chasis', 'Semi', 'Tractor'];
+
+// Tabla de constantes de configuraciones de ejes	
+var pMaxEjes = [
+	//#, config_ejes, tipo_rodado, tipo_rodado-text, peso_max, peso_tolerancia, sep_min, sep_max
+	[1, 'Simple', 'S', 'Simple', 6000, 500, 0, 0],
+	[1, 'Simple', 'D', 'Dual', 10500, 1000, 0, 0],
+	[1, 'Simple', 'SA', 'Superancha', 8000, 1000, 0, 0],
+	[2, 'Tándem', '2S', 'Simple-Simple', 10000, 1500, 1200, 2400],
+	[2, 'Tándem', 'SD', 'Simple-Dual', 14000, 1500, 1200, 2400],
+	[2, 'Tándem', '2D', 'Doble Dual', 18000, 1500, 1200, 2400],
+	[2, 'Tándem', '2SA', 'Doble Superancha', 16000, 1500, 1200, 2400],
+	[3, 'Triple', 'S2D', 'Simple-Dual-Dual', 21000, 2000, 2400, 4800],
+	[3, 'Triple', '3D',  'Triple Dual', 25500, 2000, 2400, 4800],
+	[3, 'Triple', '3SA', 'Triple Superancha', 24000, 2000, 2400, 4800],
+	[4, 'Separados', '1+1S', '1+1 Simples', 12000, 1000, 2400, 4800],
+	[4, 'Separados', '1+1D', '1+1 Dual-Dual', 21000, 2000, 2400, 4800],
+	[4, 'Separados', '1+1SA', '1+1 Superancha', 16000, 2000, 2400, 4800],
+];
 	
-	var tiposVeh = ['Chasis', 'Semi', 'Tractor'];
+// Dimensiones del vehículo
+var inputBoxes = [
+	//id, value, min, max, top, left, width, formatting, display
+	["sepGrp1input", sepGrp1init, 0, 2400, posEjesLine - 30, posBaseLine - 88, 60, inputBoxPad, "none"],
+	["distGrp12input", distGrp12init, 0, 10500, posEjesLine - 10, posBaseLine + 83, 70, inputBoxPad, "inline"],
+	["sepGrp2input", sepGrp2init, 0, 2400, posEjesLine - 10, posBaseLine + 332, 60, inputBoxPad, "none"],
+	["distCarga0input", distCarga0init, 500, 3000, posCajaLine - 10, posBaseLine - 88, 60, inputBoxPad, "inline"],
+	["distCargaFinput", distCargaFinit, 4000, 12000, posCajaLine - 10, posBaseLine + 151, 70, inputBoxPad, "inline"],
+	["distCarga", distCargaFinit / 2, 0, 6000, "position: absolute; top: 51px; width: 70px; padding: 5px", 151],
+];
+
+// Lineas de dimensiones del dibujo
+var dimLines = [
+	//id, top, left, width, height, lineStyle, display, class
+	["lineaBase", 0, posBaseLine, 0, posPisoCaja, "border-left-style: dashed; border-left-width: 1px;", "inline", ""],
+	["cajaCarga", 0, posBaseLine + (inputBoxes[3][1] / 20), (inputBoxes[4][1] / 20) - 2, posPisoCaja, "border-left-style: dashed; border-left-width: 1px; border-right-style: dashed; border-right-width: 1px;", "inline", ""],
+	["lineaCajaT1", posCajaLine - 3, posBaseLine - 18, 0, 0, "", "inline", "triangle_right"],
+	["lineaCajaT2", posCajaLine - 3, posBaseLine + (inputBoxes[3][1] / 20) - 1, 0, 0, "", "inline", "triangle_left"],
+	["lineaCajaT3", posCajaLine - 3, posBaseLine + (inputBoxes[3][1] / 20) + (inputBoxes[4][1] / 20) - 19, 0, 0, "", "inline", "triangle_right"],
+	["lineaCaja1", posCajaLine, posBaseLine - 29, (inputBoxes[3][1] / 20) + (inputBoxes[4][1] / 40) + 29 - 35, 0, "border-top-style: solid; border-top-width: 1px;", "inline", ""],
+	["lineaCaja2", posCajaLine, posBaseLine + (inputBoxes[3][1] / 20) + (inputBoxes[4][1] / 40) + 35, (inputBoxes[4][1] / 40) - 35, 0, "border-top-style: solid; border-top-width: 1px;", "inline", ""],
+	["lineaEjesT1", posEjesLine - 3, posBaseLine, 0, 0, "", "inline", "triangle_left"],
+	["lineaEjesT2", posEjesLine - 3, posBaseLine + (inputBoxes[1][1] / 20) - 19, 0, 0, "", "inline", "triangle_right"],
+	["lineaEjesT3", posEjesLine - 3, posBaseLine + (inputBoxes[1][1] / 20) + (inputBoxes[2][1] / 20), 0, 0, "", "none", "triangle_left"],
+	["lineaEjes1", posEjesLine, posBaseLine, (inputBoxes[1][1] / 40) - 35, 0, "border-top-style: solid; border-top-width: 1px;", "inline", ""],
+	["lineaEjes2", posEjesLine, posBaseLine + (inputBoxes[1][1] / 40) + 35, (inputBoxes[1][1] / 40) - 35, 0, "border-top-style: solid; border-top-width: 1px;", "inline", ""],
+	["lineaEjes3", posEjesLine, posBaseLine + (inputBoxes[1][1] / 20), (inputBoxes[2][1] / 40) + 29, 0, "border-top-style: solid; border-top-width: 1px;", "none", ""],
+	["entreGrupos", posPisoCaja, posBaseLine, (inputBoxes[1][1] / 20) - 2, 150, "border-left-style: dashed; border-left-width: 1px; border-right-style: dashed; border-right-width: 1px;", "inline", ""],
+	["entreEjes1", posPisoCaja, posBaseLine, (inputBoxes[0][1] / 20) - 2, 150, "border-left-style: dashed; border-left-width: 1px; border-right-style: dashed; border-right-width: 1px;", "none", ""],
+	["entreEjes2", posPisoCaja, posBaseLine + (inputBoxes[1][1] / 20), (inputBoxes[2][1] / 20) - 2, 150, "border-right-style: dashed; border-right-width: 1px;", "none", ""],
+	["lineaGrpT1", posEjesLine - 23, posBaseLine, 0, 0, "", "none", "triangle_left"],
+	["lineaGrpT2", posEjesLine - 23, posBaseLine + (inputBoxes[0][1] / 20) - 19, 0, 0, "", "none", "triangle_right"],
+	["lineaGrp1", posEjesLine - 20, posBaseLine - 29, (inputBoxes[0][1] / 20) + 29, 0, "border-top-style: solid; border-top-width: 1px;", "none", ""],
+];
 	
-	var pMaxEjes = [
-		[1, 'Simple', 'S', 'Simple', 6000, 500, 0, 0],
-		[1, 'Simple', 'D', 'Dual', 10500, 1000, 0, 0],
-		[1, 'Simple', 'SA', 'Superancha', 8000, 1000, 0, 0],
-		[2, 'Tándem', '2S', 'Simple-Simple', 10000, 1500, 1200, 2400],
-		[2, 'Tándem', 'SD', 'Simple-Dual', 14000, 1500, 1200, 2400],
-		[2, 'Tándem', '2D', 'Doble Dual', 18000, 1500, 1200, 2400],
-		[2, 'Tándem', '2SA', 'Doble Superancha', 16000, 1500, 1200, 2400],
-		[3, 'Triple', 'S2D', 'Simple-Dual-Dual', 21000, 2000, 2400, 4800],
-		[3, 'Triple', '3D',  'Triple Dual', 25500, 2000, 2400, 4800],
-		[3, 'Triple', '3SA', 'Triple Superancha', 24000, 2000, 2400, 4800],
-		[4, 'Separados', '1+1S', '1+1 Simples', 12000, 1000, 2400, 4800],
-		[4, 'Separados', '1+1D', '1+1 Dual-Dual', 21000, 2000, 2400, 4800],
-		[4, 'Separados', '1+1SA', '1+1 Superancha', 16000, 2000, 2400, 4800],
-	];
+// Archivos de imagen compuesta para Chasis
+var imgComposite = [
+	["ChasisTraseroimg", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisTraseroN.png", "inline", (distCargaFinit / 20) - 234],
+	["ChasisDelanteimg", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisDelanteN.png", "inline", -74],
+	["Chasis12img", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisDireccion2N.png", "none", 10],
+	["Chasis21img", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisTraccion1N.png", "inline", 79],
+	["Chasis22img", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisTraccion2N.png", "none", 46],
+	["Chasis23img", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisTraccion2N.png", "none", 116],
+];
 	
-	// Dimensiones del vehículo
-	var inputBoxes = [
-		//id, value, min, max, top, left, width, formatting, display
-		["sepGrp1input", sepGrp1init, 0, 2400, posEjesLine - 30, posBaseLine - 88, 60, inputBoxPad, "none"],
-		["distGrp12input", distGrp12init, 0, 10500, posEjesLine - 10, posBaseLine + 83, 70, inputBoxPad, "inline"],
-		["sepGrp2input", sepGrp2init, 0, 2400, posEjesLine - 10, posBaseLine + 332, 60, inputBoxPad, "none"],
-		["distCarga0input", distCarga0init, 500, 3000, posCajaLine - 10, posBaseLine - 88, 60, inputBoxPad, "inline"],
-		["distCargaFinput", distCargaFinit, 4000, 12000, posCajaLine - 10, posBaseLine + 151, 70, inputBoxPad, "inline"],
-		["distCarga", distCargaFinit / 2, 0, 6000, "position: absolute; top: 51px; width: 70px; padding: 5px", 151],
-	];
+// Pesos de los grupos y cargas
+var pGrupos = [
+	["Carga", 1, "", 0, 9000],
+	["Dir", 1, "S", 4700, 6000],
+	["Trac", 1, "D", 1700, 10500],
+];
 	
-	var dimLines = [
-		//id, top, left, width, height, lineStyle, display, class
-		["lineaBase", 0, posBaseLine, 0, posPisoCaja, "border-left-style: dashed; border-left-width: 1px;", "inline", ""],
-		["cajaCarga", 0, posBaseLine + (inputBoxes[3][1] / 20), (inputBoxes[4][1] / 20) - 2, posPisoCaja, "border-left-style: dashed; border-left-width: 1px; border-right-style: dashed; border-right-width: 1px;", "inline", ""],
-		["lineaCajaT1", posCajaLine - 3, posBaseLine - 18, 0, 0, "", "inline", "triangle_right"],
-		["lineaCajaT2", posCajaLine - 3, posBaseLine + (inputBoxes[3][1] / 20) - 1, 0, 0, "", "inline", "triangle_left"],
-		["lineaCajaT3", posCajaLine - 3, posBaseLine + (inputBoxes[3][1] / 20) + (inputBoxes[4][1] / 20) - 19, 0, 0, "", "inline", "triangle_right"],
-		["lineaCaja1", posCajaLine, posBaseLine - 29, (inputBoxes[3][1] / 20) + (inputBoxes[4][1] / 40) + 29 - 35, 0, "border-top-style: solid; border-top-width: 1px;", "inline", ""],
-		["lineaCaja2", posCajaLine, posBaseLine + (inputBoxes[3][1] / 20) + (inputBoxes[4][1] / 40) + 35, (inputBoxes[4][1] / 40) - 35, 0, "border-top-style: solid; border-top-width: 1px;", "inline", ""],
-		["lineaEjesT1", posEjesLine - 3, posBaseLine, 0, 0, "", "inline", "triangle_left"],
-		["lineaEjesT2", posEjesLine - 3, posBaseLine + (inputBoxes[1][1] / 20) - 19, 0, 0, "", "inline", "triangle_right"],
-		["lineaEjesT3", posEjesLine - 3, posBaseLine + (inputBoxes[1][1] / 20) + (inputBoxes[2][1] / 20), 0, 0, "", "none", "triangle_left"],
-		["lineaEjes1", posEjesLine, posBaseLine, (inputBoxes[1][1] / 40) - 35, 0, "border-top-style: solid; border-top-width: 1px;", "inline", ""],
-		["lineaEjes2", posEjesLine, posBaseLine + (inputBoxes[1][1] / 40) + 35, (inputBoxes[1][1] / 40) - 35, 0, "border-top-style: solid; border-top-width: 1px;", "inline", ""],
-		["lineaEjes3", posEjesLine, posBaseLine + (inputBoxes[1][1] / 20), (inputBoxes[2][1] / 40) + 29, 0, "border-top-style: solid; border-top-width: 1px;", "none", ""],
-		["entreGrupos", posPisoCaja, posBaseLine, (inputBoxes[1][1] / 20) - 2, 150, "border-left-style: dashed; border-left-width: 1px; border-right-style: dashed; border-right-width: 1px;", "inline", ""],
-		["entreEjes1", posPisoCaja, posBaseLine, (inputBoxes[0][1] / 20) - 2, 150, "border-left-style: dashed; border-left-width: 1px; border-right-style: dashed; border-right-width: 1px;", "none", ""],
-		["entreEjes2", posPisoCaja, posBaseLine + (inputBoxes[1][1] / 20), (inputBoxes[2][1] / 20) - 2, 150, "border-right-style: dashed; border-right-width: 1px;", "none", ""],
-		["lineaGrpT1", posEjesLine - 23, posBaseLine, 0, 0, "", "none", "triangle_left"],
-		["lineaGrpT2", posEjesLine - 23, posBaseLine + (inputBoxes[0][1] / 20) - 19, 0, 0, "", "none", "triangle_right"],
-		["lineaGrp1", posEjesLine - 20, posBaseLine - 29, (inputBoxes[0][1] / 20) + 29, 0, "border-top-style: solid; border-top-width: 1px;", "none", ""],
-	];
+var menuButtons = [
+	["menuOpVehiculos", "Opciones de Vehículos", false, "19%"],
+	["menuOpDiagCarga", "Recalcular Diagrama de Carga", true, "27%"],
+	["menuOpEjCarga", "Ejemplo de Distribución", false, "27%"],
+	["menuOpEjDescarga", "Ejemplo de Descarga Parcial", false, "27%"],
+];
 	
-	// Archivos de imagen compuesta para Chasis
-	var imgComposite = [
-		["ChasisTraseroimg", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisTraseroN.png", "inline", (distCargaFinit / 20) - 234],
-		["ChasisDelanteimg", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisDelanteN.png", "inline", -74],
-		["Chasis12img", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisDireccion2N.png", "none", 10],
-		["Chasis21img", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisTraccion1N.png", "inline", 79],
-		["Chasis22img", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisTraccion2N.png", "none", 46],
-		["Chasis23img", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisTraccion2N.png", "none", 116],
-	];
+function calcularChasis () {
+	//Configuracion de ejes
+	var configDir = Number(document.getElementById("Chasis1e").value);
+	var configTrac = Number(document.getElementById("Chasis2e").value);
+	var configTotal = configDir + configTrac;
 	
-	// Pesos de los grupos y cargas
-	var pGrupos = [
-		["Carga", 1, "", 0, 9000],
-		["Dir", 1, "S", 4700, 6000],
-		["Trac", 1, "D", 1700, 10500],
-	];
-	
-	var menuButtons = [
-		["menuOpVehiculos", "Opciones de Vehículos", false, "19%"],
-		["menuOpDiagCarga", "Recalcular Diagrama de Carga", true, "27%"],
-		["menuOpEjCarga", "Ejemplo de Distribución", false, "27%"],
-		["menuOpEjDescarga", "Ejemplo de Descarga Parcial", false, "27%"],
-	];
-	
-	
-	
-    function calcularChasis () {
-		//Configuracion de ejes
-		var configDir = Number(document.getElementById("Chasis1e").value);
-		var configTrac = Number(document.getElementById("Chasis2e").value);
-		var configTotal = configDir + configTrac;
-	
-		// Dimensiones
-		//var inputBoxes[0][1] = Number(document.getElementById("sepGrp1input").value);
-		//var inputBoxes[2][1] = Number(document.getElementById("sepGrp2input").value);
-		//var inputBoxes[1][1] = Number(document.getElementById("distGrp12input").value);
-		//var inputBoxes[3][1] = Number(document.getElementById("distCarga0input").value);
-		//var inputBoxes[4][1] = Number(document.getElementById("distCargaFinput").value);
+	// Dimensiones
+	//var inputBoxes[0][1] = Number(document.getElementById("sepGrp1input").value);
+	//var inputBoxes[2][1] = Number(document.getElementById("sepGrp2input").value);
+	//var inputBoxes[1][1] = Number(document.getElementById("distGrp12input").value);
+	//var inputBoxes[3][1] = Number(document.getElementById("distCarga0input").value);
+	//var inputBoxes[4][1] = Number(document.getElementById("distCargaFinput").value);
 		
-		// Pesos
-		var pMaxGrp1 = Number(document.getElementById("Chasis1pMax").value);
-		var pTolGrp1 = Number(document.getElementById("Chasis1pTol").value);
-		var pTarGrp1 = Number(document.getElementById("Chasis1pTar").value);
-		var pMaxGrp2 = Number(document.getElementById("Chasis2pMax").value);
-		var pTolGrp2 = Number(document.getElementById("Chasis2pTol").value);
-		var pTarGrp2 = Number(document.getElementById("Chasis2pTar").value);
+	// Pesos
+	var pMaxGrp1 = Number(document.getElementById("Chasis1pMax").value);
+	var pTolGrp1 = Number(document.getElementById("Chasis1pTol").value);
+	var pTarGrp1 = Number(document.getElementById("Chasis1pTar").value);
+	var pMaxGrp2 = Number(document.getElementById("Chasis2pMax").value);
+	var pTolGrp2 = Number(document.getElementById("Chasis2pTol").value);
+	var pTarGrp2 = Number(document.getElementById("Chasis2pTar").value);
 		
-		var datosGrafico = [];
+	var datosGrafico = [];
 		
-		for (var i = 0; i <= inputBoxes[4][1] / 100; i++) {
-			//Carga maxima permisible
-			var dataSet1 = Math.min((pMaxGrp1 + pMaxGrp2) - (pTarGrp1 + pTarGrp2),30000 - (pTarGrp1 + pTarGrp2));
-			var dataSet6 = dataSet1;
-			
-			//Peso maximo eje delantero
-			var dataSet2;
-			if (i*100 < (inputBoxes[1][1]+inputBoxes[2][1]/2-inputBoxes[3][1])) {
-				dataSet2 = ((pMaxGrp1+pTolGrp1-pTarGrp1)*(inputBoxes[1][1]+inputBoxes[2][1]-inputBoxes[0][1]/2)+(pMaxGrp2+pTolGrp2-pTarGrp2)*(inputBoxes[2][1]/2))/(inputBoxes[1][1]+inputBoxes[2][1]-inputBoxes[3][1]-i*100);
-				dataSet6 = Math.min(dataSet6, dataSet2);	
-			} else {
-				dataSet2 = 30000;	
-			}
-			
-			//Peso maximo eje trasero
-			var dataSet3 = ((pMaxGrp1+pTolGrp1-pTarGrp1)*(inputBoxes[0][1]/2)+(pMaxGrp2+pTolGrp2-pTarGrp2)*(inputBoxes[1][1]+inputBoxes[2][1]/2))/(inputBoxes[3][1]+i*100);
-			dataSet6 = Math.min(dataSet6, dataSet3);
-			
-			//Peso min eje delantero
-			var pMin1;
-			if (configTotal == 2) {
-				pMin1 = 0.3;
-			} else if (configTotal == 3) {
-				pMin1 = 0.25;
-			} else {
-				pMin1 = 0.2;
-			}
-			var dataSet4 = ((pMin1*(pTarGrp1+pTarGrp2)-pTarGrp1)*(inputBoxes[1][1]+inputBoxes[2][1]-inputBoxes[0][1]/2)+(pMaxGrp2-pTarGrp2)*(inputBoxes[2][1]/2))/((inputBoxes[1][1]+inputBoxes[2][1]-inputBoxes[3][1]-i*100)-pMin1*(inputBoxes[1][1]+inputBoxes[2][1]-inputBoxes[0][1]/2));
-			if (dataSet4 < 0 || dataSet4 > 30000) {
-				dataSet4 = 30000;
-			} else {
-				//dataSet4 = 
-				dataSet6 = Math.min(dataSet6, dataSet4);
-			}
-			
-			//Peso min eje de tracción
-			var pMin2 = 0.15;
-			var nTrac = 1;
-			var nGrp2 = configTrac;			
-			//var dataSet5 = 0.001*Math.round((pMin2*n*(pTarGrp1+pTarGrp2)-pTarGrp2)/(1-pMin2*n-((inputBoxes[0][1]+inputBoxes[1][1]+inputBoxes[2][1]/2-inputBoxes[3][1]-i*100)/(inputBoxes[0][1]/2+inputBoxes[1][1]+inputBoxes[2][1]/2))));
-			var dataSet5 = ((pMaxGrp1-pTarGrp1)*(inputBoxes[0][1]/2)+(pMin2*nTrac*(pTarGrp1+pTarGrp2)/nGrp2-pTarGrp2)*(inputBoxes[1][1]+inputBoxes[2][1]/2))/((inputBoxes[3][1]+i*100)+pMin2*nTrac*(inputBoxes[1][1]+inputBoxes[2][1]/2)/nGrp2);
-			//if (dataSet5 > dataSet6) {
-			//	dataSet6 = null;
-			//}
-			
-			var dataSet0 = +((i * 0.1).toFixed(2));
-			dataSet1 =  +((0.001 * dataSet1).toFixed(2));
-			dataSet2 =  +((0.001 * dataSet2).toFixed(2));
-			dataSet3 =  +((0.001 * dataSet3).toFixed(2));
-			dataSet4 =  +((0.001 * dataSet4).toFixed(2));
-			dataSet5 =  +((0.001 * dataSet5).toFixed(2));
-			dataSet6 =  +((0.001 * dataSet6).toFixed(2));
-			
-			datosGrafico.push([dataSet0, dataSet1, dataSet2, dataSet3, dataSet4, dataSet5, dataSet6]);			
+	for (var i = 0; i <= inputBoxes[4][1] / 100; i++) {
+		//Carga maxima permisible
+		var dataSet1 = Math.min((pMaxGrp1 + pMaxGrp2) - (pTarGrp1 + pTarGrp2),30000 - (pTarGrp1 + pTarGrp2));
+		var dataSet6 = dataSet1;
+		
+		//Peso maximo eje delantero
+		var dataSet2;
+		if (i*100 < (inputBoxes[1][1]+inputBoxes[2][1]/2-inputBoxes[3][1])) {
+			dataSet2 = ((pMaxGrp1+pTolGrp1-pTarGrp1)*(inputBoxes[1][1]+inputBoxes[2][1]-inputBoxes[0][1]/2)+(pMaxGrp2+pTolGrp2-pTarGrp2)*(inputBoxes[2][1]/2))/(inputBoxes[1][1]+inputBoxes[2][1]-inputBoxes[3][1]-i*100);
+			dataSet6 = Math.min(dataSet6, dataSet2);	
+		} else {
+			dataSet2 = 30000;	
 		}
-		drawChart(datosGrafico, 0, 0.001 * inputBoxes[4][1]);
+			
+		//Peso maximo eje trasero
+		var dataSet3 = ((pMaxGrp1+pTolGrp1-pTarGrp1)*(inputBoxes[0][1]/2)+(pMaxGrp2+pTolGrp2-pTarGrp2)*(inputBoxes[1][1]+inputBoxes[2][1]/2))/(inputBoxes[3][1]+i*100);
+		dataSet6 = Math.min(dataSet6, dataSet3);
+			
+		//Peso min eje delantero
+		var pMin1;
+		if (configTotal == 2) {
+			pMin1 = 0.3;
+		} else if (configTotal == 3) {
+			pMin1 = 0.25;
+		} else {
+			pMin1 = 0.2;
+		}
+		var dataSet4 = ((pMin1*(pTarGrp1+pTarGrp2)-pTarGrp1)*(inputBoxes[1][1]+inputBoxes[2][1]-inputBoxes[0][1]/2)+(pMaxGrp2-pTarGrp2)*(inputBoxes[2][1]/2))/((inputBoxes[1][1]+inputBoxes[2][1]-inputBoxes[3][1]-i*100)-pMin1*(inputBoxes[1][1]+inputBoxes[2][1]-inputBoxes[0][1]/2));
+		if (dataSet4 < 0 || dataSet4 > 30000) {
+			dataSet4 = 30000;
+		} else {
+			//dataSet4 = 
+			dataSet6 = Math.min(dataSet6, dataSet4);
+		}
+			
+		//Peso min eje de tracción
+		var pMin2 = 0.15;
+		var nTrac = 1;
+		var nGrp2 = configTrac;			
+		//var dataSet5 = 0.001*Math.round((pMin2*n*(pTarGrp1+pTarGrp2)-pTarGrp2)/(1-pMin2*n-((inputBoxes[0][1]+inputBoxes[1][1]+inputBoxes[2][1]/2-inputBoxes[3][1]-i*100)/(inputBoxes[0][1]/2+inputBoxes[1][1]+inputBoxes[2][1]/2))));
+		var dataSet5 = ((pMaxGrp1-pTarGrp1)*(inputBoxes[0][1]/2)+(pMin2*nTrac*(pTarGrp1+pTarGrp2)/nGrp2-pTarGrp2)*(inputBoxes[1][1]+inputBoxes[2][1]/2))/((inputBoxes[3][1]+i*100)+pMin2*nTrac*(inputBoxes[1][1]+inputBoxes[2][1]/2)/nGrp2);
+		//if (dataSet5 > dataSet6) {
+		//	dataSet6 = null;
+		//}
+			
+		var dataSet0 = +((i * 0.1).toFixed(2));
+		dataSet1 =  +((0.001 * dataSet1).toFixed(2));
+		dataSet2 =  +((0.001 * dataSet2).toFixed(2));
+		dataSet3 =  +((0.001 * dataSet3).toFixed(2));
+		dataSet4 =  +((0.001 * dataSet4).toFixed(2));
+		dataSet5 =  +((0.001 * dataSet5).toFixed(2));
+		dataSet6 =  +((0.001 * dataSet6).toFixed(2));
+			
+		datosGrafico.push([dataSet0, dataSet1, dataSet2, dataSet3, dataSet4, dataSet5, dataSet6]);			
 	}
+	drawChart(datosGrafico, 0, 0.001 * inputBoxes[4][1]);
+}
 	
-	function drawChart(dataArray, hAxisMin, hAxisMax) {		
-		var data = new google.visualization.DataTable();
-		data.addColumn('number', 'Distancia');
-		//data.addColumn('number', 'Dummy');
-		data.addColumn('number', 'Max Permisible');
-		data.addColumn('number', 'Eje Delantero'); 
-		data.addColumn('number', 'Eje Trasero');
-		data.addColumn('number', 'Min Delantero');
-		data.addColumn('number', 'Min Tracción');
-		data.addColumn('number', 'Carga Máxima'); 
+function drawChart(dataArray, hAxisMin, hAxisMax) {		
+	var data = new google.visualization.DataTable();
+	data.addColumn('number', 'Distancia');
+	//data.addColumn('number', 'Dummy');
+	data.addColumn('number', 'Max Permisible');
+	data.addColumn('number', 'Eje Delantero'); 
+	data.addColumn('number', 'Eje Trasero');
+	data.addColumn('number', 'Min Delantero');
+	data.addColumn('number', 'Min Tracción');
+	data.addColumn('number', 'Carga Máxima'); 
 		
-		for (var i = 0; i < dataArray.length; i++) {
-			data.addRow([dataArray[i][0], dataArray[i][1], dataArray[i][2], dataArray[i][3], dataArray[i][4], dataArray[i][5], dataArray[i][6]]);
-		}
-//alert(document.getElementById("distCargaFinput").value / 20);
-      var options = {
+	for (var i = 0; i < dataArray.length; i++) {
+		data.addRow([dataArray[i][0], dataArray[i][1], dataArray[i][2], dataArray[i][3], dataArray[i][4], dataArray[i][5], dataArray[i][6]]);
+	}
+
+	var options = {
         //chart: {
         //  title: 'Box Office Earnings in First Two Weeks of Opening',
         //  subtitle: 'in millions of dollars (USD)'
@@ -196,7 +196,7 @@
 		curveType: 'function',
 		legend: {position: 'none'},
 		backgroundColor: { fill:'transparent' },
-        chartArea: {
+        	chartArea: {
 			left: 0,
 			top: 0,
 			width: document.getElementById("distCargaFinput").value / 20,
@@ -216,27 +216,27 @@
 			1: {textPosition: 'inside'},
 		},
 		hAxis: {
-            viewWindowMode:'explicit',
-            viewWindow: {
-              max:hAxisMax,
-              min:hAxisMin
-            },
+            		viewWindowMode:'explicit',
+            		viewWindow: {
+              			max:hAxisMax,
+              			min:hAxisMin
+            		},
 			//format: '0',
 			textPosition:'none',
 			slantedTextAngle:90
-        },				
+        	},				
 		vAxis: {
-            viewWindowMode:'explicit',
-            viewWindow: {
-              max: 1.1 * dataArray[0][1],
-              min: 0
-            }
-        }	
-      };
+            		viewWindowMode:'explicit',
+            		viewWindow: {
+              			max: 1.1 * dataArray[0][1],
+              			min: 0
+            		}
+        	}	
+      	};
 
-		var chart = new google.visualization.LineChart(document.getElementById('ChasisGraf'));
-		chart.draw(data, options);
-    }
+	var chart = new google.visualization.LineChart(document.getElementById('ChasisGraf'));
+	chart.draw(data, options);
+}
 	
 	function tipoVehiculo(opDisplay) {
 		var tiposVeh = ['Chasis', 'Semi', 'Tractor'];
