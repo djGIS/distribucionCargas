@@ -420,131 +420,131 @@ function moverCarga() {
 	tratarCalcularCargas();
 }
 	
-	function tratarCalcularCargas () {
+function tratarCalcularCargas () {
+	var leftCarga = document.getElementById("Carga").style.left;
+	leftCarga = Number(leftCarga.substring(0, leftCarga.length - 2));
+	widthCarga = document.getElementById("Carga").style.width;
+	widthCarga = Number(widthCarga.substring(0, widthCarga.length - 2));
+	var distCarga = (leftCarga + (widthCarga / 2) + 4 - posBaseLine) * 20 - inputBoxes[3][1];
+
+	calcularCargas (distCarga, Number(document.getElementById("CargaPinput").value));
+}
 	
-		var leftCarga = document.getElementById("Carga").style.left;
-			leftCarga = Number(leftCarga.substring(0, leftCarga.length - 2));
-		widthCarga = document.getElementById("Carga").style.width;
-		widthCarga = Number(widthCarga.substring(0, widthCarga.length - 2));
-		var distCarga = (leftCarga + (widthCarga / 2) + 4 - posBaseLine) * 20 - inputBoxes[3][1];
+function calcularCargas (distCarga, pCarga) {
+	// Dimensiones
+	var sepGrp1 = inputBoxes[0][1];
+	var sepGrp2 = inputBoxes[2][1];
+	var distGrp12 = inputBoxes[1][1];
+	var distCarga0 = inputBoxes[3][1];
+	var distCargaF = inputBoxes[4][1];
 		
-		calcularCargas (distCarga, Number(document.getElementById("CargaPinput").value));
+	// Pesos
+	var pMaxGrp1 = Number(document.getElementById("Chasis1pMax").value);
+	var pTolGrp1 = Number(document.getElementById("Chasis1pTol").value);
+	var pTarGrp1 = Number(document.getElementById("Chasis1pTar").value);
+	var pMaxGrp2 = Number(document.getElementById("Chasis2pMax").value);
+	var pTolGrp2 = Number(document.getElementById("Chasis2pTol").value);
+	var pTarGrp2 = Number(document.getElementById("Chasis2pTar").value);
+	
+	p1 = Math.round((pCarga*(distGrp12+sepGrp2/2-distCarga0-distCarga)/(distGrp12+sepGrp2/2-sepGrp1/2))+pTarGrp1);
+	p2 = Math.round((pCarga*(distCarga0+distCarga-sepGrp1/2)/(distGrp12+sepGrp2/2-sepGrp1/2))+pTarGrp2);
+	document.getElementById("Chasis1p").value = p1;
+	document.getElementById("Chasis2p").value = p2;
+	
+	verifPesos();
+}
+	
+function verifPesos () {
+	var p1 = Number(document.getElementById("Chasis1p").value);
+	var p2 = Number(document.getElementById("Chasis2p").value);
+		
+	var configDir = Number(document.getElementById("Chasis1e").value);
+	var configTrac = Number(document.getElementById("Chasis2e").value);
+	var configTotal = configDir + configTrac;
+		
+	// Pesos
+	var pMaxGrp1 = Number(document.getElementById("Chasis1pMax").value);
+	var pTolGrp1 = Number(document.getElementById("Chasis1pTol").value);
+	var pTarGrp1 = Number(document.getElementById("Chasis1pTar").value);
+	var pMaxGrp2 = Number(document.getElementById("Chasis2pMax").value);
+	var pTolGrp2 = Number(document.getElementById("Chasis2pTol").value);
+	var pTarGrp2 = Number(document.getElementById("Chasis2pTar").value);
+	
+	// Peso minimo sobre dirección según configuración del ejes
+	var pMin1;
+	if (configTotal == 2) {
+		pMin1 = 0.3;
+	} else if (configTotal == 3) {
+		pMin1 = 0.25;
+	} else {
+		pMin1 = 0.2;
 	}
 	
-	function calcularCargas (distCarga, pCarga) {
-		// Dimensiones
-		var sepGrp1 = inputBoxes[0][1];
-		var sepGrp2 = inputBoxes[2][1];
-		var distGrp12 = inputBoxes[1][1];
-		var distCarga0 = inputBoxes[3][1];
-		var distCargaF = inputBoxes[4][1];
-		
-		// Pesos
-		var pMaxGrp1 = Number(document.getElementById("Chasis1pMax").value);
-		var pTolGrp1 = Number(document.getElementById("Chasis1pTol").value);
-		var pTarGrp1 = Number(document.getElementById("Chasis1pTar").value);
-		var pMaxGrp2 = Number(document.getElementById("Chasis2pMax").value);
-		var pTolGrp2 = Number(document.getElementById("Chasis2pTol").value);
-		var pTarGrp2 = Number(document.getElementById("Chasis2pTar").value);
-	
-		p1 = Math.round((pCarga*(distGrp12+sepGrp2/2-distCarga0-distCarga)/(distGrp12+sepGrp2/2-sepGrp1/2))+pTarGrp1);
-		p2 = Math.round((pCarga*(distCarga0+distCarga-sepGrp1/2)/(distGrp12+sepGrp2/2-sepGrp1/2))+pTarGrp2);
-		document.getElementById("Chasis1p").value = p1;
-		document.getElementById("Chasis2p").value = p2;
-	
-		verifPesos();
+	if (p1 < pMin1*(p1 + p2)) {
+		document.getElementById("Chasis1p").style = "text-align: right; width: 75%; border-style: solid; border-width: 1px; background-color: #FAAC58";
+	} else if (p1 > (pMaxGrp1+pTolGrp1)){
+		document.getElementById("Chasis1p").style = "text-align: right; width: 75%; border-style: solid; border-width: 1px; background-color: #FA5858";
+	} else if (p1 > (pMaxGrp1)){
+		document.getElementById("Chasis1p").style = "text-align: right; width: 75%; border-style: solid; border-width: 1px; background-color: #FAAC58";
+	} else {
+		document.getElementById("Chasis1p").style = "text-align: right; width: 75%; border-style: solid; border-width: 1px; background-color: #D0FA58";
 	}
 	
-	function verifPesos () {
-		var p1 = Number(document.getElementById("Chasis1p").value);
-		var p2 = Number(document.getElementById("Chasis2p").value);
-		
-		var configDir = Number(document.getElementById("Chasis1e").value);
-		var configTrac = Number(document.getElementById("Chasis2e").value);
-		var configTotal = configDir + configTrac;
-		
-		// Pesos
-		var pMaxGrp1 = Number(document.getElementById("Chasis1pMax").value);
-		var pTolGrp1 = Number(document.getElementById("Chasis1pTol").value);
-		var pTarGrp1 = Number(document.getElementById("Chasis1pTar").value);
-		var pMaxGrp2 = Number(document.getElementById("Chasis2pMax").value);
-		var pTolGrp2 = Number(document.getElementById("Chasis2pTol").value);
-		var pTarGrp2 = Number(document.getElementById("Chasis2pTar").value);
-		
-		var pMin1;
-		if (configTotal == 2) {
-			pMin1 = 0.3;
-		} else if (configTotal == 3) {
-			pMin1 = 0.25;
-		} else {
-			pMin1 = 0.2;
-		}
-		if (p1 < pMin1*(p1 + p2)) {
-			document.getElementById("Chasis1p").style = "text-align: right; width: 75%; border-style: solid; border-width: 1px; background-color: #FAAC58";
-		} else if (p1 > (pMaxGrp1+pTolGrp1)){
-			document.getElementById("Chasis1p").style = "text-align: right; width: 75%; border-style: solid; border-width: 1px; background-color: #FA5858";
-		} else if (p1 > (pMaxGrp1)){
-			document.getElementById("Chasis1p").style = "text-align: right; width: 75%; border-style: solid; border-width: 1px; background-color: #FAAC58";
-		} else {
-			document.getElementById("Chasis1p").style = "text-align: right; width: 75%; border-style: solid; border-width: 1px; background-color: #D0FA58";
-		}
-	
-		var pMin2 = 0.15;
-		var nTrac = 1;
-		var nGrp2 = configTrac;	
-		if (p2 < pMin2*nTrac*(p1 + p2)/nGrp2) {
-			document.getElementById("Chasis2p").style = "text-align: right; width: 75%; border-style: solid; border-width: 1px; background-color: #FAAC58";
-		} else if (p2 > (pMaxGrp2+pTolGrp2)){
-			document.getElementById("Chasis2p").style = "text-align: right; width: 75%; border-style: solid; border-width: 1px; background-color: #FA5858";
-		} else if (p2 > (pMaxGrp2)){
-			document.getElementById("Chasis2p").style = "text-align: right; width: 75%; border-style: solid; border-width: 1px; background-color: #FAAC58";
-		} else {
-			document.getElementById("Chasis2p").style = "text-align: right; width: 75%; border-style: solid; border-width: 1px; background-color: #D0FA58";
-		}
+	var pMin2 = 0.15;
+	var nTrac = 1;
+	var nGrp2 = configTrac;	
+	if (p2 < pMin2*nTrac*(p1 + p2)/nGrp2) {
+		document.getElementById("Chasis2p").style = "text-align: right; width: 75%; border-style: solid; border-width: 1px; background-color: #FAAC58";
+	} else if (p2 > (pMaxGrp2+pTolGrp2)){
+		document.getElementById("Chasis2p").style = "text-align: right; width: 75%; border-style: solid; border-width: 1px; background-color: #FA5858";
+	} else if (p2 > (pMaxGrp2)){
+		document.getElementById("Chasis2p").style = "text-align: right; width: 75%; border-style: solid; border-width: 1px; background-color: #FAAC58";
+	} else {
+		document.getElementById("Chasis2p").style = "text-align: right; width: 75%; border-style: solid; border-width: 1px; background-color: #D0FA58";
 	}
+}
 	
-	function inicializarChasis () {
-		var posLeft = 0;
-		var posTop = 0;
-		var width = 0;
+function inicializarChasis () {
+	var posLeft = 0;
+	var posTop = 0;
+	var width = 0;
 		
-		// Dibujo del area de diagrama de carga con imagen compuesta de chasis 
-		var diagArea = document.createElement("div");
-			diagArea.id = "ChasisDiagrama";
-			diagArea.style = "position: absolute; top: 0px; left: 0px; width: 100%; height: 100%"
-			document.getElementById("Diagrama").appendChild(diagArea);
+	// Dibujo del area de diagrama de carga con imagen compuesta de chasis 
+	var diagArea = document.createElement("div");
+	diagArea.id = "ChasisDiagrama";
+	diagArea.style = "position: absolute; top: 0px; left: 0px; width: 100%; height: 100%"
+	document.getElementById("Diagrama").appendChild(diagArea);
 				
-			for (var i = 0; i < dimLines.length; i++) {
-				var dimLine = document.createElement("div");
-				dimLine.id = dimLines[i][0];
-				dimLine.style = "position: absolute; top: " + dimLines[i][1] + "px; left: " + dimLines[i][2] + "px; width: " + dimLines[i][3] + "px; height: " + dimLines[i][4] + "px; " + dimLines[i][5] + " display: " + dimLines[i][6] + ";";
-				document.getElementById(diagArea.id).appendChild(dimLine);
-				if (dimLines[i][7] != "") {
-					document.getElementById(dimLine.id).setAttribute("class", dimLines[i][7]);
-				}
-			}
+	for (var i = 0; i < dimLines.length; i++) {
+		var dimLine = document.createElement("div");
+		dimLine.id = dimLines[i][0];
+		dimLine.style = "position: absolute; top: " + dimLines[i][1] + "px; left: " + dimLines[i][2] + "px; width: " + dimLines[i][3] + "px; height: " + dimLines[i][4] + "px; " + dimLines[i][5] + " display: " + dimLines[i][6] + ";";
+		document.getElementById(diagArea.id).appendChild(dimLine);
+		if (dimLines[i][7] != "") {
+			document.getElementById(dimLine.id).setAttribute("class", dimLines[i][7]);
+		}
+	}
 						
-			for (var i = 0; i < imgComposite.length; i++) {
-				var imgChasis = document.createElement("img");
-				imgChasis.id = imgComposite[i][0]; 
-				imgChasis.src = imgComposite[i][1];	
-				posLeft = posBaseLine + imgComposite[i][3];
-				imgChasis.style = "position: absolute; left: " + posLeft + "px; height: 400px; display: " + imgComposite[i][2] + ";";
-				document.getElementById(diagArea.id).appendChild(imgChasis);
-			}
+	for (var i = 0; i < imgComposite.length; i++) {
+		var imgChasis = document.createElement("img");
+		imgChasis.id = imgComposite[i][0]; 
+		imgChasis.src = imgComposite[i][1];	
+		posLeft = posBaseLine + imgComposite[i][3];
+		imgChasis.style = "position: absolute; left: " + posLeft + "px; height: 400px; display: " + imgComposite[i][2] + ";";
+		document.getElementById(diagArea.id).appendChild(imgChasis);
+	}
 		
-		
-		var grafArea = document.createElement("div");
-			grafArea.id = "ChasisGraf"; 
-			posLeft = posBaseLine + (inputBoxes[3][1] / 20);
-			grafArea.style = "position: absolute; top: 100px; left: " + posLeft + "px; width: 100%;";  //
-		document.getElementById("Diagrama").appendChild(grafArea);
+	var grafArea = document.createElement("div");
+	grafArea.id = "ChasisGraf"; 
+	posLeft = posBaseLine + (inputBoxes[3][1] / 20);
+	grafArea.style = "position: absolute; top: 100px; left: " + posLeft + "px; width: 100%;";  //
+	document.getElementById(diagArea.id).appendChild(grafArea);
 				
-		// Cargar controles para dimensiones del Chasis
-		diagArea = document.createElement("div");
-			diagArea.id = "ChasisDimInputs";
-			diagArea.style = "position: absolute; top: 0px; left: 0px; width: 100%; height: 100%"
-			document.getElementById("Diagrama").appendChild(diagArea);
+	// Cargar controles para dimensiones del Chasis
+	//diagArea = document.createElement("div");
+	//diagArea.id = "ChasisDimInputs";
+//	diagArea.style = "position: absolute; top: 0px; left: 0px; width: 100%; height: 100%"
+//	document.getElementById(diagArea.id).appendChild(diagArea);
 			
 			for (var i = 0; i < inputBoxes.length - 1; i++) {
 				var inputBox = document.createElement("input");
@@ -555,13 +555,13 @@ function moverCarga() {
 				inputBox.max = inputBoxes[i][3];
 				inputBox.style = "position: absolute; top: " + inputBoxes[i][4] + "px; left: " + inputBoxes[i][5] + "px; width: " + inputBoxes[i][6] + "px; " + inputBoxes[i][7] + " display: " + inputBoxes[i][8] + ";";
 				inputBox.onchange = function(){dimErrCheck();};
-				document.getElementById("ChasisDimInputs").appendChild(inputBox);
+				document.getElementById(diagArea.id).appendChild(inputBox);
 			}
 		
 		// Cargar controles para tabla de pesos
 		var tablaArea = document.createElement("div");
 			tablaArea.id = "ChasisTabla";
-		document.getElementById("ChasisDiagrama").appendChild(tablaArea);
+		document.getElementById(diagArea.id).appendChild(tablaArea);
 		//document.getElementById(tablaArea.id).setAttribute("style", "width: 100%; height: 100%");
 		
 		// Tabla para encabezados de fila
