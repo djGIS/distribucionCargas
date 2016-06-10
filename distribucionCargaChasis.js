@@ -173,27 +173,7 @@ function calcularChasis () {
 	drawChart(datosGrafico, 0, 0.001 * inputBoxes[4][1]);
 }
 	
-
-	
-	function tipoVehiculo(opDisplay) {
-		var tiposVeh = ['Chasis', 'Semi', 'Tractor'];
-		
-		for (var i = 0; i < tiposVeh.length; i++) {
-			var tabla = tiposVeh[i] + 'Table';
-			var diagrama = tiposVeh[i] + 'Diagrama';
-			
-			if (tiposVeh[i] == opDisplay) {
-				document.getElementById(diagrama).style.display = 'block';
-				document.getElementById(tabla).style.display = 'block';
-			}
-			else {
-			document.getElementById(diagrama).style.display = 'none';
-			document.getElementById(tabla).style.display = 'none';
-			}
-		}
-	}
-
-	function cargarSelectConfig (listaFuente) {
+function cargarSelectConfig (listaFuente) {
 		var fieldName = listaFuente.id;
 		fieldName = fieldName.substring(0, fieldName.length - 1);
 		var configSelect = document.getElementById(fieldName + "c");
