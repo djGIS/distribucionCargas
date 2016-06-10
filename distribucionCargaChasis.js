@@ -811,54 +811,50 @@ function inicializarChasis () {
 					
 		document.getElementById(container.id).appendChild(innerContainer);
 		
-		calcularChasis();
-				
-		inicializarMenu();
-	}
+	calcularChasis();
+	inicializarMenu();
+}
 	
-	function inicializarMenu () {
-		// Botones del menu
-		var container = document.createElement("div");
-		container.id = "barraMenu";
-		container.style = "position: absolute; left: 0px; top: 0px; width: 100%;";
+function inicializarMenu () {
+	// Botones del menu
+	var container = document.createElement("div");
+	container.id = "barraMenu";
+	container.style = "position: absolute; left: 0px; top: 0px; width: 100%;";
 		
-		for (var i = 0; i < menuButtons.length; i++) {
+	for (var i = 0; i < menuButtons.length; i++) {
+		var menuButton = document.createElement("button");
+		menuButton.id = menuButtons[i][0];
+		menuButton.value = menuButtons[i][0];
+		var t = document.createTextNode(menuButtons[i][1]);       // Create a text node
+		menuButton.appendChild(t);
 		
-			var menuButton = document.createElement("button");
-			menuButton.id = menuButtons[i][0];
-			menuButton.value = menuButtons[i][0];
-			var t = document.createTextNode(menuButtons[i][1]);       // Create a text node
-			menuButton.appendChild(t);
-			
-			menuButton.style = "height: 30px; width: " + menuButtons[i][3] + ";";
-			menuButton.onclick = function(){tratarOpMenu(this);};
-			container.appendChild(menuButton);
-			//document.getElementById(menuButtons[i][0]).setAttribute("class", "menuButton");
-		}	
+		menuButton.style = "height: 30px; width: " + menuButtons[i][3] + ";";
+		menuButton.onclick = function(){tratarOpMenu(this);};
+		container.appendChild(menuButton);
+		//document.getElementById(menuButtons[i][0]).setAttribute("class", "menuButton");
+	}	
 		
-		document.getElementById("Diagrama").appendChild(container);
-	}
+	document.getElementById("Diagrama").appendChild(container);
+}
 	
-	function tratarOpMenu (menuOp) {
+function tratarOpMenu (menuOp) {
 	for (var i = 0; i < 4; i ++)
 		document.getElementById(menuButtons[i][0]).disabled = false; 
-	//alert(menuOp.value);
 	
 	switch(menuOp.value) {
 	case menuButtons[0][0]:
 		alert("Las otras opciones de vehículo están en desarrollo.")
-        break;
-    case menuButtons[1][0]:
-        calcularChasis();
-        break;
+        	break;
+    	case menuButtons[1][0]:
+        	calcularChasis();
+        	break;
 	case menuButtons[2][0]:
 		if (menuButtons[3][2] == true)
 			document.getElementById("Diagrama").removeChild(document.getElementById("containerDescarga"));
-        inicializarCarga();
+        	inicializarCarga();
 		menuOp.disabled = true; 
 		menuButtons[2][2] = true;
-		
-        break;
+        	break;
 	case menuButtons[3][0]:
 		if (menuButtons[2][2] == true) {
 			document.getElementById("Diagrama").removeChild(document.getElementById("Carga"));
@@ -867,123 +863,117 @@ function inicializarChasis () {
 		if (menuButtons[3][2] == true) {
 			document.getElementById("Diagrama").removeChild(document.getElementById("containerDescarga"));
 			menuButtons[3][2] = false;
-        }
+        	}
 		inicializarDescarga();
-		//menuOp.disabled = true; 
 		menuButtons[3][2] = true;
-		
-        break;
-    default:
-        calcularChasis();
+        	break;
+	default:
+        	calcularChasis();
 	}
-	}
+}
 	
-	function inicializarCarga () {
+function inicializarCarga () {
+	// Dibujar una caja como carga con input para modificar su peso
+	var carga = document.createElement("div");
+	carga.id = "Carga";
+	posTop = 250 - 59;
+	posLeft = posBaseLine + (inputBoxes[3][1] / 20) + (inputBoxes[4][1] / 40) - 75;
+	carga.style = "position: absolute; top: " + posTop + "px; left: " + posLeft + "px; width: 150px; height: 50px; border-style: solid; border-width: 4px; border-color: #8A4B08; background-color: #F7BE81; opacity: 0.6";
+	carga.onmousedown = function(){calcularCarga();};
+
+	inputBox = document.createElement("input");
+	inputBox.id = "CargaPinput";
+	inputBox.type = "number";
+	inputBox.value = pGrupos[0][3];
+	inputBox.style = "margin-top: 17px; margin-bottom: 17px; text-align: right; width: 120px; border-style: none; background-color: transparent;";
+	inputBox.onchange = function(){tratarCalcularCargas();};
+	carga.appendChild(inputBox);
+		
+	inputBox = document.createElement("input");
+	inputBox.value = "kg";
+	inputBox.style = "margin-top: 17px; margin-bottom: 17px; width: 30px; border-style: none; background-color: transparent;";
+	inputBox.disabled = true; 
+	carga.appendChild(inputBox);
+		
+	document.getElementById("ChasisDiagrama").appendChild(carga);
+}
+	
+var pallets;
+function inicializarDescarga () {
+	pallets = [];
+		
+	var capacidadCaja = inputBoxes[4][1] / 1000;
+	capacidadCaja = Math.floor(capacidadCaja);
+	var pesoCarga = Math.round((pGrupos[1][4] + pGrupos[2][4] - pGrupos[1][3] - pGrupos[2][3]) / capacidadCaja);
+		
+	var containerDescarga = document.createElement("div");
+	containerDescarga.id = "containerDescarga";
+	containerDescarga.style = "position: absolute; top: 0px; left: 0px;";
+	document.getElementById("ChasisDiagrama").appendChild(containerDescarga);
+		
+	for (var i = 0; i < capacidadCaja; i++) {
 		// Dibujar una caja como carga con input para modificar su peso
 		var carga = document.createElement("div");
-		carga.id = "Carga";
-		posTop = 250 - 59;
-		posLeft = posBaseLine + (inputBoxes[3][1] / 20) + (inputBoxes[4][1] / 40) - 75;
-		carga.style = "position: absolute; top: " + posTop + "px; left: " + posLeft + "px; width: 150px; height: 50px; border-style: solid; border-width: 4px; border-color: #8A4B08; background-color: #F7BE81; opacity: 0.6";
-		carga.onmousedown = function(){calcularCarga();};
-
-		inputBox = document.createElement("input");
-		inputBox.id = "CargaPinput";
-		inputBox.type = "number";
-		inputBox.value = pGrupos[0][3];
-		inputBox.style = "margin-top: 17px; margin-bottom: 17px; text-align: right; width: 120px; border-style: none; background-color: transparent;";
-		inputBox.onchange = function(){tratarCalcularCargas();};
-		carga.appendChild(inputBox);
-		
-		inputBox = document.createElement("input");
-		inputBox.value = "kg";
-		inputBox.style = "margin-top: 17px; margin-bottom: 17px; width: 30px; border-style: none; background-color: transparent;";
-		inputBox.disabled = true; 
-		carga.appendChild(inputBox);
-		
-		document.getElementById("ChasisDiagrama").appendChild(carga);
-	}
-	
-	var pallets;
-	function inicializarDescarga () {
-		pallets = [];
-		
-		var capacidadCaja = inputBoxes[4][1] / 1000;
-		capacidadCaja = Math.floor(capacidadCaja);
-		//alert(distCargaFinit);
-		var pesoCarga = Math.round((pGrupos[1][4] + pGrupos[2][4] - pGrupos[1][3] - pGrupos[2][3]) / capacidadCaja);
-		
-		var containerDescarga = document.createElement("div");
-		containerDescarga.id = "containerDescarga";
-		containerDescarga.style = "position: absolute; top: 0px; left: 0px;";
-		document.getElementById("ChasisDiagrama").appendChild(containerDescarga);
-		
-		for (var i = 0; i < capacidadCaja; i++) {
-			// Dibujar una caja como carga con input para modificar su peso
-			var carga = document.createElement("div");
-			carga.id = "Pallet" + i;
-			posTop = 250 - 70;
-			posLeft = posBaseLine + (inputBoxes[3][1] / 20) + (i * 1000 / 20);
-			carga.style = "position: absolute; top: " + posTop + "px; left: " + posLeft + "px; width: 50px;";
-			carga.onclick = function(){descargarPallet(this);};
+		carga.id = "Pallet" + i;
+		posTop = 250 - 70;
+		posLeft = posBaseLine + (inputBoxes[3][1] / 20) + (i * 1000 / 20);
+		carga.style = "position: absolute; top: " + posTop + "px; left: " + posLeft + "px; width: 50px;";
+		carga.onclick = function(){descargarPallet(this);};
 			
-			var pal = [];
-				pal.push((i * 1000) + 500);
-				pal.push(pesoCarga);
-				//alert(pal[1]);
-			pallets.push(pal);
-			//pallets[i][1] = 
-		
-			var pallet = document.createElement("div");
-			pallet.style = "position: relative; float: left; width: 28px; height: 18px; border-style: solid; border-width: 1px; border-color: #0489B1; background-color: #C4D3DF; opacity: 0.6";
-			carga.appendChild(pallet);
-			pallet = document.createElement("div");
-			pallet.style = "position: relative; float: right; width: 18px; height: 18px; border-style: solid; border-width: 1px; border-color: #0489B1; background-color: #C4D3DF; opacity: 0.6";
-			carga.appendChild(pallet);
-		
-			pallet = document.createElement("div");
-			pallet.style = "position: relative; float: left; width: 18px; height: 18px; border-style: solid; border-width: 1px; border-color: #0489B1; background-color: #C4D3DF; opacity: 0.6";
-			carga.appendChild(pallet);
-			pallet = document.createElement("div");
-			pallet.style = "position: relative; float: right; width: 28px; height: 18px; border-style: solid; border-width: 1px; border-color: #0489B1; background-color: #C4D3DF; opacity: 0.6";
-			carga.appendChild(pallet);
-		
-			pallet = document.createElement("div");
-			pallet.style = "position: relative; float: left; width: 28px; height: 18px; border-style: solid; border-width: 1px; border-color: #0489B1; background-color: #C4D3DF; opacity: 0.6";
-			carga.appendChild(pallet);
-			pallet = document.createElement("div");
-			pallet.style = "position: relative; float: right; width: 18px; height: 18px; border-style: solid; border-width: 1px; border-color: #0489B1; background-color: #C4D3DF; opacity: 0.6";
-			carga.appendChild(pallet);
-		
-			pallet = document.createElement("div");
-			pallet.style = "position: relative; float: left; width: 48px; height: 8px; border-style: solid; border-width: 1px; border-color: #8A4B08; background-color: #F7BE81; opacity: 0.6";
-			carga.appendChild(pallet);
-			
-			document.getElementById(containerDescarga.id).appendChild(carga);
-		}
-		
-		calcularCargas((capacidadCaja * 1000) / 2, pesoCarga * capacidadCaja);
-	}
-	
-	function descargarPallet (elem) {
-		var pesoTotal = 0;
-		var pesoPonderado = 0;
-		var centroGravedad = 0;
-		var fieldName = elem.id;
-		fieldName = Number(fieldName.substring(fieldName.length - 1, fieldName.length));
+		var pal = [];
+			pal.push((i * 1000) + 500);
+			pal.push(pesoCarga);
+		pallets.push(pal);
 
-		pallets[fieldName][1] = 0;
+		var pallet = document.createElement("div");
+		pallet.style = "position: relative; float: left; width: 28px; height: 18px; border-style: solid; border-width: 1px; border-color: #0489B1; background-color: #C4D3DF; opacity: 0.6";
+		carga.appendChild(pallet);
+		pallet = document.createElement("div");
+		pallet.style = "position: relative; float: right; width: 18px; height: 18px; border-style: solid; border-width: 1px; border-color: #0489B1; background-color: #C4D3DF; opacity: 0.6";
+		carga.appendChild(pallet);
 		
-		document.getElementById("containerDescarga").removeChild(document.getElementById(elem.id));
+		pallet = document.createElement("div");
+		pallet.style = "position: relative; float: left; width: 18px; height: 18px; border-style: solid; border-width: 1px; border-color: #0489B1; background-color: #C4D3DF; opacity: 0.6";
+		carga.appendChild(pallet);
+		pallet = document.createElement("div");
+		pallet.style = "position: relative; float: right; width: 28px; height: 18px; border-style: solid; border-width: 1px; border-color: #0489B1; background-color: #C4D3DF; opacity: 0.6";
+		carga.appendChild(pallet);
 		
-		for (var i = 0; i < pallets.length; i++) {
-			pesoTotal += pallets[i][1];
-			pesoPonderado += pallets[i][0] * pallets[i][1];
-			centroGravedad = pesoPonderado / pesoTotal;
-			//alert(pesoTotal + " " + pesoPonderado + " " +centroGravedad);
-		}
-		//alert(centroGravedad);
-		calcularCargas(centroGravedad, pesoTotal);
+		pallet = document.createElement("div");
+		pallet.style = "position: relative; float: left; width: 28px; height: 18px; border-style: solid; border-width: 1px; border-color: #0489B1; background-color: #C4D3DF; opacity: 0.6";
+		carga.appendChild(pallet);
+		pallet = document.createElement("div");
+		pallet.style = "position: relative; float: right; width: 18px; height: 18px; border-style: solid; border-width: 1px; border-color: #0489B1; background-color: #C4D3DF; opacity: 0.6";
+		carga.appendChild(pallet);
+		
+		pallet = document.createElement("div");
+		pallet.style = "position: relative; float: left; width: 48px; height: 8px; border-style: solid; border-width: 1px; border-color: #8A4B08; background-color: #F7BE81; opacity: 0.6";
+		carga.appendChild(pallet);
+		
+		document.getElementById(containerDescarga.id).appendChild(carga);
 	}
+		
+	calcularCargas((capacidadCaja * 1000) / 2, pesoCarga * capacidadCaja);
+}
 	
-	window.addEventListener("load", inicializarChasis);
+function descargarPallet (elem) {
+	var pesoTotal = 0;
+	var pesoPonderado = 0;
+	var centroGravedad = 0;
+	var fieldName = elem.id;
+	fieldName = Number(fieldName.substring(fieldName.length - 1, fieldName.length));
+
+	pallets[fieldName][1] = 0;
+		
+	document.getElementById("containerDescarga").removeChild(document.getElementById(elem.id));
+		
+	for (var i = 0; i < pallets.length; i++) {
+		pesoTotal += pallets[i][1];
+		pesoPonderado += pallets[i][0] * pallets[i][1];
+		centroGravedad = pesoPonderado / pesoTotal;
+	}
+
+	calcularCargas(centroGravedad, pesoTotal);
+}
+	
+window.addEventListener("load", inicializarChasis);
