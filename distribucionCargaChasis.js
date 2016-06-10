@@ -541,28 +541,23 @@ function inicializarChasis () {
 	document.getElementById(diagArea.id).appendChild(grafArea);
 				
 	// Cargar controles para dimensiones del Chasis
-	//diagArea = document.createElement("div");
-	//diagArea.id = "ChasisDimInputs";
-//	diagArea.style = "position: absolute; top: 0px; left: 0px; width: 100%; height: 100%"
-//	document.getElementById(diagArea.id).appendChild(diagArea);
-			
-			for (var i = 0; i < inputBoxes.length - 1; i++) {
-				var inputBox = document.createElement("input");
-				inputBox.id = inputBoxes[i][0];
-				inputBox.type = "number"; 
-				inputBox.value = inputBoxes[i][1];
-				inputBox.min = inputBoxes[i][2];
-				inputBox.max = inputBoxes[i][3];
-				inputBox.style = "position: absolute; top: " + inputBoxes[i][4] + "px; left: " + inputBoxes[i][5] + "px; width: " + inputBoxes[i][6] + "px; " + inputBoxes[i][7] + " display: " + inputBoxes[i][8] + ";";
-				inputBox.onchange = function(){dimErrCheck();};
-				document.getElementById(diagArea.id).appendChild(inputBox);
-			}
+	for (var i = 0; i < inputBoxes.length - 1; i++) {
+		var inputBox = document.createElement("input");
+		inputBox.id = inputBoxes[i][0];
+		inputBox.type = "number"; 
+		inputBox.value = inputBoxes[i][1];
+		inputBox.min = inputBoxes[i][2];
+		inputBox.max = inputBoxes[i][3];
+		inputBox.style = "position: absolute; top: " + inputBoxes[i][4] + "px; left: " + inputBoxes[i][5] + "px; width: " + inputBoxes[i][6] + "px; " + inputBoxes[i][7] + " display: " + inputBoxes[i][8] + ";";
+		inputBox.onchange = function(){dimErrCheck();};
+		document.getElementById(diagArea.id).appendChild(inputBox);
+	}
 		
-		// Cargar controles para tabla de pesos
-		var tablaArea = document.createElement("div");
-			tablaArea.id = "ChasisTabla";
-		document.getElementById(diagArea.id).appendChild(tablaArea);
-		//document.getElementById(tablaArea.id).setAttribute("style", "width: 100%; height: 100%");
+	// Cargar controles para tabla de pesos
+	var tablaArea = document.createElement("div");
+	tablaArea.id = "ChasisTabla";
+	document.getElementById(diagArea.id).appendChild(tablaArea);
+	//document.getElementById(tablaArea.id).setAttribute("style", "width: 100%; height: 100%");
 		
 		// Tabla para encabezados de fila
 		var container = document.createElement("div");
@@ -906,7 +901,7 @@ function inicializarChasis () {
 		inputBox.disabled = true; 
 		carga.appendChild(inputBox);
 		
-		document.getElementById("Diagrama").appendChild(carga);
+		document.getElementById("ChasisDiagrama").appendChild(carga);
 	}
 	
 	var pallets;
@@ -921,7 +916,7 @@ function inicializarChasis () {
 		var containerDescarga = document.createElement("div");
 		containerDescarga.id = "containerDescarga";
 		containerDescarga.style = "position: absolute; top: 0px; left: 0px;";
-		document.getElementById("Diagrama").appendChild(containerDescarga);
+		document.getElementById("ChasisDiagrama").appendChild(containerDescarga);
 		
 		for (var i = 0; i < capacidadCaja; i++) {
 			// Dibujar una caja como carga con input para modificar su peso
