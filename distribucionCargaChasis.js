@@ -174,261 +174,251 @@ function calcularChasis () {
 }
 	
 function cargarSelectConfig (listaFuente) {
-		var fieldName = listaFuente.id;
-		fieldName = fieldName.substring(0, fieldName.length - 1);
-		var configSelect = document.getElementById(fieldName + "c");
+	var fieldName = listaFuente.id;
+	fieldName = fieldName.substring(0, fieldName.length - 1);
+	var configSelect = document.getElementById(fieldName + "c");
 		
-		for(var i = configSelect.options.length-1; i >= 0; i--) {
-			configSelect.remove(i);
+	for(var i = configSelect.options.length-1; i >= 0; i--) {
+		configSelect.remove(i);
+	}
+		
+	for (var i = 0; i < pMaxEjes.length; i++) {
+		if (pMaxEjes[i][0] == listaFuente.value) {
+			var option = document.createElement("option");
+			option.text = pMaxEjes[i][3];
+			option.value = pMaxEjes[i][2];
+			configSelect.add(option);
 		}
+	}
 		
-		for (var i = 0; i < pMaxEjes.length; i++) {
-			if (pMaxEjes[i][0] == listaFuente.value) {
-				var option = document.createElement("option");
-				option.text = pMaxEjes[i][3];
-				option.value = pMaxEjes[i][2];
-				configSelect.add(option);
-			}
+	cargarTablaPesos(configSelect);
+		
+	if (listaFuente.id == "Chasis1e") {
+		if (listaFuente.value == 2) {
+			imgComposite[2][2] = 'inline';
+			document.getElementById("sepGrp1input").min = 1200;
+			document.getElementById("sepGrp1input").value = 1400;
+			inputBoxes[0][8] = 'inline';
+			dimLines[14][6] = 'inline';
+			dimLines[16][6] = 'inline';
+			dimLines[17][6] = 'inline';
+			dimLines[18][6] = 'inline';
+		} else if (listaFuente.value == 1) {
+			imgComposite[2][2] = 'none';
+			document.getElementById("sepGrp1input").min = 0;
+			document.getElementById("sepGrp1input").value = 0;
+			inputBoxes[0][8] = 'none';
+			dimLines[14][6] = 'none';
+			dimLines[16][6] = 'none';
+			dimLines[17][6] = 'none';
+			dimLines[18][6] = 'none';
 		}
-		
-		cargarTablaPesos(configSelect);
-		
-		if (listaFuente.id == "Chasis1e") {
-			if (listaFuente.value == 2) {
-				imgComposite[2][2] = 'inline';
-				document.getElementById("sepGrp1input").min = 1200;
-				document.getElementById("sepGrp1input").value = 1400;
-				inputBoxes[0][8] = 'inline';
-				dimLines[14][6] = 'inline';
-				dimLines[16][6] = 'inline';
-				dimLines[17][6] = 'inline';
-				dimLines[18][6] = 'inline';
-			} else if (listaFuente.value == 1) {
-				imgComposite[2][2] = 'none';
-				document.getElementById("sepGrp1input").min = 0;
-				document.getElementById("sepGrp1input").value = 0;
-				inputBoxes[0][8] = 'none';
-				dimLines[14][6] = 'none';
-				dimLines[16][6] = 'none';
-				dimLines[17][6] = 'none';
-				dimLines[18][6] = 'none';
-			}
-		}
+	}
 			
-		if (listaFuente.id == "Chasis2e") {
-			if (listaFuente.value == 3) {
-				imgComposite[4][2] = 'inline';
-				imgComposite[5][2] = 'inline';
-				document.getElementById("sepGrp2input").min = 2400;
-				document.getElementById("sepGrp2input").max = 4800;
-				document.getElementById("sepGrp2input").value = 2800;
-				inputBoxes[2][8] = 'inline';
-				dimLines[9][6] = 'inline';
-				dimLines[12][6] = 'inline';
-				dimLines[15][6] = 'inline';
-			} else if (listaFuente.value == 2) {
-				imgComposite[4][2] = 'inline';
-				imgComposite[5][2] = 'none';
-				document.getElementById("sepGrp2input").min = 1200;
-				document.getElementById("sepGrp2input").value = 1400;
-				inputBoxes[2][8] = 'inline';
-				dimLines[9][6] = 'inline';
-				dimLines[12][6] = 'inline';
-				dimLines[15][6] = 'inline';
-			} else if (listaFuente.value == 1) {
-				imgComposite[4][2] = 'none';
-				imgComposite[5][2] = 'none';
-				document.getElementById("sepGrp2input").min = 0;
-				document.getElementById("sepGrp2input").value = 0;
-				inputBoxes[2][8] = 'none';
-				dimLines[9][6] = 'none';
-				dimLines[12][6] = 'none';
-				dimLines[15][6] = 'none';
-			}	
-		}
+	if (listaFuente.id == "Chasis2e") {
+		if (listaFuente.value == 3) {
+			imgComposite[4][2] = 'inline';
+			imgComposite[5][2] = 'inline';
+			document.getElementById("sepGrp2input").min = 2400;
+			document.getElementById("sepGrp2input").max = 4800;
+			document.getElementById("sepGrp2input").value = 2800;
+			inputBoxes[2][8] = 'inline';
+			dimLines[9][6] = 'inline';
+			dimLines[12][6] = 'inline';
+			dimLines[15][6] = 'inline';
+		} else if (listaFuente.value == 2) {
+			imgComposite[4][2] = 'inline';
+			imgComposite[5][2] = 'none';
+			document.getElementById("sepGrp2input").min = 1200;
+			document.getElementById("sepGrp2input").value = 1400;
+			inputBoxes[2][8] = 'inline';
+			dimLines[9][6] = 'inline';
+			dimLines[12][6] = 'inline';
+			dimLines[15][6] = 'inline';
+		} else if (listaFuente.value == 1) {
+			imgComposite[4][2] = 'none';
+			imgComposite[5][2] = 'none';
+			document.getElementById("sepGrp2input").min = 0;
+			document.getElementById("sepGrp2input").value = 0;
+			inputBoxes[2][8] = 'none';
+			dimLines[9][6] = 'none';
+			dimLines[12][6] = 'none';
+			dimLines[15][6] = 'none';
+		}	
+	}
 		
+	dimChasis();
+}
+	
+function cargarTablaPesos (listaFuente) {
+	var fieldName = listaFuente.id;
+	fieldName = fieldName.substring(0, fieldName.length - 1);
+	
+	for (var i = 0; i < pMaxEjes.length; i++) {
+		if (pMaxEjes[i][2] == listaFuente.value) {
+			document.getElementById(fieldName + "pMax").value = pMaxEjes[i][4];
+			document.getElementById(fieldName + "pTol").value = pMaxEjes[i][5];
+		}
+	}
+}
+	
+function dimErrCheck() {
+	var flag = false;
+	
+	for (var i = 0; i < inputBoxes.length - 1; i++) {
+		
+		var val = Number(document.getElementById(inputBoxes[i][0]).value);
+		var min = Number(document.getElementById(inputBoxes[i][0]).min);
+		var max = Number(document.getElementById(inputBoxes[i][0]).max);
+		
+		if (val < min) {
+			flag = true;
+			document.getElementById(inputBoxes[i][0]).style.backgroundColor = "#F78181";
+		} else if (val > max) {
+			flag = true;
+			document.getElementById(inputBoxes[i][0]).style.backgroundColor = "#F78181";
+		} else {
+			document.getElementById(inputBoxes[i][0]).style.backgroundColor = "#FFFFFF";
+		}
+	}
+		
+	if (flag == false){
 		dimChasis();
 	}
+}
+
+function dimChasis() {
+	var posLeft = 0;
+	var width = 0;
 	
-	function cargarTablaPesos (listaFuente) {
-		var fieldName = listaFuente.id;
-		fieldName = fieldName.substring(0, fieldName.length - 1);
-		
-		for (var i = 0; i < pMaxEjes.length; i++) {
-			if (pMaxEjes[i][2] == listaFuente.value) {
-				document.getElementById(fieldName + "pMax").value = pMaxEjes[i][4];
-				document.getElementById(fieldName + "pTol").value = pMaxEjes[i][5];
-			}
-		}
-	}
+	// Actualizar los valores de dimensiones
+	inputBoxes[0][1] = Number(document.getElementById(inputBoxes[0][0]).value);
+	inputBoxes[1][1] = Number(document.getElementById(inputBoxes[1][0]).value);
+	inputBoxes[2][1] = Number(document.getElementById(inputBoxes[2][0]).value);
+	inputBoxes[3][1] = Number(document.getElementById(inputBoxes[3][0]).value);
+	inputBoxes[4][1] = Number(document.getElementById(inputBoxes[4][0]).value);
+	inputBoxes[5][3] = inputBoxes[4][1];
 	
-	function dimErrCheck() {
-		var flag = false;
-		
-		for (var i = 0; i < inputBoxes.length - 1; i++) {
+	var distGrp12 = inputBoxes[1][1] / 20;
+	var distCarga0 = inputBoxes[3][1] / 20;
+	var distCargaF = inputBoxes[4][1] / 20;
 			
-			var val = Number(document.getElementById(inputBoxes[i][0]).value);
-			var min = Number(document.getElementById(inputBoxes[i][0]).min);
-			var max = Number(document.getElementById(inputBoxes[i][0]).max);
+	// Dimensionamiento por modificación de tamaño y posción de caja de carga
+	posLeft = Math.round(posBaseLine + imgComposite[0][3] + distCarga0 + distCargaF - (distCarga0init + distCargaFinit) / 20);
+	document.getElementById(imgComposite[0][0]).style = "position: absolute; left: " + posLeft + "px; height: 400px; display: " + imgComposite[0][2] + ";";
+	
+	inputBoxes[4][5] = Math.round(posBaseLine + distCarga0 + (distCargaF - inputBoxes[4][6]) / 2);
+	
+	posLeft = posBaseLine + (inputBoxes[3][1] / 20);
+	document.getElementById("ChasisGraf").style = "position: absolute; top: 100px; left: " + posLeft + "px; width: 100%;";
+	
+	dimLines[1][2] = posBaseLine + distCarga0;
+	dimLines[1][3] = distCargaF - 2;
+	dimLines[3][2] = posBaseLine + distCarga0 - 1; 
+	dimLines[4][2] = posBaseLine + distCarga0 + distCargaF - 19; 
+	dimLines[5][3] = distCarga0 + (distCargaF / 2) + 29 - 35;
+	dimLines[6][2] = posBaseLine + distCarga0 + (distCargaF / 2) + 35; 
+	dimLines[6][3] = (distCargaF / 2) - 35;
+	
+	// Dimensionamiento por modificación de separación de los ejes delanteros
+	if (inputBoxes[0][1] != 0) {
+		var dimSepGrp1 = inputBoxes[0][1] / 40;
+	} else {
+		var dimSepGrp1 = 0;
+	}
+	
+	posLeft = Math.round(posBaseLine + (dimSepGrp1 * 2) - 60);
+	document.getElementById(imgComposite[2][0]).style = "position: absolute; left: " + posLeft + "px; height: 400px; display: " + imgComposite[2][2] + ";";
+	width = Math.max(120, 120 + (inputBoxes[0][1] - 1200) / 10);
+	posLeft = posBaseLine + dimSepGrp1 - width / 2 - 5;
+	document.getElementById("tablaDireccion").style = "position: absolute; left: " + posLeft + "px; top: 303px; width: " + width + "px;";
+	
+	dimLines[14][3] = (dimSepGrp1 * 2) - 1;
+	dimLines[17][2] = posBaseLine + (dimSepGrp1 * 2) - 19;
+	dimLines[18][3] = (dimSepGrp1 * 2) + 29;
+	
+	// Dimensionamiento por modificación de la distancia entre grupos
+	posLeft = posBaseLine + (inputBoxes[1][1] - distGrp12init) / 20 + 80;
+	document.getElementById(imgComposite[3][0]).style = "position: absolute; left: " + posLeft + "px; height: 400px; display: " + imgComposite[3][2] + ";";
+	
+	inputBoxes[1][5] = Math.round(posBaseLine + (distGrp12 - inputBoxes[1][6]) / 2);
+	
+	dimLines[8][2] = posBaseLine + (inputBoxes[1][1] / 20) - 19;
+	dimLines[10][3] = (inputBoxes[1][1] / 40) - 35;
+	dimLines[11][2] = posBaseLine + (inputBoxes[1][1] / 40) + 35;
+	dimLines[11][3] = (inputBoxes[1][1] / 40) - 35;
+	dimLines[13][3] = (inputBoxes[1][1] / 20 ) - 2;
+	
+	// Dimensionamiento por modificación de separación de los ejes traseros
+	if (inputBoxes[2][1] != 0) {
+		var dimSepGrp2 = inputBoxes[2][1] / 40;
+	} else {
+		var dimSepGrp2 = 0;
+	}
+	var config2 = document.getElementById("Chasis2e").value - 1;
+	posLeft = Math.round(posBaseLine + (dimSepGrp2 * 2 / config2) + (inputBoxes[1][1] / 20) - 258);
+	document.getElementById(imgComposite[4][0]).style = "position: absolute; left: " + posLeft + "px; height: 400px; display: " + imgComposite[4][2] + ";";
+	posLeft = Math.round(posBaseLine + (dimSepGrp2 * 2) + (inputBoxes[1][1] / 20) - 258);
+	document.getElementById(imgComposite[5][0]).style = "position: absolute; left: " + posLeft + "px; height: 400px; display: " + imgComposite[5][2] + ";";
+	width = Math.max(120, 120 + (inputBoxes[2][1] - 1200) / 10);
+	posLeft = posBaseLine + distGrp12 + dimSepGrp2 - width / 2 - 5;//dimSepGrp2 - 65;
+	document.getElementById("tablaTraccion").style = "position: absolute; left: " + posLeft + "px; top: 303px; width: " + width + "px;";
+	
+	inputBoxes[2][5] = posBaseLine + (dimSepGrp2 * 2) + (inputBoxes[1][1] / 20) + 29;
+		
+	dimLines[9][2] = posBaseLine + (inputBoxes[1][1] / 20) + (dimSepGrp2 * 2);
+	dimLines[12][2] = posBaseLine + (inputBoxes[1][1] / 20);
+	dimLines[12][3] = (dimSepGrp2 * 2) + 29;
+	dimLines[15][2] = posBaseLine + (inputBoxes[1][1] / 20);
+	dimLines[15][3] = dimSepGrp2 * 2;
+		
+	for (var i = 0; i < dimLines.length; i++) {
+		document.getElementById(dimLines[i][0]).style = "position: absolute; top: " + dimLines[i][1] + "px; left: " + dimLines[i][2] + "px; width: " + dimLines[i][3] + "px; height: " + dimLines[i][4] + "px; " + dimLines[i][5] + " display: " + dimLines[i][6] + ";";
+	}
+		
+	for (var i = 0; i < inputBoxes.length - 1; i++) {
+		document.getElementById(inputBoxes[i][0]).style = "position: absolute; top: " + inputBoxes[i][4] + "px; left: " + inputBoxes[i][5] + "px; width: " + inputBoxes[i][6] + "px; " + inputBoxes[i][7] + " display: " + inputBoxes[i][8] + ";";
+	}
+}
+	
+var x1;
+var left1;
+var widthCarga;
+	
+function calcularCarga() {
+	x1 = event.clientX;
+	left1 = document.getElementById("Carga").style.left;
+	left1 = Number(left1.substring(0, left1.length - 2));
+	widthCarga = document.getElementById("Carga").style.width;
+	widthCarga = Number(widthCarga.substring(0, widthCarga.length - 2));
+	window.addEventListener("mousemove", moverCarga);
+}
+	
+function removeEvMousemove () {
+	window.removeEventListener("mousemove", moverCarga);
+}
+	
+function moverCarga() {
+	var x2 = event.clientX;
+	var minX = posBaseLine + inputBoxes[3][1] / 20; 
+	var maxX = minX + widthCarga - 8;
+	
+	window.addEventListener("mouseup", removeEvMousemove); 
+		
+	var left2 = left1 + x2 - x1; 
+		if (left2 < minX) {
+			left2 = minX;
+			window.removeEventListener("mousemove", moverCarga);
+		} else if (left2 > maxX) {
+			left2 = maxX;
+			window.removeEventListener("mousemove", moverCarga);
+		}			
 			
-			if (val < min) {
-				flag = true;
-				document.getElementById(inputBoxes[i][0]).style.backgroundColor = "#F78181";
-			} else if (val > max) {
-				flag = true;
-				document.getElementById(inputBoxes[i][0]).style.backgroundColor = "#F78181";
-			} else {
-				document.getElementById(inputBoxes[i][0]).style.backgroundColor = "#FFFFFF";
-			}
-		}
+	var posTop = 250 - 59;
+	document.getElementById("Carga").style = "position: absolute; top: " + posTop + "px; left: " + left2 + "px; width: 150px; height: 50px; border-style: solid; border-width: 4px; border-color: #8A4B08; background-color: #F7BE81; opacity: 0.6";
 		
-		if (flag == false){
-			dimChasis();
-		}
-	}
-	
-	function dimChasis() {
-		var posLeft = 0;
-		var width = 0;
-		
-		// Actualizar los valores de dimensiones
-		inputBoxes[0][1] = Number(document.getElementById(inputBoxes[0][0]).value);
-		inputBoxes[1][1] = Number(document.getElementById(inputBoxes[1][0]).value);
-		inputBoxes[2][1] = Number(document.getElementById(inputBoxes[2][0]).value);
-		inputBoxes[3][1] = Number(document.getElementById(inputBoxes[3][0]).value);
-		inputBoxes[4][1] = Number(document.getElementById(inputBoxes[4][0]).value);
-		inputBoxes[5][3] = inputBoxes[4][1];
-		
-		var distGrp12 = inputBoxes[1][1] / 20;
-		var distCarga0 = inputBoxes[3][1] / 20;
-		var distCargaF = inputBoxes[4][1] / 20;
-				
-		// Dimensionamiento por modificación de tamaño y posción de caja de carga
-		posLeft = Math.round(posBaseLine + imgComposite[0][3] + distCarga0 + distCargaF - (distCarga0init + distCargaFinit) / 20);
-		document.getElementById(imgComposite[0][0]).style = "position: absolute; left: " + posLeft + "px; height: 400px; display: " + imgComposite[0][2] + ";";
-		
-		inputBoxes[4][5] = Math.round(posBaseLine + distCarga0 + (distCargaF - inputBoxes[4][6]) / 2);
-		
-		posLeft = posBaseLine + (inputBoxes[3][1] / 20);
-		document.getElementById("ChasisGraf").style = "position: absolute; top: 100px; left: " + posLeft + "px; width: 100%;";
-		
-		dimLines[1][2] = posBaseLine + distCarga0;
-		dimLines[1][3] = distCargaF - 2;
-		dimLines[3][2] = posBaseLine + distCarga0 - 1; 
-		dimLines[4][2] = posBaseLine + distCarga0 + distCargaF - 19; 
-		dimLines[5][3] = distCarga0 + (distCargaF / 2) + 29 - 35;
-		dimLines[6][2] = posBaseLine + distCarga0 + (distCargaF / 2) + 35; 
-		dimLines[6][3] = (distCargaF / 2) - 35;
-		
-		// Dimensionamiento por modificación de separación de los ejes delanteros
-		if (inputBoxes[0][1] != 0) {
-			var dimSepGrp1 = inputBoxes[0][1] / 40;
-		} else {
-			var dimSepGrp1 = 0;
-		}
-		
-		posLeft = Math.round(posBaseLine + (dimSepGrp1 * 2) - 60);
-		document.getElementById(imgComposite[2][0]).style = "position: absolute; left: " + posLeft + "px; height: 400px; display: " + imgComposite[2][2] + ";";
-		width = Math.max(120, 120 + (inputBoxes[0][1] - 1200) / 10);
-		posLeft = posBaseLine + dimSepGrp1 - width / 2 - 5;
-		document.getElementById("tablaDireccion").style = "position: absolute; left: " + posLeft + "px; top: 303px; width: " + width + "px;";
-		
-		dimLines[14][3] = (dimSepGrp1 * 2) - 1;
-		dimLines[17][2] = posBaseLine + (dimSepGrp1 * 2) - 19;
-		dimLines[18][3] = (dimSepGrp1 * 2) + 29;
-		
-		// Dimensionamiento por modificación de la distancia entre grupos
-		//var dimGrp12 = inputBoxes[1][1] / 20;
-		posLeft = posBaseLine + (inputBoxes[1][1] - distGrp12init) / 20 + 80;
-		document.getElementById(imgComposite[3][0]).style = "position: absolute; left: " + posLeft + "px; height: 400px; display: " + imgComposite[3][2] + ";";
-		
-		inputBoxes[1][5] = Math.round(posBaseLine + (distGrp12 - inputBoxes[1][6]) / 2);
-		
-		dimLines[8][2] = posBaseLine + (inputBoxes[1][1] / 20) - 19;
-		dimLines[10][3] = (inputBoxes[1][1] / 40) - 35;
-		dimLines[11][2] = posBaseLine + (inputBoxes[1][1] / 40) + 35;
-		dimLines[11][3] = (inputBoxes[1][1] / 40) - 35;
-		dimLines[13][3] = (inputBoxes[1][1] / 20 ) - 2;
-		
-		// Dimensionamiento por modificación de separación de los ejes traseros
-		if (inputBoxes[2][1] != 0) {
-			var dimSepGrp2 = inputBoxes[2][1] / 40;
-		} else {
-			var dimSepGrp2 = 0;
-		}
-		var config2 = document.getElementById("Chasis2e").value - 1;
-		posLeft = Math.round(posBaseLine + (dimSepGrp2 * 2 / config2) + (inputBoxes[1][1] / 20) - 258);
-		document.getElementById(imgComposite[4][0]).style = "position: absolute; left: " + posLeft + "px; height: 400px; display: " + imgComposite[4][2] + ";";
-		posLeft = Math.round(posBaseLine + (dimSepGrp2 * 2) + (inputBoxes[1][1] / 20) - 258);
-		document.getElementById(imgComposite[5][0]).style = "position: absolute; left: " + posLeft + "px; height: 400px; display: " + imgComposite[5][2] + ";";
-		width = Math.max(120, 120 + (inputBoxes[2][1] - 1200) / 10);
-		//alert(width);
-		posLeft = posBaseLine + distGrp12 + dimSepGrp2 - width / 2 - 5;//dimSepGrp2 - 65;
-		document.getElementById("tablaTraccion").style = "position: absolute; left: " + posLeft + "px; top: 303px; width: " + width + "px;";
-		
-		inputBoxes[2][5] = posBaseLine + (dimSepGrp2 * 2) + (inputBoxes[1][1] / 20) + 29;
-		
-		dimLines[9][2] = posBaseLine + (inputBoxes[1][1] / 20) + (dimSepGrp2 * 2);
-		dimLines[12][2] = posBaseLine + (inputBoxes[1][1] / 20);
-		dimLines[12][3] = (dimSepGrp2 * 2) + 29;
-		dimLines[15][2] = posBaseLine + (inputBoxes[1][1] / 20);
-		dimLines[15][3] = dimSepGrp2 * 2;
-		
-		for (var i = 0; i < dimLines.length; i++) {
-			document.getElementById(dimLines[i][0]).style = "position: absolute; top: " + dimLines[i][1] + "px; left: " + dimLines[i][2] + "px; width: " + dimLines[i][3] + "px; height: " + dimLines[i][4] + "px; " + dimLines[i][5] + " display: " + dimLines[i][6] + ";";
-		}
-		
-		for (var i = 0; i < inputBoxes.length - 1; i++) {
-			document.getElementById(inputBoxes[i][0]).style = "position: absolute; top: " + inputBoxes[i][4] + "px; left: " + inputBoxes[i][5] + "px; width: " + inputBoxes[i][6] + "px; " + inputBoxes[i][7] + " display: " + inputBoxes[i][8] + ";";
-		}
-		
-	}
-	
-	//element.style.setAttribute('width','100px')
-	var x1;
-	var left1;
-	var widthCarga;
-	
-	function calcularCarga() {
-		x1 = event.clientX;
-		left1 = document.getElementById("Carga").style.left;
-		left1 = Number(left1.substring(0, left1.length - 2));
-		widthCarga = document.getElementById("Carga").style.width;
-		widthCarga = Number(widthCarga.substring(0, widthCarga.length - 2));
-		//document.getElementById("Carga").addEventListener("mousemove", moverCarga(x1));
-		window.addEventListener("mousemove", moverCarga);
-	}
-	
-	function removeEvMousemove () {
-		window.removeEventListener("mousemove", moverCarga);
-	}
-	
-	function moverCarga() {
-		var x2 = event.clientX;
-		
-		window.addEventListener("mouseup", removeEvMousemove); //function(){
-			//window.removeEventListener("mousemove", moverCarga);
-		//});
-		
-		var minX = posBaseLine + inputBoxes[3][1] / 20; 
-		var maxX = minX + widthCarga - 8;
-			
-		//document.getElementById("x1Value").value = x1;
-		//document.getElementById("x2Value").value = x2;
-		var left2 = left1 + x2 - x1; 
-			if (left2 < minX) {
-				left2 = minX;
-				window.removeEventListener("mousemove", moverCarga);
-			} else if (left2 > maxX) {
-				left2 = maxX;
-				window.removeEventListener("mousemove", moverCarga);
-			}			
-			
-		var posTop = 250 - 59;
-		document.getElementById("Carga").style = "position: absolute; top: " + posTop + "px; left: " + left2 + "px; width: 150px; height: 50px; border-style: solid; border-width: 4px; border-color: #8A4B08; background-color: #F7BE81; opacity: 0.6";
-		
-		tratarCalcularCargas();
-	}
+	tratarCalcularCargas();
+}
 	
 	function tratarCalcularCargas () {
 	
