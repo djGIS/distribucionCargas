@@ -400,7 +400,6 @@ function removeEvMousemove () {
 	
 function moverCarga() {
 	var x2 = event.clientX;
-	alert(inputBoxes[3][1]);
 	var minX = posBaseLine + inputBoxes[3][1] / 20; 
 	var maxX = minX + widthCarga - 8;
 	
@@ -850,6 +849,7 @@ function tratarOpMenu (menuOp) {
         	calcularChasis();
         	break;
 	case menuButtons[2][0]:
+		alert(inputBoxes[3][1]);
 		if (menuButtons[3][2] == true)
 			document.getElementById("Diagrama").removeChild(document.getElementById("containerDescarga"));
         	inicializarCarga();
