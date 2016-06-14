@@ -393,7 +393,7 @@ function calcularCarga() {
 	var widthCarga = document.getElementById("Carga").style.width;
 	widthCarga = Number(widthCarga.substring(0, widthCarga.length - 2));
 	minX = posBaseLine + inputBoxes[3][1] / 20; 
-	maxX = minX + inputBoxes[4][1] / 20 - widthCarga;
+	maxX = minX + Number(document.getElementById(inputBoxes[4][0]).value) / 20 - widthCarga;
 	alert(maxX);
 	window.addEventListener("mousemove", moverCarga);
 }
