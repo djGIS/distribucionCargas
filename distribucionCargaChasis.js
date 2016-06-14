@@ -401,7 +401,7 @@ function removeEvMousemove () {
 function moverCarga() {
 	var x2 = event.clientX;
 	var minX = posBaseLine + inputBoxes[3][1] / 20; 
-	var maxX = minX + widthCarga - 8;
+	var maxX = minX + inputBoxes[4][1] / 20 - widthCarga;
 	
 	window.addEventListener("mouseup", removeEvMousemove); 
 		
