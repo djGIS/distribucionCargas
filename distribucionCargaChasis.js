@@ -851,7 +851,7 @@ function tratarOpMenu (menuOp) {
         	calcularChasis();
         	break;
 	case menuButtons[2][0]:
-		alert(inputBoxes[3][1]);
+		alert(inputBoxes[4][0]);
 		if (menuButtons[3][2] == true)
 			document.getElementById("Diagrama").removeChild(document.getElementById("containerDescarga"));
         	inicializarCarga();
