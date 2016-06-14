@@ -70,12 +70,14 @@ var dimLines = [
 	
 // Archivos de imagen compuesta para Chasis
 var imgComposite = [
-	["ChasisTraseroimg", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisTraseroN.png", "inline", (distCargaFinit / 20) - 234],
-	["ChasisDelanteimg", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisDelanteN.png", "inline", -74],
-	["Chasis12img", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisDireccion2N.png", "none", 10],
-	["Chasis21img", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisTraccion1N.png", "inline", 79],
-	["Chasis22img", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisTraccion2N.png", "none", 46],
-	["Chasis23img", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisTraccion2N.png", "none", 116],
+	//["ChasisTraseroimg", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisTraseroN.png", "inline", (distCargaFinit / 20) - 234],
+	//["ChasisDelanteimg", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisDelanteN.png", "inline", -74],
+	//["Chasis12img", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisDireccion2N.png", "none", 10],
+	//["Chasis21img", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisTraccion1N.png", "inline", 79],
+	//["Chasis22img", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisTraccion2N.png", "none", 46],
+	//["Chasis23img", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisTraccion2N.png", "none", 116],
+	["TractorTrasero", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/tractorTrasero.png", "none", 116],
+	["TractorDelante", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/tractorDelantero.png", "none", 116],
 ];
 	
 // Pesos de los grupos y cargas
