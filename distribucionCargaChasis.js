@@ -383,14 +383,18 @@ function dimChasis() {
 	
 var x1;
 var left1;
-var widthCarga;
-	
+var minX;
+var maxX;
+
 function calcularCarga() {
 	x1 = event.clientX;
 	left1 = document.getElementById("Carga").style.left;
 	left1 = Number(left1.substring(0, left1.length - 2));
-	widthCarga = document.getElementById("Carga").style.width;
+	var widthCarga = document.getElementById("Carga").style.width;
 	widthCarga = Number(widthCarga.substring(0, widthCarga.length - 2));
+	minX = posBaseLine + inputBoxes[3][1] / 20; 
+	maxX = minX + inputBoxes[4][1] / 20 - widthCarga;
+	alert(maxX);
 	window.addEventListener("mousemove", moverCarga);
 }
 	
@@ -400,9 +404,7 @@ function removeEvMousemove () {
 	
 function moverCarga() {
 	var x2 = event.clientX;
-	var minX = posBaseLine + inputBoxes[3][1] / 20; 
-	var maxX = minX + inputBoxes[4][1] / 20 - widthCarga;
-	
+
 	window.addEventListener("mouseup", removeEvMousemove); 
 		
 	var left2 = left1 + x2 - x1; 
@@ -849,7 +851,7 @@ function tratarOpMenu (menuOp) {
         	calcularChasis();
         	break;
 	case menuButtons[2][0]:
-		alert(inputBoxes[3][1]);
+		alert(inputBoxes[4][1]);
 		if (menuButtons[3][2] == true)
 			document.getElementById("Diagrama").removeChild(document.getElementById("containerDescarga"));
         	inicializarCarga();
