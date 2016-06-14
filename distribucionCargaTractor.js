@@ -76,8 +76,8 @@ var imgComposite = [
 	//["Chasis21img", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisTraccion1N.png", "inline", 79],
 	//["Chasis22img", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisTraccion2N.png", "none", 46],
 	//["Chasis23img", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisTraccion2N.png", "none", 116],
-	["TractorTrasero", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/tractorTrasero.png", "none", 116],
-	["TractorDelante", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/tractorDelantero.png", "none", 116],
+	["TractorTrasero", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/tractorTrasero.png", "inline", 116],
+	["TractorDelante", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/tractorDelantero.png", "inline", 116],
 ];
 	
 // Pesos de los grupos y cargas
