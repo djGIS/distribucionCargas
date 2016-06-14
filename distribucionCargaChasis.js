@@ -253,11 +253,13 @@ function cargarSelectConfig (listaFuente) {
 function cargarTablaPesos (listaFuente) {
 	var fieldName = listaFuente.id;
 	fieldName = fieldName.substring(0, fieldName.length - 1);
-	
+	var fieldNum = Number(fieldName.substring(fieldName.length - 1, fieldName.length));
+
 	for (var i = 0; i < pMaxEjes.length; i++) {
 		if (pMaxEjes[i][2] == listaFuente.value) {
 			document.getElementById(fieldName + "pMax").value = pMaxEjes[i][4];
 			document.getElementById(fieldName + "pTol").value = pMaxEjes[i][5];
+			pGrupos[fieldNum][4] = pMaxEjes[i][4];
 		}
 	}
 }
@@ -383,9 +385,9 @@ function dimChasis() {
 	
 var x1;
 var left1;
-var minX;
+var minX; 
 var maxX;
-
+	
 function calcularCarga() {
 	x1 = event.clientX;
 	left1 = document.getElementById("Carga").style.left;
@@ -393,8 +395,8 @@ function calcularCarga() {
 	var widthCarga = document.getElementById("Carga").style.width;
 	widthCarga = Number(widthCarga.substring(0, widthCarga.length - 2));
 	minX = posBaseLine + inputBoxes[3][1] / 20; 
-	maxX = minX + Number(document.getElementById(inputBoxes[4][0]).value) / 20 - widthCarga;
-	alert(maxX);
+	maxX = minX + (inputBoxes[4][1] / 20) - widthCarga - 9;
+
 	window.addEventListener("mousemove", moverCarga);
 }
 	
@@ -404,9 +406,9 @@ function removeEvMousemove () {
 	
 function moverCarga() {
 	var x2 = event.clientX;
+	
+	window.addEventListener("mouseup", removeEvMousemove);
 
-	window.addEventListener("mouseup", removeEvMousemove); 
-		
 	var left2 = left1 + x2 - x1; 
 		if (left2 < minX) {
 			left2 = minX;
@@ -415,10 +417,10 @@ function moverCarga() {
 			left2 = maxX;
 			window.removeEventListener("mousemove", moverCarga);
 		}			
-			
+		
 	var posTop = 250 - 59;
 	document.getElementById("Carga").style = "position: absolute; top: " + posTop + "px; left: " + left2 + "px; width: 150px; height: 50px; border-style: solid; border-width: 4px; border-color: #8A4B08; background-color: #F7BE81; opacity: 0.6";
-		
+	
 	tratarCalcularCargas();
 }
 	
