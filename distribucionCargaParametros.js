@@ -32,14 +32,14 @@ var tractorInit = {
 
 var semiInit = {
 	distEng: 690,
-	distEngGrp3: 6600,
-	configGrp3: 2,
-	rodadoGrp3: "D",
-    	sepGrp3: 1400,
-	distGrpL3: 2800,
-    	configGrpL: 0,
-	rodadoGrpL: "",
-    	sepGrpL: 0,
+	distEngGrp2: 6600,
+	configGrp2: 2,
+	rodadoGrp2: "D",
+    	sepGrp2: 1400,
+	distGrp12: 2800,
+    	configGrp1: 0,
+	rodadoGrp1: "",
+    	sepGrp1: 0,
 	distCarga0: 0,
 	distCargaF: 9000
 };
