@@ -5,21 +5,27 @@ var posEjesLine = 370;
 var posPisoCaja = 250;
 
 // Parametros de inicialización
-var sepGrp1init = 0;
-var distGrp12init = 3500;
-var sepGrp2init = 0;
-var distCarga0init = 720;
-var distCargaFinit = 6000;
+var chasisInit = {
+	configGrp1: 1,
+	rodadoGrp1: "S",
+    	sepGrp1: 0,
+	distGrp12: 4700,
+    	configGrp2: 0,
+	rodadoGrp3: "",
+    	sepGrp2: 0,
+	distCarga0: 720,
+	distCargaF: 6000
+};
 
 var tractorInit = {
 	configGrp1: 1,
 	rodadoGrp1: "S",
-    sepGrp1: 0,
-    distGrp12: 3500,
+    	sepGrp1: 0,
+    	distGrp12: 3500,
 	configGrp2: 1,
 	rodadoGrp2: "D",
-    sepGrp2: 0,
-    distEng: -460,
+    	sepGrp2: 0,
+    	distEng: -460,
 	distCarga0: 2500,
 	distCargaF: 4000
 };
@@ -29,11 +35,11 @@ var semiInit = {
 	distEngGrp3: 6600,
 	configGrp3: 2,
 	rodadoGrp3: "D",
-    sepGrp3: 1400,
+    	sepGrp3: 1400,
 	distGrpL3: 2800,
-    configGrpL: 0,
+    	configGrpL: 0,
 	rodadoGrpL: "",
-    sepGrpL: 0,
+    	sepGrpL: 0,
 	distCarga0: 0,
 	distCargaF: 9000
 };
