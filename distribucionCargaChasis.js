@@ -5,11 +5,17 @@ var posEjesLine = 370;
 var posPisoCaja = 250;
 
 // Parametros de inicialización
-var sepGrp1init = 0;
-var distGrp12init = 4700;
-var sepGrp2init = 0;
-var distCarga0init = 720;
-var distCargaFinit = 6000;
+var chasisInit = {
+	configGrp1: 1,
+	rodadoGrp1: "S",
+    	sepGrp1: 0,
+	distGrp12: 4700,
+    	configGrp2: 0,
+	rodadoGrp3: "",
+    	sepGrp2: 0,
+	distCarga0: 720,
+	distCargaF: 6000
+};
 	
 var inputBoxPad = "text-align: right;";
 	
@@ -36,12 +42,12 @@ var pMaxEjes = [
 // Dimensiones del vehículo
 var inputBoxes = [
 	//id, value, min, max, top, left, width, formatting, display
-	["sepGrp1input", sepGrp1init, 0, 2400, posEjesLine - 30, posBaseLine - 88, 60, inputBoxPad, "none"],
-	["distGrp12input", distGrp12init, 0, 10500, posEjesLine - 10, posBaseLine + 83, 70, inputBoxPad, "inline"],
-	["sepGrp2input", sepGrp2init, 0, 2400, posEjesLine - 10, posBaseLine + 332, 60, inputBoxPad, "none"],
-	["distCarga0input", distCarga0init, 500, 3000, posCajaLine - 10, posBaseLine - 88, 60, inputBoxPad, "inline"],
-	["distCargaFinput", distCargaFinit, 4000, 12000, posCajaLine - 10, posBaseLine + 151, 70, inputBoxPad, "inline"],
-	["distCarga", distCargaFinit / 2, 0, 6000, "position: absolute; top: 51px; width: 70px; padding: 5px", 151],
+	["sepGrp1input", chasisInit.sepGrp1, 0, 2400, posEjesLine - 30, posBaseLine - 88, 60, inputBoxPad, "none"],
+	["distGrp12input", chasisInit.distGrp12, 0, 10500, posEjesLine - 10, posBaseLine + 83, 70, inputBoxPad, "inline"],
+	["sepGrp2input", chasisInit.sepGrp2, 0, 2400, posEjesLine - 10, posBaseLine + 332, 60, inputBoxPad, "none"],
+	["distCarga0input", chasisInit.distCarga0, 500, 3000, posCajaLine - 10, posBaseLine - 88, 60, inputBoxPad, "inline"],
+	["distCargaFinput", chasisInit.distCargaF, 4000, 12000, posCajaLine - 10, posBaseLine + 151, 70, inputBoxPad, "inline"],
+	["distCarga", chasisInit.distCargaF / 2, 0, 6000, "position: absolute; top: 51px; width: 70px; padding: 5px", 151],
 ];
 
 // Lineas de dimensiones del dibujo
@@ -70,7 +76,7 @@ var dimLines = [
 	
 // Archivos de imagen compuesta para Chasis
 var imgComposite = [
-	["ChasisTraseroimg", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisTraseroN.png", "inline", (distCargaFinit / 20) - 234],
+	["ChasisTraseroimg", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisTraseroN.png", "inline", (chasisInit.distCargaF / 20) - 234],
 	["ChasisDelanteimg", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisDelanteN.png", "inline", -74],
 	["Chasis12img", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisDireccion2N.png", "none", 10],
 	["Chasis21img", "http://www.fadeeac.org.ar/images/imagenes/Departamentos/TecnicosInfraestructura/webappDistribPeso/chasisTraccion1N.png", "inline", 79],
@@ -306,7 +312,7 @@ function dimChasis() {
 	var distCargaF = inputBoxes[4][1] / 20;
 			
 	// Dimensionamiento por modificación de tamaño y posción de caja de carga
-	posLeft = Math.round(posBaseLine + imgComposite[0][3] + distCarga0 + distCargaF - (distCarga0init + distCargaFinit) / 20);
+	posLeft = Math.round(posBaseLine + imgComposite[0][3] + distCarga0 + distCargaF - (chasisInit.distCarga0 + chasisInit.distCargaF) / 20);
 	document.getElementById(imgComposite[0][0]).style = "position: absolute; left: " + posLeft + "px; height: 400px; display: " + imgComposite[0][2] + ";";
 	
 	inputBoxes[4][5] = Math.round(posBaseLine + distCarga0 + (distCargaF - inputBoxes[4][6]) / 2);
@@ -340,7 +346,7 @@ function dimChasis() {
 	dimLines[18][3] = (dimSepGrp1 * 2) + 29;
 	
 	// Dimensionamiento por modificación de la distancia entre grupos
-	posLeft = posBaseLine + (inputBoxes[1][1] - distGrp12init) / 20 + 80;
+	posLeft = posBaseLine + (inputBoxes[1][1] - chasisInit.distGrp12) / 20 + 80;
 	document.getElementById(imgComposite[3][0]).style = "position: absolute; left: " + posLeft + "px; height: 400px; display: " + imgComposite[3][2] + ";";
 	
 	inputBoxes[1][5] = Math.round(posBaseLine + (distGrp12 - inputBoxes[1][6]) / 2);
