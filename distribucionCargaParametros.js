@@ -4,7 +4,7 @@ var posCajaLine = 60;
 var posEjesLine = 370;
 var posPisoCaja = 250;
 
-// Parametros de inicialización
+// Parametros de inicialización de los vehículos
 var chasisInit = {
 	configGrp1: 1,
 	rodadoGrp1: "S",
