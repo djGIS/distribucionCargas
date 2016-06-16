@@ -1,22 +1,3 @@
-// Parametros de ajuste de ubicación en pantalla
-var posBaseLine = 100;
-var posCajaLine = 60;
-var posEjesLine = 370;
-var posPisoCaja = 250;
-
-// Parametros de inicialización
-var chasisInit = {
-	configGrp1: 1,
-	rodadoGrp1: "S",
-    	sepGrp1: 0,
-	distGrp12: 4700,
-    	configGrp2: 0,
-	rodadoGrp3: "",
-    	sepGrp2: 0,
-	distCarga0: 720,
-	distCargaF: 6000
-};
-	
 var inputBoxPad = "text-align: right;";
 	
 var tiposVeh = ['Chasis', 'Semi', 'Tractor'];
