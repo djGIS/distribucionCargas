@@ -1,0 +1,35 @@
+	.diminputBoxes {
+		width:36px;
+		text-align: right; font-family: arial,helvetica,sans-serif; font-size: 10pt;
+	}
+	
+	.dimLineVert1 {
+		border-left-style: dashed;
+		border-left-width: 1px;
+	}
+	
+	.dimLineVert2 {
+		border-left-style: dashed;
+		border-left-width: 1px;
+		border-right-style: dashed;
+		border-right-width: 1px; 
+	}
+	
+	.tablainputBoxes.chasis {
+		width:120px;
+		text-align: right; font-family: arial,helvetica,sans-serif; font-size: 10pt;
+	}
+			
+	.triangle_left {
+		border-top: 4px solid transparent;
+		border-right: 20px solid #000000;
+		border-bottom: 4px solid transparent;
+		position: absolute;
+	}
+
+	.triangle_right {
+		border-top: 4px solid transparent;
+		border-left: 20px solid #000000;
+		border-bottom: 4px solid transparent;
+		position: absolute;
+	}
