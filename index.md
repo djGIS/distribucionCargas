@@ -1,7 +1,7 @@
 <div style="background-color:#003366;width:800px;height:40px;padding: 5px;">
 		<span style="color:Gainsboro; font-family: arial,helvetica,sans-serif;font-size: 14pt;"><b>miSIG-FADEEAC</b></span></br>
 		<span style="color:Gainsboro; font-family: arial,helvetica,sans-serif;font-size: 12pt;">Buscador de Servicios y Rutas para el Autotransporte de Cargas</span>
-		<img src="https://github.com/djGIS/distribucionCargas/images/chasisDelante.png">
+		<img src="https://github.com/djGIS/distribucionCargas/blob/gh-pages/images/chasisDelante.png">
 	</div>
 	
         
