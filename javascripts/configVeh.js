@@ -63,7 +63,7 @@ var init = {
 };
 
 // Archivos de imagen compuesta para Chasis
-var imgCompositePath = "imgComposite/";
+var imgCompositePath = "images/";
 var imgComposite = {
 	chasis: [
 		["chasisTraseroimg", imgCompositePath+"chasisTrasero.png", "inline", -266],
