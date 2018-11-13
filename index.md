@@ -1,9 +1,3 @@
-<div style="background-color:#003366;width:800px;height:40px;padding: 5px;">
-		<span style="color:Gainsboro; font-family: arial,helvetica,sans-serif;font-size: 14pt;">Hide me</span></br>
-		<span style="color:Gainsboro; font-family: arial,helvetica,sans-serif;font-size: 12pt;">Buscador de Servicios y Rutas para el Autotransporte de Cargas</span>
-		<img src="https://github.com/djGIS/distribucionCargas/blob/gh-pages/images/chasisDelante.png">
-	</div>
-	
 <div id="cargaAppMenu" class="navbar"></div>
 <button onclick="tratarOpMenu(this)" class="dropbtn" value="recalcular">Recalcular</button>
 <div id="menuVehiculos" class="dropdown">
@@ -18,8 +12,8 @@
 	window.addEventListener("load", inicializarVeh(tiposVeh[0]));
 </script> 
 
-<script type="text/javascript" src="https://github.com/djGIS/distribucionCargas/javascripts/configVeh.js"></script>
-<script type="text/javascript" src="https://github.com/djGIS/distribucionCargas/javascripts/calculadorDistribCargas.js"></script>
+<script src="{{ "/distribucionCargas/javascripts/configVeh.js" | prepend: site.baseurl}}"></script>
+<script src="{{ "/distribucionCargas/javascripts/calculadorDistribCargas.js" | prepend: site.baseurl}}"></script>
 
 <script type="text/javascript"
         src="https://www.google.com/jsapi?autoload={
