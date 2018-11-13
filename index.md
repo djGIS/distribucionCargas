@@ -12,8 +12,8 @@
 	window.addEventListener("load", inicializarVeh(tiposVeh[0]));
 </script> 
 
-<script src="{{ "/distribucionCargas/javascripts/configVeh.js" | prepend: site.baseurl}}"></script>
-<script src="{{ "/distribucionCargas/javascripts/calculadorDistribCargas.js" | prepend: site.baseurl}}"></script>
+<script src="{{ "/javascripts/configVeh.js" | prepend: site.baseurl}}"></script>
+<script src="{{ "/javascripts/calculadorDistribCargas.js" | prepend: site.baseurl}}"></script>
 
 <script type="text/javascript"
         src="https://www.google.com/jsapi?autoload={
