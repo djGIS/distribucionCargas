@@ -1,7 +1,7 @@
-title: Calculador de Distribución de Carga
-description: Diagrama de carga estática para la distribución de carga en vehículos de transporte terrestre
+title: Calculador
+description: Calculador de diagrama de carga estática para la distribución de carga en vehículos de transporte terrestre
 google_analytics: 
-show_downloads: true
+show_downloads: false
 theme: jekyll-theme-architect
 
 gems:
