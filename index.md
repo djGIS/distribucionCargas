@@ -7,11 +7,6 @@
 	
 <div id="Diagrama" style="position: relative; height: 450px; width: 100%;"></div>
 
-<script>
-	window.addEventListener("load", inicializarMenu);
-	window.addEventListener("load", inicializarVeh(tiposVeh[0]));
-</script> 
-
 <script src="{{ "/javascripts/configVeh.js" | prepend: site.baseurl}}"></script>
 <script src="{{ "/javascripts/calculadorDistribCargas.js" | prepend: site.baseurl}}"></script>
 
@@ -23,4 +18,9 @@
             'packages':['corechart']
         }]
     }">
+</script>
+
+<script>
+	window.addEventListener("load", inicializarMenu);
+	window.addEventListener("load", inicializarVeh(tiposVeh[0]));
 </script>
