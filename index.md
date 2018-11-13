@@ -18,8 +18,8 @@
 	window.addEventListener("load", inicializarVeh(tiposVeh[0]));
 </script> 
 
-<script type="text/javascript" src="https://github.com/djGIS/distribucionCargas/blob/gh-pages/javascripts/configVeh.js"></script>
-<script type="text/javascript" src="https://github.com/djGIS/distribucionCargas/blob/gh-pages/javascripts/calculadorDistribCargas.js"></script>
+<script type="text/javascript" src="https://raw.githubusercontent.com/djGIS/distribucionCargas/gh-pages/javascripts/configVeh.js"></script>
+<script type="text/javascript" src="https://raw.githubusercontent.com/djGIS/distribucionCargas/gh-pages/javascripts/calculadorDistribCargas.js"></script>
 
 <script type="text/javascript"
         src="https://www.google.com/jsapi?autoload={
