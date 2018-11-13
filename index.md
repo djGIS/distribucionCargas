@@ -17,3 +17,16 @@
 	window.addEventListener("load", inicializarMenu);
 	window.addEventListener("load", inicializarVeh(tiposVeh[0]));
 </script> 
+
+<script type="text/javascript" src="https://github.com/djGIS/distribucionCargas/blob/gh-pages/javascripts/configVeh.js"></script>
+<script type="text/javascript" src="https://github.com/djGIS/distribucionCargas/blob/gh-pages/javascripts/calculadorDistribCargas.js"></script>
+
+<script type="text/javascript"
+        src="https://www.google.com/jsapi?autoload={
+			'modules':[{
+            'name':'visualization',
+            'version':'1',
+            'packages':['corechart']
+        }]
+    }">
+</script>
