@@ -2,11 +2,13 @@
 	.diminputBoxes {
 		width:36px;
 		text-align: right; font-family: arial,helvetica,sans-serif; font-size: 10pt;
+		position: absolute;
 	}
 	
 	.dimLineVert1 {
 		border-left-style: dashed;
 		border-left-width: 1px;
+		position: absolute;
 	}
 	
 	.dimLineVert2 {
@@ -14,11 +16,13 @@
 		border-left-width: 1px;
 		border-right-style: dashed;
 		border-right-width: 1px; 
+		position: absolute;
 	}
 	
 	.tablainputBoxes.chasis {
 		width:120px;
 		text-align: right; font-family: arial,helvetica,sans-serif; font-size: 10pt;
+		position: absolute;
 	}
 			
 	.triangle_left {
