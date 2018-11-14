@@ -551,7 +551,7 @@ function drawGoogleChart(vehSelect, dataArray, hAxisMin, hAxisMax) {
 		veh.grp2.sep = Math.round(veh.grp2.sep/convCmToPx);
 		veh.distCarga0 = Math.round(veh.distCarga0/convCmToPx);
 		veh.distCargaF = Math.round(veh.distCargaF/convCmToPx);
-		
+		alert("ok");
 		//Linea base
 		posLeft = posBaseLine;
 		document.getElementById(dimLines[vehSelect][0][0]).style.left = posLeft;
