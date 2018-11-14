@@ -102,7 +102,9 @@
 .show {display:block;}
 </style>
 
-<button onclick="tratarOpMenu(this)" class="dropbtn" value="recalcular">Recalcular</button>
+<div>
+	<button onclick="tratarOpMenu(this)" class="dropbtn" value="recalcular">Recalcular</button>
+</div>
 <div id="menuVehiculos" class="dropdown">
 	<button onclick="tratarOpMenu(this)" class="dropbtn" value="vehiculos">Opciones de Vehículos</button>
 	<div id="dropdownVehiculos" class="dropdown-content"></div>
