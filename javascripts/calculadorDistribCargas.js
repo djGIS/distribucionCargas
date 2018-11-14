@@ -684,17 +684,17 @@ var dimLines;
 		defWidth = Number(defWidth.substring(0, defWidth.length - 2));
 		
 		if (veh.distGrp25 < 0) {
-			document.getElementById(vehSelect+'distGrp25input').style.left = posLeft + veh.distGrp25 - inputBoxes[vehSelect][5][5] - dimLines.tractor[5][2] - defWidth;
-			document.getElementById(dimLines.tractor[2][0]).style.left = posLeft + veh.distGrp25 - dimLines.tractor[2][2];
-			document.getElementById(dimLines.tractor[5][0]).style.left = posLeft + veh.distGrp25 - dimLines.tractor[2][2] - dimLines.tractor[5][2];
-			document.getElementById(dimLines.tractor[5][0]).style.width = Math.abs(veh.distGrp25) + 2*(dimLines.tractor[2][2] + dimLines.tractor[5][2]);
-			document.getElementById(dimLines.tractor[3][0]).style.left = posLeft;
+			document.getElementById(vehSelect+'distGrp25input').style.left = posLeft + veh.distGrp25 - inputBoxes[vehSelect][5][5] - dimLines.tractor[5][2] - defWidth + "px";
+			document.getElementById(dimLines.tractor[2][0]).style.left = posLeft + veh.distGrp25 - dimLines.tractor[2][2] + "px";
+			document.getElementById(dimLines.tractor[5][0]).style.left = posLeft + veh.distGrp25 - dimLines.tractor[2][2] - dimLines.tractor[5][2] + "px";
+			document.getElementById(dimLines.tractor[5][0]).style.width = Math.abs(veh.distGrp25) + 2*(dimLines.tractor[2][2] + dimLines.tractor[5][2])  + "px";
+			document.getElementById(dimLines.tractor[3][0]).style.left = posLeft + "px";
 		} else {
-			document.getElementById(vehSelect+'distGrp25input').style.left = posLeft + veh.distGrp25 + inputBoxes[vehSelect][5][5] + dimLines.tractor[5][2];
-			document.getElementById(dimLines.tractor[2][0]).style.left = posLeft - dimLines.tractor[2][2];
-			document.getElementById(dimLines.tractor[5][0]).style.left = posLeft - dimLines.tractor[2][2] - dimLines.tractor[5][2];
-			document.getElementById(dimLines.tractor[5][0]).style.width = Math.abs(veh.distGrp25) + 2*(dimLines.tractor[2][2] + dimLines.tractor[5][2]);
-			document.getElementById(dimLines.tractor[3][0]).style.left = posLeft + veh.distGrp25;
+			document.getElementById(vehSelect+'distGrp25input').style.left = posLeft + veh.distGrp25 + inputBoxes[vehSelect][5][5] + dimLines.tractor[5][2]  + "px";
+			document.getElementById(dimLines.tractor[2][0]).style.left = posLeft - dimLines.tractor[2][2] + "px";
+			document.getElementById(dimLines.tractor[5][0]).style.left = posLeft - dimLines.tractor[2][2] - dimLines.tractor[5][2] + "px";
+			document.getElementById(dimLines.tractor[5][0]).style.width = Math.abs(veh.distGrp25) + 2*(dimLines.tractor[2][2] + dimLines.tractor[5][2]) + "px";
+			document.getElementById(dimLines.tractor[3][0]).style.left = posLeft + veh.distGrp25 + "px";
 		}
 		
 		
@@ -703,104 +703,104 @@ var dimLines;
 		// Dimensionamiento por modificación de tamaño y posción de caja de carga
 		posLeft = posBaseLine + veh.distGrp12 + veh.distGrp25 - veh.distCarga05;
 		
-		document.getElementById(vehSelect+"Graf").style.left = posLeft;
-		document.getElementById(vehSelect+"Graf").style.top = 87;
+		document.getElementById(vehSelect+"Graf").style.left = posLeft + "px";
+		document.getElementById(vehSelect+"Graf").style.top = 87 + "px";
 
-		document.getElementById(vehSelect+inputBoxes[vehSelect][1][0]).style.left = posLeft + inputBoxes[vehSelect][1][5];
+		document.getElementById(vehSelect+inputBoxes[vehSelect][1][0]).style.left = posLeft + inputBoxes[vehSelect][1][5] + "px";
 
-		document.getElementById(dimLines[vehSelect][0][0]).style.left = posLeft;
-		document.getElementById(dimLines[vehSelect][0][0]).style.width = veh.distCarga0F - 2;
+		document.getElementById(dimLines[vehSelect][0][0]).style.left = posLeft + "px";
+		document.getElementById(dimLines[vehSelect][0][0]).style.width = veh.distCarga0F - 2 + "px";
 		
-		document.getElementById(dimLines[vehSelect][1][0]).style.left = posLeft;
+		document.getElementById(dimLines[vehSelect][1][0]).style.left = posLeft + "px";
 		
-		document.getElementById(dimLines[vehSelect][2][0]).style.left = posLeft + veh.distCarga0F + dimLines[vehSelect][2][2];
+		document.getElementById(dimLines[vehSelect][2][0]).style.left = posLeft + veh.distCarga0F + dimLines[vehSelect][2][2] + "px";
 
 		defWidth = document.getElementById(vehSelect+inputBoxes[vehSelect][2][0]).style.width;
 		defWidth = Number(defWidth.substring(0, defWidth.length - 2));
 		
-		document.getElementById(vehSelect+inputBoxes[vehSelect][2][0]).style.left = posLeft + (veh.distCarga0F - defWidth)/2;
+		document.getElementById(vehSelect+inputBoxes[vehSelect][2][0]).style.left = posLeft + (veh.distCarga0F - defWidth)/2 + "px";
 		
-		document.getElementById(dimLines[vehSelect][3][0]).style.left = posLeft;
-		document.getElementById(dimLines[vehSelect][3][0]).style.width = (veh.distCarga0F - defWidth) / 2;
+		document.getElementById(dimLines[vehSelect][3][0]).style.left = posLeft + "px";
+		document.getElementById(dimLines[vehSelect][3][0]).style.width = (veh.distCarga0F - defWidth) / 2 + "px";
 		
-		document.getElementById(dimLines[vehSelect][4][0]).style.left = posLeft + (veh.distCarga0F + defWidth) / 2;
-		document.getElementById(dimLines[vehSelect][4][0]).style.width = (veh.distCarga0F - defWidth) / 2;
+		document.getElementById(dimLines[vehSelect][4][0]).style.left = posLeft + (veh.distCarga0F + defWidth) / 2 + "px";
+		document.getElementById(dimLines[vehSelect][4][0]).style.width = (veh.distCarga0F - defWidth) / 2 + "px";
 		
-		document.getElementById(dimLines[vehSelect][6][0]).style.left = posLeft + dimLines[vehSelect][6][2];
+		document.getElementById(dimLines[vehSelect][6][0]).style.left = posLeft + dimLines[vehSelect][6][2] + "px";
 		
-		document.getElementById(dimLines[vehSelect][9][0]).style.left = posLeft + dimLines[vehSelect][9][2];
+		document.getElementById(dimLines[vehSelect][9][0]).style.left = posLeft + dimLines[vehSelect][9][2] + "px";
 		
-		document.getElementById(imgComposite[vehSelect][1][0]).style.left = posLeft + imgComposite[vehSelect][1][3]; //"position: absolute; left: " + posLeft + "px; height: 400px; display: " + imgComposite[vehSelect][1][2] + ";";
+		document.getElementById(imgComposite[vehSelect][1][0]).style.left = posLeft + imgComposite[vehSelect][1][3] + "px"; //"position: absolute; left: " + posLeft + "px; height: 400px; display: " + imgComposite[vehSelect][1][2] + ";";
 
 		posLeft = posBaseLine + veh.distGrp12 + veh.distGrp25 - veh.distCarga05 + veh.distCarga0F; 
-		document.getElementById(imgComposite[vehSelect][0][0]).style.left = posLeft + imgComposite[vehSelect][0][3]; //"position: absolute; left: " + posLeft + "px; height: 400px; display: " + imgComposite[vehSelect][0][2] + ";";
+		document.getElementById(imgComposite[vehSelect][0][0]).style.left = posLeft + imgComposite[vehSelect][0][3] + "px"; //"position: absolute; left: " + posLeft + "px; height: 400px; display: " + imgComposite[vehSelect][0][2] + ";";
 		
 		// Dimensionamiento por modificación de la distancia entre grupos
 		posLeft = posBaseLine + veh.distGrp12 + veh.distGrp25;
 		defWidth = document.getElementById(vehSelect+inputBoxes[vehSelect][0][0]).style.width;
 		defWidth = Number(defWidth.substring(0, defWidth.length - 2));
 		
-		document.getElementById(dimLines.tractor[0][0]).style.width = posLeft;
+		document.getElementById(dimLines.tractor[0][0]).style.width = posLeft + "px";
 		
-		document.getElementById(vehSelect+inputBoxes[vehSelect][0][0]).style.left = posLeft + (veh.distGrp35 - defWidth)/2 + inputBoxes[vehSelect][0][5];
+		document.getElementById(vehSelect+inputBoxes[vehSelect][0][0]).style.left = posLeft + (veh.distGrp35 - defWidth)/2 + inputBoxes[vehSelect][0][5] + "px";
 		
-		document.getElementById(dimLines[vehSelect][7][0]).style.left = posLeft + dimLines[vehSelect][7][2];
+		document.getElementById(dimLines[vehSelect][7][0]).style.left = posLeft + dimLines[vehSelect][7][2] + "px";
 
-		document.getElementById(dimLines[vehSelect][8][0]).style.left = posLeft + veh.distGrp35 + dimLines[vehSelect][8][2];
+		document.getElementById(dimLines[vehSelect][8][0]).style.left = posLeft + veh.distGrp35 + dimLines[vehSelect][8][2] + "px";
 		
-		document.getElementById(dimLines[vehSelect][5][0]).style.left = posLeft + dimLines[vehSelect][5][2];
-		document.getElementById(dimLines[vehSelect][5][0]).style.width = veh.distGrp35;
+		document.getElementById(dimLines[vehSelect][5][0]).style.left = posLeft + dimLines[vehSelect][5][2] + "px";
+		document.getElementById(dimLines[vehSelect][5][0]).style.width = veh.distGrp35 + "px";
 		
-		document.getElementById(dimLines[vehSelect][10][0]).style.left = posLeft + (veh.distGrp35 + defWidth)/2 + dimLines[vehSelect][10][2];
-		document.getElementById(dimLines[vehSelect][10][0]).style.width = (veh.distGrp35 - defWidth)/2;
-		document.getElementById(dimLines[vehSelect][9][0]).style.width = (veh.distGrp35 - defWidth)/2 + veh.distCarga05 + dimLines[vehSelect][9][3];
+		document.getElementById(dimLines[vehSelect][10][0]).style.left = posLeft + (veh.distGrp35 + defWidth)/2 + dimLines[vehSelect][10][2] + "px";
+		document.getElementById(dimLines[vehSelect][10][0]).style.width = (veh.distGrp35 - defWidth)/2 + "px";
+		document.getElementById(dimLines[vehSelect][9][0]).style.width = (veh.distGrp35 - defWidth)/2 + veh.distCarga05 + dimLines[vehSelect][9][3] + "px";
 		
 		// Dimensionamiento por modificación de la distancia entre grupos y entre eje grupo trasero
 		posLeft = posBaseLine + veh.distGrp12 + veh.distGrp25 + veh.distGrp35;
 		
-		document.getElementById(imgComposite[vehSelect][3][0]).style.left = posLeft + imgComposite[vehSelect][3][3];
-		document.getElementById(imgComposite[vehSelect][4][0]).style.left = posLeft + veh.grp3.sep + imgComposite[vehSelect][5][3];
-		document.getElementById(imgComposite[vehSelect][5][0]).style.left = posLeft + veh.grp3.sep/2 + imgComposite[vehSelect][4][3];
+		document.getElementById(imgComposite[vehSelect][3][0]).style.left = posLeft + imgComposite[vehSelect][3][3] + "px";
+		document.getElementById(imgComposite[vehSelect][4][0]).style.left = posLeft + veh.grp3.sep + imgComposite[vehSelect][5][3] + "px";
+		document.getElementById(imgComposite[vehSelect][5][0]).style.left = posLeft + veh.grp3.sep/2 + imgComposite[vehSelect][4][3] + "px";
 		
 		defWidth = document.getElementById(vehSelect+inputBoxes[vehSelect][4][0]).style.width;
 		defWidth = Number(defWidth.substring(0, defWidth.length - 2));
-		document.getElementById(vehSelect+inputBoxes[vehSelect][4][0]).style.left = posLeft + (veh.grp3.sep - defWidth)/2;
+		document.getElementById(vehSelect+inputBoxes[vehSelect][4][0]).style.left = posLeft + (veh.grp3.sep - defWidth)/2 + "px";
 		
 		defWidth = veh.grp3.sep;
-		document.getElementById(dimLines[vehSelect][11][0]).style.left = posLeft + dimLines[vehSelect][11][2];
-		document.getElementById(dimLines[vehSelect][11][0]).style.width = defWidth + dimLines[vehSelect][11][3];
+		document.getElementById(dimLines[vehSelect][11][0]).style.left = posLeft + dimLines[vehSelect][11][2] + "px";
+		document.getElementById(dimLines[vehSelect][11][0]).style.width = defWidth + dimLines[vehSelect][11][3] + "px";
 		
-		document.getElementById(dimLines[vehSelect][12][0]).style.left = posLeft + dimLines[vehSelect][12][2];
-		document.getElementById(dimLines[vehSelect][14][0]).style.left = posLeft + dimLines[vehSelect][14][2];
-		document.getElementById(dimLines[vehSelect][14][0]).style.width = defWidth + dimLines[vehSelect][14][3];
+		document.getElementById(dimLines[vehSelect][12][0]).style.left = posLeft + dimLines[vehSelect][12][2] + "px";
+		document.getElementById(dimLines[vehSelect][14][0]).style.left = posLeft + dimLines[vehSelect][14][2] + "px";
+		document.getElementById(dimLines[vehSelect][14][0]).style.width = defWidth + dimLines[vehSelect][14][3] + "px";
 		//document.getElementById(dimLines[vehSelect][15][0]).style.left = posLeft + (veh.grp3.sep + width)/2 + dimLines[vehSelect][15][2];
 		//document.getElementById(dimLines[vehSelect][15][0]).style.width = (veh.grp3.sep - width)/2;
-		document.getElementById(dimLines[vehSelect][13][0]).style.left = posLeft + defWidth + dimLines[vehSelect][13][2];
+		document.getElementById(dimLines[vehSelect][13][0]).style.left = posLeft + defWidth + dimLines[vehSelect][13][2] + "px";
 		
 		defWidth = document.getElementById(vehSelect+"1").style.width;
 		defWidth = Number(defWidth.substring(0, defWidth.length - 2));
-		document.getElementById(vehSelect+"1").style.left =  posLeft + (veh.grp3.sep - defWidth)/2;
+		document.getElementById(vehSelect+"1").style.left =  posLeft + (veh.grp3.sep - defWidth)/2 + "px";
 				
 		// Dimensionamiento por modificación de la distancia entre grupos y distancia al eje flotante
-		document.getElementById(imgComposite[vehSelect][2][0]).style.left = posLeft - veh.distGrp34 + imgComposite[vehSelect][2][3];
+		document.getElementById(imgComposite[vehSelect][2][0]).style.left = posLeft - veh.distGrp34 + imgComposite[vehSelect][2][3] + "px";
 		
 		defWidth = document.getElementById(vehSelect+inputBoxes[vehSelect][3][0]).style.width;
 		defWidth = Number(defWidth.substring(0, defWidth.length - 2));
-		document.getElementById(vehSelect+inputBoxes[vehSelect][3][0]).style.left = posLeft - (veh.distGrp34 + defWidth)/2;
+		document.getElementById(vehSelect+inputBoxes[vehSelect][3][0]).style.left = posLeft - (veh.distGrp34 + defWidth)/2 + "px";
 		
-		document.getElementById(dimLines[vehSelect][16][0]).style.left = posLeft - veh.distGrp34 + dimLines[vehSelect][16][2];
-		document.getElementById(dimLines[vehSelect][16][0]).style.width = veh.distGrp34 + dimLines[vehSelect][16][3];
+		document.getElementById(dimLines[vehSelect][16][0]).style.left = posLeft - veh.distGrp34 + dimLines[vehSelect][16][2] + "px";
+		document.getElementById(dimLines[vehSelect][16][0]).style.width = veh.distGrp34 + dimLines[vehSelect][16][3] + "px";
 		
-		document.getElementById(dimLines[vehSelect][17][0]).style.left = posLeft - veh.distGrp34 + dimLines[vehSelect][17][2];
-		document.getElementById(dimLines[vehSelect][19][0]).style.left = posLeft - veh.distGrp34 + dimLines[vehSelect][19][2];
-		document.getElementById(dimLines[vehSelect][19][0]).style.width = (veh.distGrp34 - defWidth)/2;
-		document.getElementById(dimLines[vehSelect][20][0]).style.left = posLeft - (veh.distGrp34 - defWidth)/2 + dimLines[vehSelect][20][2];
-		document.getElementById(dimLines[vehSelect][20][0]).style.width = (veh.distGrp34 - defWidth)/2;
-		document.getElementById(dimLines[vehSelect][18][0]).style.left = posLeft + dimLines[vehSelect][18][2];
+		document.getElementById(dimLines[vehSelect][17][0]).style.left = posLeft - veh.distGrp34 + dimLines[vehSelect][17][2] + "px";
+		document.getElementById(dimLines[vehSelect][19][0]).style.left = posLeft - veh.distGrp34 + dimLines[vehSelect][19][2] + "px";
+		document.getElementById(dimLines[vehSelect][19][0]).style.width = (veh.distGrp34 - defWidth)/2 + "px";
+		document.getElementById(dimLines[vehSelect][20][0]).style.left = posLeft - (veh.distGrp34 - defWidth)/2 + dimLines[vehSelect][20][2] + "px";
+		document.getElementById(dimLines[vehSelect][20][0]).style.width = (veh.distGrp34 - defWidth)/2 + "px";
+		document.getElementById(dimLines[vehSelect][18][0]).style.left = posLeft + dimLines[vehSelect][18][2] + "px";
 		
 		defWidth = document.getElementById(vehSelect+"2").style.width;
 		defWidth = Number(defWidth.substring(0, defWidth.length - 2));
-		document.getElementById(vehSelect+"2").style.left =  posLeft - veh.distGrp34 - defWidth/2;
+		document.getElementById(vehSelect+"2").style.left =  posLeft - veh.distGrp34 - defWidth/2 + "px";
 	}
 	
 	function inicializarDimCtrl (vehSelect) { 
@@ -1262,111 +1262,4 @@ function tratarOpMenu (menuOp) {
     default:
 		calcularChasis();
 	}
-}
-	
-function inicializarCarga () {
-	// Dibujar una caja como carga con input para modificar su peso
-	var carga = document.createElement("div");
-	carga.id = "Carga";
-	posTop = 250 - 59;
-	posLeft = posBaseLine + (inputBoxes.chasis[3][1] / convCmToPx) + (inputBoxes.chasis[4][1] / (2 * convCmToPx)) - 75;
-	carga.style = "position: absolute; top: " + posTop + "px; left: " + posLeft + "px; width: 150px; height: 50px; border-style: solid; border-width: 4px; border-color: #8A4B08; background-color: #F7BE81; opacity: 0.6";
-	carga.onmousedown = function(){calcularCarga();};
-	inputBox = document.createElement("input");
-	inputBox.id = "CargaPinput";
-	inputBox.type = "number";
-	inputBox.value = pGrupos[0][3];
-	inputBox.style = "margin-top: 17px; margin-bottom: 17px; text-align: right; width: 120px; border-style: none; background-color: transparent;";
-	inputBox.onchange = function(){tratarCalcularCargas();};
-	carga.appendChild(inputBox);
-	
-	inputBox = document.createElement("input");
-	inputBox.value = "kg";
-	inputBox.style = "margin-top: 17px; margin-bottom: 17px; width: 30px; border-style: none; background-color: transparent;";
-	inputBox.disabled = true; 
-	carga.appendChild(inputBox);
-	
-	document.getElementById("Diagrama").appendChild(carga);
-}
-	
-var pallets;
-function inicializarDescarga () {
-	pallets = [];
-		
-	var capacidadCaja = inputBoxes.chasis[4][1] / 1000;
-	capacidadCaja = Math.floor(capacidadCaja);
-	//alert(init.chasis.distCargaF);
-	var pesoCarga = Math.round((pGrupos[1][4] + pGrupos[2][4] - pGrupos[1][3] - pGrupos[2][3]) / capacidadCaja);
-	//alert(pGrupos[1][4] + " " + pGrupos[2][4] + " " + pGrupos[1][3] + " " + pGrupos[2][3]);
-	var containerDescarga = document.createElement("div");
-	containerDescarga.id = "containerDescarga";
-	containerDescarga.style = "position: absolute; top: 0px; left: 0px;";
-	document.getElementById("Diagrama").appendChild(containerDescarga);
-		
-	for (var i = 0; i < capacidadCaja; i++) {
-		// Dibujar una caja como carga con input para modificar su peso
-		var carga = document.createElement("div");
-		carga.id = "Pallet" + i;
-		posTop = 250 - 70;
-		posLeft = posBaseLine + (inputBoxes.chasis[3][1] / convCmToPx) + (i * 1000 / convCmToPx);
-		carga.style = "position: absolute; top: " + posTop + "px; left: " + posLeft + "px; width: 50px;";
-		carga.onclick = function(){descargarPallet(this);};
-		
-		var pal = [];
-			pal.push((i * 1000) + 500);
-			pal.push(pesoCarga);
-			//alert(pal[1]);
-		pallets.push(pal);
-		//pallets[i][1] = 
-	
-		var pallet = document.createElement("div");
-		pallet.style = "position: relative; float: left; width: 28px; height: 18px; border-style: solid; border-width: 1px; border-color: #0489B1; background-color: #C4D3DF; opacity: 0.6";
-		carga.appendChild(pallet);
-		pallet = document.createElement("div");
-		pallet.style = "position: relative; float: right; width: 18px; height: 18px; border-style: solid; border-width: 1px; border-color: #0489B1; background-color: #C4D3DF; opacity: 0.6";
-		carga.appendChild(pallet);
-		
-		pallet = document.createElement("div");
-		pallet.style = "position: relative; float: left; width: 18px; height: 18px; border-style: solid; border-width: 1px; border-color: #0489B1; background-color: #C4D3DF; opacity: 0.6";
-		carga.appendChild(pallet);
-		pallet = document.createElement("div");
-		pallet.style = "position: relative; float: right; width: 28px; height: 18px; border-style: solid; border-width: 1px; border-color: #0489B1; background-color: #C4D3DF; opacity: 0.6";
-		carga.appendChild(pallet);
-		
-		pallet = document.createElement("div");
-		pallet.style = "position: relative; float: left; width: 28px; height: 18px; border-style: solid; border-width: 1px; border-color: #0489B1; background-color: #C4D3DF; opacity: 0.6";
-		carga.appendChild(pallet);
-		pallet = document.createElement("div");
-		pallet.style = "position: relative; float: right; width: 18px; height: 18px; border-style: solid; border-width: 1px; border-color: #0489B1; background-color: #C4D3DF; opacity: 0.6";
-		carga.appendChild(pallet);
-	
-		pallet = document.createElement("div");
-		pallet.style = "position: relative; float: left; width: 48px; height: 8px; border-style: solid; border-width: 1px; border-color: #8A4B08; background-color: #F7BE81; opacity: 0.6";
-		carga.appendChild(pallet);
-		
-		document.getElementById(containerDescarga.id).appendChild(carga);
-	}
-		
-	calcularCargas((capacidadCaja * 1000) / 2, pesoCarga * capacidadCaja);
-}
-	
-function descargarPallet (elem) {
-	var pesoTotal = 0;
-	var pesoPonderado = 0;
-	var centroGravedad = 0;
-	var fieldName = elem.id;
-	fieldName = Number(fieldName.substring(fieldName.length - 1, fieldName.length));
-
-	pallets[fieldName][1] = 0;
-		
-	document.getElementById("containerDescarga").removeChild(document.getElementById(elem.id));
-		
-	for (var i = 0; i < pallets.length; i++) {
-		pesoTotal += pallets[i][1];
-		pesoPonderado += pallets[i][0] * pallets[i][1];
-		centroGravedad = pesoPonderado / pesoTotal;
-		//alert(pesoTotal + " " + pesoPonderado + " " +centroGravedad);
-	}
-	//alert(centroGravedad);
-	calcularCargas(centroGravedad, pesoTotal);
 }
