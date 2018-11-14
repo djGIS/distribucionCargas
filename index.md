@@ -1,7 +1,17 @@
 <style>
 	.diminputBoxes {
-		width:36px;
-		text-align: right; font-family: arial,helvetica,sans-serif; font-size: 10pt;
+		width:40px;
+		text-align: right; 
+		font-family: arial,helvetica,sans-serif; 
+		font-size: 10pt;
+		position: absolute;
+	}
+	
+	.tablainputBoxes {
+		width:110px;
+		text-align: right; 
+		font-family: arial,helvetica,sans-serif; 
+		font-size: 10pt;
 		position: absolute;
 	}
 	
@@ -28,12 +38,6 @@
 	.dimLineHoriz {
 		border-top-style: solid; 
 		border-top-width: 1px;
-		position: absolute;
-	}
-	
-	.tablainputBoxes {
-		width:120px;
-		text-align: right; font-family: arial,helvetica,sans-serif; font-size: 10pt;
 		position: absolute;
 	}
 			
