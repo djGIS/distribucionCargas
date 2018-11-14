@@ -566,7 +566,6 @@ function drawGoogleChart(vehSelect, dataArray, hAxisMin, hAxisMax) {
 		
 		// Dimensionamiento por modificación de posción de caja de carga
 		posLeft = posBaseLine + veh.distCarga0;
-		alert(document.getElementById(dimLines[vehSelect][17][0]).style.left);	
 		width = veh.distCarga0;
 		document.getElementById(dimLines[vehSelect][0][0]).style.width = width;
 		document.getElementById(vehSelect+"Graf").style.left = posLeft; //"position: absolute; top: 100px; left: " + posLeft + "px; width: 100%;";
@@ -574,7 +573,7 @@ function drawGoogleChart(vehSelect, dataArray, hAxisMin, hAxisMax) {
 		document.getElementById(dimLines[vehSelect][3][0]).style.left = posLeft + dimLines[vehSelect][3][2];
 		document.getElementById(dimLines[vehSelect][6][0]).style.left = posLeft + dimLines[vehSelect][6][2];
 		document.getElementById(dimLines[vehSelect][5][0]).style.width = width + dimLines[vehSelect][5][3];
-		
+		alert(document.getElementById(dimLines[vehSelect][5][0]).style.width);	
 		posLeft = posBaseLine + veh.distCarga0 + (veh.distCargaF - inputBoxes[vehSelect][4][6])/2;
 		document.getElementById(vehSelect+inputBoxes[vehSelect][4][0]).style.left = posLeft;
 		
