@@ -41,7 +41,9 @@
 
 	/* Navbar container */
 	.navbar {
-		overflow: hidden;
+		height: 48px;
+		width: 100%;
+		overflow: scroll;
 		background-color: #333;
 		font-family: Arial;
 	}
