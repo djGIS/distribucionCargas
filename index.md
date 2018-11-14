@@ -37,13 +37,19 @@
 </style>
 
 <style>
+	.diagrama {
+		overflow: scroll;
+		position: relative;
+		height: 450px; 
+		width: 100%;
+	}
+	
 /* Estilos CSS para barra de navegación
 
 	/* Navbar container */
 	.navbar {
 		height: 48px;
 		width: 100%;
-		overflow: scroll;
 		background-color: #333;
 		font-family: Arial;
 	}
@@ -116,7 +122,7 @@
 </div>
 
 	
-<div id="Diagrama" style="position: relative; height: 450px; width: 100%;"></div>
+<div id="Diagrama" class="diagrama"></div>
 
 <script src="{{ "/javascripts/configVeh.js" | prepend: site.baseurl}}"></script>
 <script src="{{ "/javascripts/calculadorDistribCargas.js" | prepend: site.baseurl}}"></script>
