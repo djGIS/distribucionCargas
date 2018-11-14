@@ -567,6 +567,7 @@ var dimLines;
 		// Dimensionamiento por modificación de posción de caja de carga
 		posLeft = posBaseLine + veh.distCarga0;
 		defWidth = veh.distCarga0;
+		alert(defWidth);
 		document.getElementById(dimLines[vehSelect][0][0]).style.width = defWidth;
 		document.getElementById(vehSelect+"Graf").style.left = posLeft; //"position: absolute; top: 100px; left: " + posLeft + "px; width: 100%;";
 		document.getElementById(dimLines[vehSelect][1][0]).style.left = posLeft;
