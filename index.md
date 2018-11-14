@@ -19,7 +19,19 @@
 		position: absolute;
 	}
 	
-	.tablainputBoxes.chasis {
+	.dimLineVert3 {
+		border-right-style: dashed;
+		border-right-width: 1px; 
+		position: absolute;
+	}
+	
+	.dimLineHoriz {
+		border-top-style: solid; 
+		border-top-width: 1px;
+		position: absolute;
+	}
+	
+	.tablainputBoxes {
 		width:120px;
 		text-align: right; font-family: arial,helvetica,sans-serif; font-size: 10pt;
 		position: absolute;
@@ -41,19 +53,18 @@
 </style>
 
 <style>
-	.diagrama {
+.diagrama {
 		overflow: scroll;
 		position: relative;
 		height: 450px; 
 		width: 100%;
 	}
-	
+
 /* Estilos CSS para barra de navegación
 
 	/* Navbar container */
 	.navbar {
-		height: 48px;
-		width: 100%;
+		overflow: hidden;
 		background-color: #333;
 		font-family: Arial;
 	}
@@ -75,7 +86,6 @@
 
 	/* The container div - needed to position the dropdown content */
 	.dropdown {
-		float: left;
 		position: relative;
 		display: inline-block;
 	}
