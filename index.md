@@ -102,12 +102,13 @@
 .show {display:block;}
 </style>
 
-<div id="cargaAppMenu" class="navbar"></div>
+<div id="cargaAppMenu" class="navbar">
 <button onclick="tratarOpMenu(this)" class="dropbtn" value="recalcular">Recalcular</button>
 <div id="menuVehiculos" class="dropdown">
 	<button onclick="tratarOpMenu(this)" class="dropbtn" value="vehiculos">Opciones de Vehículos</button>
 	<div id="dropdownVehiculos" class="dropdown-content"></div>
 </div>
+	</div>
 	
 <div id="Diagrama" style="position: relative; height: 450px; width: 100%;"></div>
 
