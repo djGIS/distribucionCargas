@@ -13,7 +13,7 @@ Especificaciones técnicas:
 */
 
 //inicialización y calculo para vehiculos de tipo chasis solo
-var posBaseLine = 100;
+var posBaseLine = 200;
 var posCajaLine = 60;
 var posEjesLine = 380;
 var posPisoCaja = 250;
