@@ -1077,10 +1077,10 @@ var dimLines
 			case 'chasis':
 				inicializarDimCtrl('chasis');
 				inicializarConfigCtrl('chasis');
-				cargarSelectConfig(document.getElementById('chasis' + 1 + "e"));
-				cargarSelectConfig(document.getElementById('chasis' + 2 + "e"));
-				dimChasis('chasis');
-				calcularChasis('chasis');	
+				//cargarSelectConfig(document.getElementById('chasis' + 1 + "e"));
+				//cargarSelectConfig(document.getElementById('chasis' + 2 + "e"));
+				//dimChasis('chasis');
+				//calcularChasis('chasis');	
 			break;
 			
 			case 'tractor':
