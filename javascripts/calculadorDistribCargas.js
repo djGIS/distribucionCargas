@@ -573,7 +573,7 @@ var dimLines;
 		document.getElementById(dimLines[vehSelect][3][0]).style.left = posLeft + dimLines[vehSelect][3][2];
 		document.getElementById(dimLines[vehSelect][6][0]).style.left = posLeft + dimLines[vehSelect][6][2];
 		document.getElementById(dimLines[vehSelect][5][0]).style.width = defWidth + dimLines[vehSelect][5][3];
-		alert(document.getElementById(vehSelect+"Graf").style.left);
+		alert(document.getElementById(vehSelect+"Graf"));
 		posLeft = posBaseLine + veh.distCarga0 + (veh.distCargaF - inputBoxes[vehSelect][4][6])/2;
 		document.getElementById(vehSelect+inputBoxes[vehSelect][4][0]).style.left = posLeft;
 		
