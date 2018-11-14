@@ -808,7 +808,7 @@ var dimLines
 		for (var i = 0; i < dimLines[vehSelect].length; i++) {
 			var dimLine = document.createElement("div");
 			dimLine.id = dimLines[vehSelect][i][0];
-			dimLine.style = "position: absolute; top: " + dimLines[vehSelect][i][1] + "px; width: " + dimLines[vehSelect][i][3] + "px; height: " + dimLines[vehSelect][i][4] + "px; " + dimLines[vehSelect][i][5] + " display: " + dimLines[vehSelect][i][6] + ";";
+			dimLine.style = "top: " + dimLines[vehSelect][i][1] + "px; height: " + dimLines[vehSelect][i][4] + "px; display: " + dimLines[vehSelect][i][6] + ";";
 			document.getElementById(diagAreaId).appendChild(dimLine);
 			if (dimLines[vehSelect][i][7] != "") {
 				document.getElementById(dimLine.id).setAttribute("class", dimLines[vehSelect][i][7]);
@@ -995,75 +995,75 @@ var dimLines
 		dimLines = {
 			chasis: [
 				//id, top, left, width, height, lineStyle, display, class
-				["lineaBaseV", 0, 0, 0, posPisoCaja, "border-left-style: dashed; border-left-width: 1px;", "inline", ""],
-				["cajaCargaV", 0, 0, -2, posPisoCaja, "border-left-style: dashed; border-left-width: 1px; border-right-style: dashed; border-right-width: 1px;", "inline", ""],
+				["lineaBaseV", 0, 0, 0, posPisoCaja, "", "inline", "dimLineVert1"],
+				["cajaCargaV", 0, 0, -2, posPisoCaja, "", "inline", "dimLineVert2"],
 				["lineaCajaT1", posCajaLine - 3, -19, 0, 0, "", "inline", "triangle_right"],
 				["lineaCajaT2", posCajaLine - 3, 0, 0, 0, "", "inline", "triangle_left"],
 				["lineaCajaT3", posCajaLine - 3, -19, 0, 0, "", "inline", "triangle_right"],
-				["lineaCaja1", posCajaLine, -29, 29, 0, "border-top-style: solid; border-top-width: 1px;", "inline", ""],
-				["lineaCaja2", posCajaLine, 0, 0, 0, "border-top-style: solid; border-top-width: 1px;", "inline", ""],
+				["lineaCaja1", posCajaLine, -29, 29, 0, "", "inline", "dimLineHoriz"],
+				["lineaCaja2", posCajaLine, 0, 0, 0, "", "inline", "dimLineHoriz"],
 				["lineaEjesT1", posEjesLine - 3, 0, 0, 0, "", "inline", "triangle_left"],
 				["lineaEjesT2", posEjesLine - 3, -19, 0, 0, "", "inline", "triangle_right"],
 				["lineaEjesT3", posEjesLine - 3, -1, 0, 0, "", "none", "triangle_left"],
-				["lineaEjes1", posEjesLine, 0, 0, 0, "border-top-style: solid; border-top-width: 1px;", "inline", ""],
-				["lineaEjes2", posEjesLine, 0, 0, 0, "border-top-style: solid; border-top-width: 1px;", "none", ""],
-				//["lineaEjes3", posEjesLine, 0, 29, 0, "border-top-style: solid; border-top-width: 1px;", "none", ""],
-				["entreGruposV", posPisoCaja, 0, -2, 150, "border-left-style: dashed; border-left-width: 1px; border-right-style: dashed; border-right-width: 1px;", "inline", ""],
-				["entreEjes1V", posPisoCaja, 0, -2, 150, "border-left-style: dashed; border-left-width: 1px; border-right-style: dashed; border-right-width: 1px;", "none", ""],
-				["entreEjes2V", posPisoCaja, 0, -2, 150, "border-right-style: dashed; border-right-width: 1px;", "none", ""],
+				["lineaEjes1", posEjesLine, 0, 0, 0, "", "inline", "dimLineHoriz"],
+				["lineaEjes2", posEjesLine, 0, 0, 0, "", "none", "dimLineHoriz"],
+				//["lineaEjes3", posEjesLine, 0, 29, 0, "", "none", ""],
+				["entreGruposV", posPisoCaja, 0, -2, 150, "", "inline", "dimLineVert2"],
+				["entreEjes1V", posPisoCaja, 0, -2, 150, "", "none", "dimLineVert2"],
+				["entreEjes2V", posPisoCaja, 0, -2, 150, "", "none", "dimLineVert3"],
 				["lineaGrpT1", posEjesLine - 23, -19, 0, 0, "", "none", "triangle_right"],
 				["lineaGrpT2", posEjesLine - 23, 0, 0, 0, "", "none", "triangle_left"],
-				["lineaGrp1", posEjesLine - 20, 0, 0, 0, "border-top-style: solid; border-top-width: 1px;", "none", ""],
+				["lineaGrp1", posEjesLine - 20, 0, 0, 0, "", "none", "dimLineHoriz"],
 			],
 			tractor: [
 				//id, top, left, width, height, lineStyle, display, class
-				["lineaBaseV", 0, 0, 0, posPisoCaja, "border-left-style: dashed; border-left-width: 1px;", "none", ""],
-				["cajaCargaV", 0, 0, -2, posPisoCaja, "border-left-style: dashed; border-left-width: 1px; border-right-style: dashed; border-right-width: 1px;", "none", ""],
+				["lineaBaseV", 0, 0, 0, posPisoCaja, "", "none", "dimLineVert1"],
+				["cajaCargaV", 0, 0, -2, posPisoCaja, "", "none", "dimLineVert2"],
 				["lineaCajaT1", posCajaLine + 157, 19, 0, 0, "", "none", "triangle_right"],
 				["lineaCajaT2", posCajaLine + 157, 0, 0, 0, "", "none", "triangle_left"],
 				["lineaCajaT3", posCajaLine - 3, -19, 0, 0, "", "none", "triangle_right"],
-				["lineaCaja1", posCajaLine + 160, 10, 0, 0, "border-top-style: solid; border-top-width: 1px;", "none", ""],
-				["lineaCaja2", posCajaLine, 0, 0, 0, "border-top-style: solid; border-top-width: 1px;", "none", ""],
+				["lineaCaja1", posCajaLine + 160, 10, 0, 0, "", "none", "dimLineHoriz"],
+				["lineaCaja2", posCajaLine, 0, 0, 0, "", "none", "dimLineHoriz"],
 				["lineaEjesT1", posEjesLine - 3, 0, 0, 0, "", "inline", "triangle_left"],
 				["lineaEjesT2", posEjesLine - 3, -19, 0, 0, "", "inline", "triangle_right"],
 				["lineaEjesT3", posEjesLine - 3, -1, 0, 0, "", "none", "triangle_left"],
-				["lineaEjes1", posEjesLine, 0, 0, 0, "border-top-style: solid; border-top-width: 1px;", "inline", ""],
-				["lineaEjes2", posEjesLine, 0, 0, 0, "border-top-style: solid; border-top-width: 1px;", "none", ""],
-				//["lineaEjes3", posEjesLine, 0, 29, 0, "border-top-style: solid; border-top-width: 1px;", "none", ""],
-				["entreGruposV", posPisoCaja - 50, 0, -2, 200, "border-left-style: dashed; border-left-width: 1px; border-right-style: dashed; border-right-width: 1px;", "inline", ""],
-				["entreEjes1V", posPisoCaja, 0, -2, 150, "border-left-style: dashed; border-left-width: 1px; border-right-style: dashed; border-right-width: 1px;", "none", ""],
-				["entreEjes2V", posPisoCaja, 0, -2, 150, "border-right-style: dashed; border-right-width: 1px;", "none", ""],
+				["lineaEjes1", posEjesLine, 0, 0, 0, "", "inline", "dimLineHoriz"],
+				["lineaEjes2", posEjesLine, 0, 0, 0, "", "none", "dimLineHoriz"],
+				//["lineaEjes3", posEjesLine, 0, 29, 0, "", "none", "dimLineHoriz"],
+				["entreGruposV", posPisoCaja - 50, 0, -2, 200, "", "inline", "dimLineVert2"],
+				["entreEjes1V", posPisoCaja, 0, -2, 150, "", "none", "dimLineVert2"],
+				["entreEjes2V", posPisoCaja, 0, -2, 150, "", "none", "dimLineVert3"],
 				["lineaGrpT1", posEjesLine - 23, -19, 0, 0, "", "none", "triangle_right"],
 				["lineaGrpT2", posEjesLine - 23, 0, 0, 0, "", "none", "triangle_left"],
-				["lineaGrp1", posEjesLine - 20, 0, 0, 0, "border-top-style: solid; border-top-width: 1px;", "none", ""],
+				["lineaGrp1", posEjesLine - 20, 0, 0, 0, "", "none", "dimLineHoriz"],
 			],
 			semi: [
 				//id, top, left_offset, width, height, lineStyle, display, class
 				//dimensiones de caja de carga
-				["semiCajaCarga", 0, posBaseLine, (inputBoxes.semi[2][1] / convCmToPx) - 2, posPisoCaja, "border-left-style: dashed; border-left-width: 1px; border-right-style: dashed; border-right-width: 1px;", "inline", ""],
+				["semiCajaCarga", 0, posBaseLine, (inputBoxes.semi[2][1] / convCmToPx) - 2, posPisoCaja, "", "inline", "dimLineVert2"],
 				["semiLineaCajaT1", posCajaLine - 33, 0, 0, 0, "", "inline", "triangle_left"],
 				["semiLineaCajaT2", posCajaLine - 33, -18, 0, 0, "", "inline", "triangle_right"],
-				["semiLineaCaja1", posCajaLine - 30, posBaseLine - 29, (inputBoxes.semi[3][1] / convCmToPx) + (inputBoxes.semi[4][1] / (2 * convCmToPx)) + 29 - 35, 0, "border-top-style: solid; border-top-width: 1px;", "inline", ""],
-				["semiLineaCaja2", posCajaLine - 30, posBaseLine + (inputBoxes.semi[3][1] / convCmToPx) + (inputBoxes.semi[4][1] / (2 * convCmToPx)) + 35, (inputBoxes.semi[4][1] / (2 * convCmToPx)) - 35, 0, "border-top-style: solid; border-top-width: 1px;", "inline", ""],
+				["semiLineaCaja1", posCajaLine - 30, posBaseLine - 29, (inputBoxes.semi[3][1] / convCmToPx) + (inputBoxes.semi[4][1] / (2 * convCmToPx)) + 29 - 35, 0, "", "inline", "dimLineHoriz"],
+				["semiLineaCaja2", posCajaLine - 30, posBaseLine + (inputBoxes.semi[3][1] / convCmToPx) + (inputBoxes.semi[4][1] / (2 * convCmToPx)) + 35, (inputBoxes.semi[4][1] / (2 * convCmToPx)) - 35, 0, "", "inline", "dimLineHoriz"],
 				//dimensiones con respecto al plato de enganche
-				["semiEntreGrupos1", 0, 0, (inputBoxes.semi[2][1] / convCmToPx) - 2, posPisoCaja, "border-left-style: dashed; border-left-width: 1px; border-right-style: dashed; border-right-width: 1px;", "inline", ""],
+				["semiEntreGrupos1", 0, 0, (inputBoxes.semi[2][1] / convCmToPx) - 2, posPisoCaja, "", "inline", "dimLineVert2"],
 				["semiLineaCajaT3", posCajaLine - 3, -18, 0, 0, "", "inline", "triangle_right"],
 				["semiLineaCajaT4", posCajaLine - 3, 0, 0, 0, "", "inline", "triangle_left"],
 				["semiLineaCajaT5", posCajaLine - 3, -18, 0, 0, "", "inline", "triangle_right"],
-				["semiLineaCaja3", posCajaLine, -35, 35, 0, "border-top-style: solid; border-top-width: 1px;", "inline", ""],
-				["semiLineaCaja4", posCajaLine, 0, 0, 0, "border-top-style: solid; border-top-width: 1px;", "inline", ""],
+				["semiLineaCaja3", posCajaLine, -35, 35, 0, "", "inline", "dimLineHoriz"],
+				["semiLineaCaja4", posCajaLine, 0, 0, 0, "", "inline", "dimLineHoriz"],
 				//dimensiones del grupo 3
-				["semiEntreGrupos2", posPisoCaja, 0, -2, 0, "border-left-style: dashed; border-left-width: 1px; border-right-style: dashed; border-right-width: 1px;", "inline", ""],
+				["semiEntreGrupos2", posPisoCaja, 0, -2, 0, "", "inline", "dimLineVert2"],
 				["semiLineaEjesT1", posEjesLine - 3, -19, 0, 0, "", "none", "triangle_right"],
 				["semiLineaEjesT2", posEjesLine - 3, 0, 0, 0, "", "none", "triangle_left"],
-				["semiLineaEjes1", posEjesLine, 0, 0, 0, "border-top-style: solid; border-top-width: 1px;", "none", ""],
-				["semiLineaEjes2", posEjesLine, posBaseLine + (inputBoxes.semi[1][1] / (2 * convCmToPx)) + 35, (inputBoxes.semi[1][1] / (2 * convCmToPx)) - 35, 0, "border-top-style: solid; border-top-width: 1px;", "none", ""],
+				["semiLineaEjes1", posEjesLine, 0, 0, 0, "", "none", "dimLineHoriz"],
+				["semiLineaEjes2", posEjesLine, posBaseLine + (inputBoxes.semi[1][1] / (2 * convCmToPx)) + 35, (inputBoxes.semi[1][1] / (2 * convCmToPx)) - 35, 0, "", "none", "dimLineHoriz"],
 				//dimensiones del eje flotante
-				["semiEntreGrupos3", posPisoCaja, 0, -2, 150, "border-left-style: dashed; border-left-width: 1px; border-right-style: dashed; border-right-width: 1px;", "inline", ""],
+				["semiEntreGrupos3", posPisoCaja, 0, -2, 150, "", "inline", "dimLineVert2"],
 				["semiLineaEjesT3", posEjesLine - 3, 0, 0, 0, "", "inline", "triangle_left"],
 				["semiLineaEjesT4", posEjesLine - 3, -18, 0, 0, "", "inline", "triangle_right"],
-				["semiLineaEjes3", posEjesLine, 0, (inputBoxes.semi[1][1] / (2 * convCmToPx)) - 35, 0, "border-top-style: solid; border-top-width: 1px;", "inline", ""],
-				["semiLineaEjes4", posEjesLine, 0, (inputBoxes.semi[1][1] / (2 * convCmToPx)) - 35, 0, "border-top-style: solid; border-top-width: 1px;", "inline", ""],
+				["semiLineaEjes3", posEjesLine, 0, (inputBoxes.semi[1][1] / (2 * convCmToPx)) - 35, 0, "", "inline", "dimLineHoriz"],
+				["semiLineaEjes4", posEjesLine, 0, (inputBoxes.semi[1][1] / (2 * convCmToPx)) - 35, 0, "", "inline", "dimLineHoriz"],
 			]
 		};
 
@@ -1077,10 +1077,10 @@ var dimLines
 			case 'chasis':
 				inicializarDimCtrl('chasis');
 				inicializarConfigCtrl('chasis');
-				//cargarSelectConfig(document.getElementById('chasis' + 1 + "e"));
-				//cargarSelectConfig(document.getElementById('chasis' + 2 + "e"));
-				//dimChasis('chasis');
-				//calcularChasis('chasis');	
+				cargarSelectConfig(document.getElementById('chasis' + 1 + "e"));
+				cargarSelectConfig(document.getElementById('chasis' + 2 + "e"));
+				dimChasis('chasis');
+				calcularChasis('chasis');	
 			break;
 			
 			case 'tractor':
@@ -1369,6 +1369,3 @@ function descargarPallet (elem) {
 	//alert(centroGravedad);
 	calcularCargas(centroGravedad, pesoTotal);
 }
-	
-//window.addEventListener("load", inicializarVeh(tiposVeh[0])); //("chasis")
-//document.addEventListener("DOMContentLoaded", inicializarVeh(tiposVeh[0]));
