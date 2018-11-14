@@ -63,6 +63,7 @@
 
 	/* The container div - needed to position the dropdown content */
 	.dropdown {
+		float: left;
 		position: relative;
 		display: inline-block;
 	}
@@ -102,7 +103,7 @@
 .show {display:block;}
 </style>
 
-<div>
+<div class="dropdown">
 	<button onclick="tratarOpMenu(this)" class="dropbtn" value="recalcular">Recalcular</button>
 </div>
 <div id="menuVehiculos" class="dropdown">
