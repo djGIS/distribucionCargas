@@ -472,7 +472,7 @@ var dimLines
 			}
 		}
 		cargarTablaPesos(configSelect);
-		alert(document.getElementById(dimLines[vehSelect][11][0]).style.display);
+		//alert(document.getElementById(dimLines[vehSelect][11][0]).style.display);
 		switch (vehSelect) {
 		case 'chasis':
 			dimChasis(vehSelect);
