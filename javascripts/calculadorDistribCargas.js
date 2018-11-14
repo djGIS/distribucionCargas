@@ -26,35 +26,35 @@ var inputBoxPad = "text-align: right;";
 var tiposVeh = ['chasis', 'tractor', 'semi'];
 	
 // Dimensiones del vehículo
-var inputBoxes 		
-var dimLines 
+var inputBoxes;
+var dimLines;
 		
-	// Pesos de los grupos y cargas
-	var pGrupos = [
-		// Grupo, Ejes, Rodado, Tara, Max
-		["carga", 1, "", 0, 9000],
-		["chasis1", 1, "S", 4700, 6000],
-		["chasis2", 1, "D", 1700, 10500],
-	];
+// Pesos de los grupos y cargas
+var pGrupos = [
+	// Grupo, Ejes, Rodado, Tara, Max
+	["carga", 1, "", 0, 9000],
+	["chasis1", 1, "S", 4700, 6000],
+	["chasis2", 1, "D", 1700, 10500],
+];
 	
-	function drawGoogleChart(vehSelect, dataArray, hAxisMin, hAxisMax) {		
-	/*Función para trazar el gráfico de carga, basado en un conjunto de 6 límites calculados por la función calcular[vehiculo]*/
+function drawGoogleChart(vehSelect, dataArray, hAxisMin, hAxisMax) {		
+/*Función para trazar el gráfico de carga, basado en un conjunto de 6 límites calculados por la función calcular[vehiculo]*/
 	
 	var data = new google.visualization.DataTable();
-	data.addColumn('number', 'Distancia');
-	//data.addColumn('number', 'Dummy');
-	data.addColumn('number', 'Max Permisible');
-	data.addColumn('number', 'Eje Delantero'); 
-	data.addColumn('number', 'Eje Trasero');
-	data.addColumn('number', 'Min Delantero');
-	data.addColumn('number', 'Min Tracción');
-	data.addColumn('number', 'Carga Máxima'); 
+		data.addColumn('number', 'Distancia');
+		//data.addColumn('number', 'Dummy');
+		data.addColumn('number', 'Max Permisible');
+		data.addColumn('number', 'Eje Delantero'); 
+		data.addColumn('number', 'Eje Trasero');
+		data.addColumn('number', 'Min Delantero');
+		data.addColumn('number', 'Min Tracción');
+		data.addColumn('number', 'Carga Máxima'); 
 		
 	for (var i = 0; i < dataArray.length; i++) {
 		data.addRow([dataArray[i][0], dataArray[i][1], dataArray[i][2], dataArray[i][3], dataArray[i][4], dataArray[i][5], dataArray[i][6]]);
 	}
 	//alert(document.getElementById("distCargaFinput").value / 20);
-    var options = {
+    	var options = {
 		//chart: {
         //  title: 'Box Office Earnings in First Two Weeks of Opening',
         //  subtitle: 'in millions of dollars (USD)'
