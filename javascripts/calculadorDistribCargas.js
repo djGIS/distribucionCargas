@@ -21,7 +21,7 @@ var convCmToPx = 2;
 var diagCanvasId = "Diagrama";
 var diagAreaId = "diagArea";
 	
-var inputBoxPad = "text-align: right;";
+
 	
 var tiposVeh = ['chasis', 'tractor', 'semi'];
 	
@@ -29,32 +29,32 @@ var tiposVeh = ['chasis', 'tractor', 'semi'];
 var inputBoxes;
 var dimLines;
 		
-// Pesos de los grupos y cargas
-var pGrupos = [
-	// Grupo, Ejes, Rodado, Tara, Max
-	["carga", 1, "", 0, 9000],
-	["chasis1", 1, "S", 4700, 6000],
-	["chasis2", 1, "D", 1700, 10500],
-];
+	// Pesos de los grupos y cargas
+	var pGrupos = [
+		// Grupo, Ejes, Rodado, Tara, Max
+		["carga", 1, "", 0, 9000],
+		["chasis1", 1, "S", 4700, 6000],
+		["chasis2", 1, "D", 1700, 10500],
+	];
 	
-function drawGoogleChart(vehSelect, dataArray, hAxisMin, hAxisMax) {		
-/*Función para trazar el gráfico de carga, basado en un conjunto de 6 límites calculados por la función calcular[vehiculo]*/
+	function drawGoogleChart(vehSelect, dataArray, hAxisMin, hAxisMax) {		
+	/*Función para trazar el gráfico de carga, basado en un conjunto de 6 límites calculados por la función calcular[vehiculo]*/
 	
 	var data = new google.visualization.DataTable();
-		data.addColumn('number', 'Distancia');
-		//data.addColumn('number', 'Dummy');
-		data.addColumn('number', 'Max Permisible');
-		data.addColumn('number', 'Eje Delantero'); 
-		data.addColumn('number', 'Eje Trasero');
-		data.addColumn('number', 'Min Delantero');
-		data.addColumn('number', 'Min Tracción');
-		data.addColumn('number', 'Carga Máxima'); 
+	data.addColumn('number', 'Distancia');
+	//data.addColumn('number', 'Dummy');
+	data.addColumn('number', 'Max Permisible');
+	data.addColumn('number', 'Eje Delantero'); 
+	data.addColumn('number', 'Eje Trasero');
+	data.addColumn('number', 'Min Delantero');
+	data.addColumn('number', 'Min Tracción');
+	data.addColumn('number', 'Carga Máxima'); 
 		
 	for (var i = 0; i < dataArray.length; i++) {
 		data.addRow([dataArray[i][0], dataArray[i][1], dataArray[i][2], dataArray[i][3], dataArray[i][4], dataArray[i][5], dataArray[i][6]]);
 	}
 	//alert(document.getElementById("distCargaFinput").value / 20);
-    	var options = {
+    var options = {
 		//chart: {
         //  title: 'Box Office Earnings in First Two Weeks of Opening',
         //  subtitle: 'in millions of dollars (USD)'
@@ -542,7 +542,7 @@ function drawGoogleChart(vehSelect, dataArray, hAxisMin, hAxisMax) {
 	function dimChasis(vehSelect) {
 		/*Función para dimensionar dinámicamente los vehículos.*/
 		var posLeft = 0;
-		var width = 0;
+		var defWidth = 0;
 			
 		var veh = vehConfig(vehSelect);
 		
@@ -563,54 +563,53 @@ function drawGoogleChart(vehSelect, dataArray, hAxisMin, hAxisMax) {
 		document.getElementById(dimLines[vehSelect][13][0]).style.left = posLeft + dimLines[vehSelect][13][2];
 		document.getElementById(dimLines[vehSelect][15][0]).style.left = posLeft + dimLines[vehSelect][15][2];
 		document.getElementById(dimLines[vehSelect][17][0]).style.left = posLeft + dimLines[vehSelect][17][2];
-		
+			
 		// Dimensionamiento por modificación de posción de caja de carga
 		posLeft = posBaseLine + veh.distCarga0;
-		width = veh.distCarga0;
-		alert(veh.distCarga0);	
-		document.getElementById(dimLines[vehSelect][0][0]).style.width = width;
+		defWidth = veh.distCarga0;
+		document.getElementById(dimLines[vehSelect][0][0]).style.width = defWidth;
 		document.getElementById(vehSelect+"Graf").style.left = posLeft; //"position: absolute; top: 100px; left: " + posLeft + "px; width: 100%;";
 		document.getElementById(dimLines[vehSelect][1][0]).style.left = posLeft;
 		document.getElementById(dimLines[vehSelect][3][0]).style.left = posLeft + dimLines[vehSelect][3][2];
 		document.getElementById(dimLines[vehSelect][6][0]).style.left = posLeft + dimLines[vehSelect][6][2];
-		document.getElementById(dimLines[vehSelect][5][0]).style.width = width + dimLines[vehSelect][5][3];
+		document.getElementById(dimLines[vehSelect][5][0]).style.width = defWidth + dimLines[vehSelect][5][3];
 		
 		posLeft = posBaseLine + veh.distCarga0 + (veh.distCargaF - inputBoxes[vehSelect][4][6])/2;
 		document.getElementById(vehSelect+inputBoxes[vehSelect][4][0]).style.left = posLeft;
 		
 		// Dimensionamiento por modificación de tamaño de caja de carga
 		posLeft = posBaseLine + veh.distCarga0 + veh.distCargaF;
-		width = veh.distCargaF;
+		defWidth = veh.distCargaF;
 		document.getElementById(dimLines[vehSelect][4][0]).style.left = posLeft + dimLines[vehSelect][4][2];
-		document.getElementById(dimLines[vehSelect][1][0]).style.width = width + dimLines[vehSelect][1][3];
+		document.getElementById(dimLines[vehSelect][1][0]).style.width = defWidth + dimLines[vehSelect][1][3];
 		document.getElementById(imgComposite[vehSelect][0][0]).style.left = posLeft + imgComposite[vehSelect][0][3]; // "position: absolute; left: " + posLeft + "px; height: 400px; display: " + imgComposite[vehSelect][0][2] + ";";
-		document.getElementById(dimLines[vehSelect][6][0]).style.width = width + dimLines[vehSelect][6][3];
+		document.getElementById(dimLines[vehSelect][6][0]).style.width = defWidth + dimLines[vehSelect][6][3];
 		
 		// Dimensionamiento por modificación de separación de los ejes delanteros
 		posLeft = posBaseLine + veh.grp1.sep;
 		document.getElementById(dimLines[vehSelect][16][0]).style.left = posLeft + dimLines[vehSelect][17][2];
 		document.getElementById(imgComposite[vehSelect][2][0]).style.left = posLeft + imgComposite[vehSelect][2][3];
 		
-		width = veh.grp1.sep;
-		document.getElementById(dimLines[vehSelect][13][0]).style.width = width + dimLines[vehSelect][13][3];
-		document.getElementById(dimLines[vehSelect][17][0]).style.width = width + dimLines[vehSelect][17][3];
+		defWidth = veh.grp1.sep;
+		document.getElementById(dimLines[vehSelect][13][0]).style.width = defWidth + dimLines[vehSelect][13][3];
+		document.getElementById(dimLines[vehSelect][17][0]).style.width = defWidth + dimLines[vehSelect][17][3];
 		
 		posLeft = posBaseLine + (veh.grp1.sep - inputBoxes[vehSelect][0][6])/2;
 		document.getElementById(vehSelect+inputBoxes[vehSelect][0][0]).style.left = posLeft;
 		
-		width = Math.max(100, veh.grp1.sep);
-		posLeft = posBaseLine + (veh.grp1.sep - width)/2 - 5; //+ dimSepGrp1 
+		defWidth = Math.max(100, veh.grp1.sep);
+		posLeft = posBaseLine + (veh.grp1.sep - defWidth)/2 - 5; //+ dimSepGrp1 
 		document.getElementById(vehSelect+"1").style.left = posLeft; //"position: absolute; left: " + posLeft + "px; top: 400px; width: " + width + "px; padding-top: 5px; padding-left: 5px; padding-right: 5px; background-color: #C4D3DF";
-		document.getElementById(vehSelect+"1").style.width = width;
+		document.getElementById(vehSelect+"1").style.width = defWidth;
 		document.getElementById(vehSelect+"1Peso").style.left = posLeft; // = "position: absolute; left: " + posLeft + "px; width: " + width + "px;";
-		document.getElementById(vehSelect+"1Peso").style.width = width;
+		document.getElementById(vehSelect+"1Peso").style.width = defWidth;
 		
 		// Dimensionamiento por modificación de la distancia entre grupos
-		width = veh.distGrp12;
-		document.getElementById(dimLines[vehSelect][12][0]).style.width = width + dimLines[vehSelect][12][3];
+		defWidth = veh.distGrp12;
+		document.getElementById(dimLines[vehSelect][12][0]).style.width = defWidth + dimLines[vehSelect][12][3];
 		
-		width = veh.distGrp12; //(veh.distGrp12 - inputBoxes[vehSelect][1][6])/2;
-		document.getElementById(dimLines[vehSelect][10][0]).style.width = width + dimLines[vehSelect][10][3];
+		defWidth = veh.distGrp12; //(veh.distGrp12 - inputBoxes[vehSelect][1][6])/2;
+		document.getElementById(dimLines[vehSelect][10][0]).style.width = defWidth + dimLines[vehSelect][10][3];
 		
 		posLeft = posBaseLine + (veh.distGrp12 - inputBoxes[vehSelect][1][6])/2;
 		document.getElementById(vehSelect+inputBoxes[vehSelect][1][0]).style.left = posLeft + inputBoxes[vehSelect][1][5]; //Math.round(posBaseLine + (veh.distGrp12 - inputBoxes[vehSelect][1][6]) / 2);
@@ -626,16 +625,16 @@ function drawGoogleChart(vehSelect, dataArray, hAxisMin, hAxisMax) {
 		document.getElementById(imgComposite[vehSelect][4][0]).style.left = posLeft + veh.grp2.sep + imgComposite[vehSelect][5][3];
 		
 		posLeft = posBaseLine + veh.distGrp12 + veh.grp2.sep/2;
-		width = Math.max(100, veh.grp2.sep);
-		posLeft = posLeft - width / 2 - 5; //+ dimSepGrp1 
+		defWidth = Math.max(100, veh.grp2.sep);
+		posLeft = posLeft - defWidth / 2 - 5; //+ dimSepGrp1 
 		document.getElementById(vehSelect+"2").style.left = posLeft; 
-		document.getElementById(vehSelect+"2").style.width = width;
+		document.getElementById(vehSelect+"2").style.width = defWidth;
 		document.getElementById(vehSelect+"2Peso").style.left = posLeft; 
-		document.getElementById(vehSelect+"2Peso").style.width = width;
+		document.getElementById(vehSelect+"2Peso").style.width = defWidth;
 		
-		width = veh.grp2.sep; 
-		document.getElementById(dimLines[vehSelect][11][0]).style.width = width + dimLines[vehSelect][11][3];
-		document.getElementById(dimLines[vehSelect][14][0]).style.width = width + dimLines[vehSelect][14][3];
+		defWidth = veh.grp2.sep; 
+		document.getElementById(dimLines[vehSelect][11][0]).style.width = defWidth + dimLines[vehSelect][11][3];
+		document.getElementById(dimLines[vehSelect][14][0]).style.width = defWidth + dimLines[vehSelect][14][3];
 		
 		posLeft = posBaseLine + veh.distGrp12 + (veh.grp2.sep - inputBoxes[vehSelect][2][6])/2;
 		document.getElementById(vehSelect+inputBoxes[vehSelect][2][0]).style.left = posLeft + inputBoxes[vehSelect][2][5];
@@ -654,7 +653,7 @@ function drawGoogleChart(vehSelect, dataArray, hAxisMin, hAxisMax) {
 		document.getElementById(dimLines.tractor[5][0]).style.display = 'inline';
 		
 		var posLeft = 0;
-		var width = 0;
+		var defWidth = 0;
 		
 		// Actualizar los valores de dimensiones
 		/*
@@ -681,11 +680,11 @@ function drawGoogleChart(vehSelect, dataArray, hAxisMin, hAxisMax) {
 		
 		// Dimensionamiento por modificación de posción de enganche
 		posLeft = posBaseLine + veh.distGrp12;
-		width = document.getElementById(vehSelect+'distGrp25input').style.width;
-		width = Number(width.substring(0, width.length - 2));
+		defWidth = document.getElementById(vehSelect+'distGrp25input').style.width;
+		defWidth = Number(defWidth.substring(0, defWidth.length - 2));
 		
 		if (veh.distGrp25 < 0) {
-			document.getElementById(vehSelect+'distGrp25input').style.left = posLeft + veh.distGrp25 - inputBoxes[vehSelect][5][5] - dimLines.tractor[5][2] - width;
+			document.getElementById(vehSelect+'distGrp25input').style.left = posLeft + veh.distGrp25 - inputBoxes[vehSelect][5][5] - dimLines.tractor[5][2] - defWidth;
 			document.getElementById(dimLines.tractor[2][0]).style.left = posLeft + veh.distGrp25 - dimLines.tractor[2][2];
 			document.getElementById(dimLines.tractor[5][0]).style.left = posLeft + veh.distGrp25 - dimLines.tractor[2][2] - dimLines.tractor[5][2];
 			document.getElementById(dimLines.tractor[5][0]).style.width = Math.abs(veh.distGrp25) + 2*(dimLines.tractor[2][2] + dimLines.tractor[5][2]);
@@ -716,16 +715,16 @@ function drawGoogleChart(vehSelect, dataArray, hAxisMin, hAxisMax) {
 		
 		document.getElementById(dimLines[vehSelect][2][0]).style.left = posLeft + veh.distCarga0F + dimLines[vehSelect][2][2];
 
-		width = document.getElementById(vehSelect+inputBoxes[vehSelect][2][0]).style.width;
-		width = Number(width.substring(0, width.length - 2));
+		defWidth = document.getElementById(vehSelect+inputBoxes[vehSelect][2][0]).style.width;
+		defWidth = Number(defWidth.substring(0, defWidth.length - 2));
 		
-		document.getElementById(vehSelect+inputBoxes[vehSelect][2][0]).style.left = posLeft + (veh.distCarga0F - width)/2;
+		document.getElementById(vehSelect+inputBoxes[vehSelect][2][0]).style.left = posLeft + (veh.distCarga0F - defWidth)/2;
 		
 		document.getElementById(dimLines[vehSelect][3][0]).style.left = posLeft;
-		document.getElementById(dimLines[vehSelect][3][0]).style.width = (veh.distCarga0F - width) / 2;
+		document.getElementById(dimLines[vehSelect][3][0]).style.width = (veh.distCarga0F - defWidth) / 2;
 		
-		document.getElementById(dimLines[vehSelect][4][0]).style.left = posLeft + (veh.distCarga0F + width) / 2;
-		document.getElementById(dimLines[vehSelect][4][0]).style.width = (veh.distCarga0F - width) / 2;
+		document.getElementById(dimLines[vehSelect][4][0]).style.left = posLeft + (veh.distCarga0F + defWidth) / 2;
+		document.getElementById(dimLines[vehSelect][4][0]).style.width = (veh.distCarga0F - defWidth) / 2;
 		
 		document.getElementById(dimLines[vehSelect][6][0]).style.left = posLeft + dimLines[vehSelect][6][2];
 		
@@ -738,12 +737,12 @@ function drawGoogleChart(vehSelect, dataArray, hAxisMin, hAxisMax) {
 		
 		// Dimensionamiento por modificación de la distancia entre grupos
 		posLeft = posBaseLine + veh.distGrp12 + veh.distGrp25;
-		width = document.getElementById(vehSelect+inputBoxes[vehSelect][0][0]).style.width;
-		width = Number(width.substring(0, width.length - 2));
+		defWidth = document.getElementById(vehSelect+inputBoxes[vehSelect][0][0]).style.width;
+		defWidth = Number(defWidth.substring(0, defWidth.length - 2));
 		
 		document.getElementById(dimLines.tractor[0][0]).style.width = posLeft;
 		
-		document.getElementById(vehSelect+inputBoxes[vehSelect][0][0]).style.left = posLeft + (veh.distGrp35 - width)/2 + inputBoxes[vehSelect][0][5];
+		document.getElementById(vehSelect+inputBoxes[vehSelect][0][0]).style.left = posLeft + (veh.distGrp35 - defWidth)/2 + inputBoxes[vehSelect][0][5];
 		
 		document.getElementById(dimLines[vehSelect][7][0]).style.left = posLeft + dimLines[vehSelect][7][2];
 
@@ -752,9 +751,9 @@ function drawGoogleChart(vehSelect, dataArray, hAxisMin, hAxisMax) {
 		document.getElementById(dimLines[vehSelect][5][0]).style.left = posLeft + dimLines[vehSelect][5][2];
 		document.getElementById(dimLines[vehSelect][5][0]).style.width = veh.distGrp35;
 		
-		document.getElementById(dimLines[vehSelect][10][0]).style.left = posLeft + (veh.distGrp35 + width)/2 + dimLines[vehSelect][10][2];
-		document.getElementById(dimLines[vehSelect][10][0]).style.width = (veh.distGrp35 - width)/2;
-		document.getElementById(dimLines[vehSelect][9][0]).style.width = (veh.distGrp35 - width)/2 + veh.distCarga05 + dimLines[vehSelect][9][3];
+		document.getElementById(dimLines[vehSelect][10][0]).style.left = posLeft + (veh.distGrp35 + defWidth)/2 + dimLines[vehSelect][10][2];
+		document.getElementById(dimLines[vehSelect][10][0]).style.width = (veh.distGrp35 - defWidth)/2;
+		document.getElementById(dimLines[vehSelect][9][0]).style.width = (veh.distGrp35 - defWidth)/2 + veh.distCarga05 + dimLines[vehSelect][9][3];
 		
 		// Dimensionamiento por modificación de la distancia entre grupos y entre eje grupo trasero
 		posLeft = posBaseLine + veh.distGrp12 + veh.distGrp25 + veh.distGrp35;
@@ -763,45 +762,45 @@ function drawGoogleChart(vehSelect, dataArray, hAxisMin, hAxisMax) {
 		document.getElementById(imgComposite[vehSelect][4][0]).style.left = posLeft + veh.grp3.sep + imgComposite[vehSelect][5][3];
 		document.getElementById(imgComposite[vehSelect][5][0]).style.left = posLeft + veh.grp3.sep/2 + imgComposite[vehSelect][4][3];
 		
-		width = document.getElementById(vehSelect+inputBoxes[vehSelect][4][0]).style.width;
-		width = Number(width.substring(0, width.length - 2));
-		document.getElementById(vehSelect+inputBoxes[vehSelect][4][0]).style.left = posLeft + (veh.grp3.sep - width)/2;
+		defWidth = document.getElementById(vehSelect+inputBoxes[vehSelect][4][0]).style.width;
+		defWidth = Number(defWidth.substring(0, defWidth.length - 2));
+		document.getElementById(vehSelect+inputBoxes[vehSelect][4][0]).style.left = posLeft + (veh.grp3.sep - defWidth)/2;
 		
-		width = veh.grp3.sep;
+		defWidth = veh.grp3.sep;
 		document.getElementById(dimLines[vehSelect][11][0]).style.left = posLeft + dimLines[vehSelect][11][2];
-		document.getElementById(dimLines[vehSelect][11][0]).style.width = width + dimLines[vehSelect][11][3];
+		document.getElementById(dimLines[vehSelect][11][0]).style.width = defWidth + dimLines[vehSelect][11][3];
 		
 		document.getElementById(dimLines[vehSelect][12][0]).style.left = posLeft + dimLines[vehSelect][12][2];
 		document.getElementById(dimLines[vehSelect][14][0]).style.left = posLeft + dimLines[vehSelect][14][2];
-		document.getElementById(dimLines[vehSelect][14][0]).style.width = width + dimLines[vehSelect][14][3];
+		document.getElementById(dimLines[vehSelect][14][0]).style.width = defWidth + dimLines[vehSelect][14][3];
 		//document.getElementById(dimLines[vehSelect][15][0]).style.left = posLeft + (veh.grp3.sep + width)/2 + dimLines[vehSelect][15][2];
 		//document.getElementById(dimLines[vehSelect][15][0]).style.width = (veh.grp3.sep - width)/2;
-		document.getElementById(dimLines[vehSelect][13][0]).style.left = posLeft + width + dimLines[vehSelect][13][2];
+		document.getElementById(dimLines[vehSelect][13][0]).style.left = posLeft + defWidth + dimLines[vehSelect][13][2];
 		
-		width = document.getElementById(vehSelect+"1").style.width;
-		width = Number(width.substring(0, width.length - 2));
-		document.getElementById(vehSelect+"1").style.left =  posLeft + (veh.grp3.sep - width)/2;
+		defWidth = document.getElementById(vehSelect+"1").style.width;
+		defWidth = Number(defWidth.substring(0, defWidth.length - 2));
+		document.getElementById(vehSelect+"1").style.left =  posLeft + (veh.grp3.sep - defWidth)/2;
 				
 		// Dimensionamiento por modificación de la distancia entre grupos y distancia al eje flotante
 		document.getElementById(imgComposite[vehSelect][2][0]).style.left = posLeft - veh.distGrp34 + imgComposite[vehSelect][2][3];
 		
-		width = document.getElementById(vehSelect+inputBoxes[vehSelect][3][0]).style.width;
-		width = Number(width.substring(0, width.length - 2));
-		document.getElementById(vehSelect+inputBoxes[vehSelect][3][0]).style.left = posLeft - (veh.distGrp34 + width)/2;
+		defWidth = document.getElementById(vehSelect+inputBoxes[vehSelect][3][0]).style.width;
+		defWidth = Number(defWidth.substring(0, defWidth.length - 2));
+		document.getElementById(vehSelect+inputBoxes[vehSelect][3][0]).style.left = posLeft - (veh.distGrp34 + defWidth)/2;
 		
 		document.getElementById(dimLines[vehSelect][16][0]).style.left = posLeft - veh.distGrp34 + dimLines[vehSelect][16][2];
 		document.getElementById(dimLines[vehSelect][16][0]).style.width = veh.distGrp34 + dimLines[vehSelect][16][3];
 		
 		document.getElementById(dimLines[vehSelect][17][0]).style.left = posLeft - veh.distGrp34 + dimLines[vehSelect][17][2];
 		document.getElementById(dimLines[vehSelect][19][0]).style.left = posLeft - veh.distGrp34 + dimLines[vehSelect][19][2];
-		document.getElementById(dimLines[vehSelect][19][0]).style.width = (veh.distGrp34 - width)/2;
-		document.getElementById(dimLines[vehSelect][20][0]).style.left = posLeft - (veh.distGrp34 - width)/2 + dimLines[vehSelect][20][2];
-		document.getElementById(dimLines[vehSelect][20][0]).style.width = (veh.distGrp34 - width)/2;
+		document.getElementById(dimLines[vehSelect][19][0]).style.width = (veh.distGrp34 - defWidth)/2;
+		document.getElementById(dimLines[vehSelect][20][0]).style.left = posLeft - (veh.distGrp34 - defWidth)/2 + dimLines[vehSelect][20][2];
+		document.getElementById(dimLines[vehSelect][20][0]).style.width = (veh.distGrp34 - defWidth)/2;
 		document.getElementById(dimLines[vehSelect][18][0]).style.left = posLeft + dimLines[vehSelect][18][2];
 		
-		width = document.getElementById(vehSelect+"2").style.width;
-		width = Number(width.substring(0, width.length - 2));
-		document.getElementById(vehSelect+"2").style.left =  posLeft - veh.distGrp34 - width/2;
+		defWidth = document.getElementById(vehSelect+"2").style.width;
+		defWidth = Number(defWidth.substring(0, defWidth.length - 2));
+		document.getElementById(vehSelect+"2").style.left =  posLeft - veh.distGrp34 - defWidth/2;
 	}
 	
 	function inicializarDimCtrl (vehSelect) { 
@@ -840,9 +839,10 @@ function drawGoogleChart(vehSelect, dataArray, hAxisMin, hAxisMax) {
 				inputBox.value = inputBoxes[vehSelect][i][1];
 				inputBox.min = inputBoxes[vehSelect][i][2];
 				inputBox.max = inputBoxes[vehSelect][i][3];
-				inputBox.style = "position: absolute; top: " + inputBoxes[vehSelect][i][4] + "px; left: " + inputBoxes[vehSelect][i][5] + "px; width: " + inputBoxes[vehSelect][i][6] + "px; " + inputBoxes[vehSelect][i][7] + " display: " + inputBoxes[vehSelect][i][8] + ";";
+				inputBox.style = "top: " + inputBoxes[vehSelect][i][4] + "px; display: " + inputBoxes[vehSelect][i][8] + ";";
 				inputBox.onchange = function(){dimErrCheck(vehSelect, this);};
 			document.getElementById(diagAreaId).appendChild(inputBox);
+			document.getElementById(inputBox.id).setAttribute("class", "diminputBoxes");
 		}
 	
 		// Barra de pesos calculados
@@ -966,29 +966,29 @@ function drawGoogleChart(vehSelect, dataArray, hAxisMin, hAxisMax) {
 		inputBoxes = {
 				//[ejeId, value, min, max, top, left, width, formatting, display]
 			chasis: [
-				["sepGrp1input", init.chasis.grupo[0].sep, 0, 240, posEjesLine - 30, 0, 50, inputBoxPad, "none"],
-				["distGrp12input", init.chasis.distGrp12, 0, 1050, posEjesLine - 10, 0, 50, inputBoxPad, "inline"],
-				["sepGrp2input", init.chasis.grupo[1].sep, 0, 240, posEjesLine - 10, 0, 50, inputBoxPad, "none"],
-				["distCarga0input", init.chasis.distCarga0, 50, 300, posCajaLine - 10, posBaseLine - 78, 50, inputBoxPad, "inline"],
-				["distCargaFinput", init.chasis.distCargaF, 400, 1200, posCajaLine - 10, 0, 50, inputBoxPad, "inline"],
+				["sepGrp1input", init.chasis.grupo[0].sep, 0, 240, posEjesLine - 30, 0, 50, , "none"],
+				["distGrp12input", init.chasis.distGrp12, 0, 1050, posEjesLine - 10, 0, 50, , "inline"],
+				["sepGrp2input", init.chasis.grupo[1].sep, 0, 240, posEjesLine - 10, 0, 50, , "none"],
+				["distCarga0input", init.chasis.distCarga0, 50, 300, posCajaLine - 10, posBaseLine - 78, 50, , "inline"],
+				["distCargaFinput", init.chasis.distCargaF, 400, 1200, posCajaLine - 10, 0, 50, , "inline"],
 				["distCarga", init.chasis.distCargaF / 2, 0, 600, "position: absolute; top: 51px; width: 70px; padding: 5px", 151],
 			],
 			tractor: [
-				["sepGrp1input", init.tractor.grupo[0].sep, 0, 240, posEjesLine - 30, 0, 50, inputBoxPad, "none"],
-				["distGrp12input", init.tractor.distGrp12, 0, 1050, posEjesLine - 10, 0, 50, inputBoxPad, "inline"],
-				["sepGrp2input", init.tractor.grupo[1].sep, 0, 240, posEjesLine - 10, 0, 50, inputBoxPad, "none"],
-				["distCarga0input", init.tractor.distCarga0, 50, 300, posCajaLine - 10, 0, 50, inputBoxPad, "none"],
-				["distCargaFinput", init.tractor.distCargaF, 50, 200, posCajaLine - 10, 0, 50, inputBoxPad, "none"],
-				//["distGrp25input", init.tractor.distGrp25, -100, 100, posCajaLine + 150, 19, 50, inputBoxPad, "none"],
+				["sepGrp1input", init.tractor.grupo[0].sep, 0, 240, posEjesLine - 30, 0, 50, , "none"],
+				["distGrp12input", init.tractor.distGrp12, 0, 1050, posEjesLine - 10, 0, 50, , "inline"],
+				["sepGrp2input", init.tractor.grupo[1].sep, 0, 240, posEjesLine - 10, 0, 50, , "none"],
+				["distCarga0input", init.tractor.distCarga0, 50, 300, posCajaLine - 10, 0, 50, , "none"],
+				["distCargaFinput", init.tractor.distCargaF, 50, 200, posCajaLine - 10, 0, 50, , "none"],
+				//["distGrp25input", init.tractor.distGrp25, -100, 100, posCajaLine + 150, 19, 50, , "none"],
 				["distCarga", init.tractor.distCargaF / 2, 0, 600, "position: absolute; top: 51px; width: 70px; padding: 5px", 151],
 			],
 			semi: [
-				["distGrp35input", init.semi.distGrp35, 600, 1200, posCajaLine - 10, 0, 50, inputBoxPad, "inline"],
-				["distCarga05input", init.semi.distCarga05, 50, 300, posCajaLine - 10, -88, 50, inputBoxPad, "inline"],
-				["distCarga0Finput", init.semi.distCarga0F, 600, 1650, posCajaLine - 40, 0, 50, inputBoxPad, "inline"],
-				["distGrp34input", init.semi.distGrp34, 240, 400, posEjesLine - 10, 0, 50, inputBoxPad, "inline"],
-				["sepGrp1input", init.tractor.grupo[1].sep, 0, 240, posEjesLine - 10, 0, 50, inputBoxPad, "none"],
-				["distGrp25input", init.tractor.distGrp25, -100, 100, posCajaLine + 150, 19, 50, inputBoxPad, "inline"],
+				["distGrp35input", init.semi.distGrp35, 600, 1200, posCajaLine - 10, 0, 50, , "inline"],
+				["distCarga05input", init.semi.distCarga05, 50, 300, posCajaLine - 10, -88, 50, , "inline"],
+				["distCarga0Finput", init.semi.distCarga0F, 600, 1650, posCajaLine - 40, 0, 50, , "inline"],
+				["distGrp34input", init.semi.distGrp34, 240, 400, posEjesLine - 10, 0, 50, , "inline"],
+				["sepGrp1input", init.tractor.grupo[1].sep, 0, 240, posEjesLine - 10, 0, 50, , "none"],
+				["distGrp25input", init.tractor.distGrp25, -100, 100, posCajaLine + 150, 19, 50, , "inline"],
 				["distCarga", init.tractor.distCargaF / 2, 0, 600, "position: absolute; top: 51px; width: 70px; padding: 5px", 151],
 			]
 		};
