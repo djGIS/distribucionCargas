@@ -1,5 +1,5 @@
 function generarMenu (divId) {
-    alert(divId);
+    //alert(divId);
     var button = document.createElement("button");
         button.id = "menuBtnRecalcular";
 	    button.value = "recalcular";
@@ -7,7 +7,7 @@ function generarMenu (divId) {
     var text = document.createTextNode("Recalcular");
     button.appendChild(text); 
 	//document.getElementById(diagAreaId).appendChild(inputBox);
-	document.getElementsByTagName("aside").appendChild(button);
+	document.getElementById(divId).appendChild(button);
     document.getElementById(button.id).setAttribute("class", "dropbtn");
 		
         
