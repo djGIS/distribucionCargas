@@ -1,6 +1,6 @@
 <style>
 	.diminputBoxes {
-		width:40px;
+		width:50px;
 		text-align: right; 
 		font-family: arial,helvetica,sans-serif; 
 		font-size: 10pt;
@@ -8,7 +8,7 @@
 	}
 	
 	.tablainputBoxes {
-		width:80%;
+		width:70%;
 		text-align: right; 
 		font-family: arial,helvetica,sans-serif; 
 		font-size: 10pt;
