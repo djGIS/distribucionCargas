@@ -71,7 +71,6 @@
 .diagrama {
 		overflow: scroll;
 		position: relative;
-		z-index: 0;
 		height: 450px; 
 		width: 100%;
 	}
@@ -82,9 +81,7 @@
 	.navbar {
 		overflow: visible;
 		position: relative;
-		z-index: 100;
-		background-color: #333;
-		font-family: Arial;
+		
 	}
 
 	/* Dropdown Button */
