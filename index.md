@@ -157,7 +157,7 @@
 </script>
 
 <script>
-	window.addEventListener("load", generarMenu("sidebar"));
 	window.addEventListener("load", inicializarMenu);
 	window.addEventListener("load", inicializarVeh(tiposVeh[0]));
+	window.addEventListener("load", generarMenu("sidebar"));
 </script>
