@@ -871,13 +871,14 @@ var dimLines;
 				inputBox.style = "float: left; text-align: right; width: 75%; border-style: solid; border-color: #6A6A6A;";
 				inputBox.disabled = true; 
 			innerContainer.appendChild(inputBox);
-		
+			
 			inputBox = document.createElement("input");
 				inputBox.value = "kg";
-				inputBox.style = "float: right; text-align: right; color: #C4D3DF; width: 20%; border-style: solid; border-color: #6A6A6A; background-color: #6A6A6A;";
+				inputBox.style = "float: right; font-size: 10pt; text-align: right; color: #C4D3DF; width: 20%; border-style: solid; border-color: #6A6A6A; background-color: #6A6A6A;";
 				inputBox.disabled = true; 
 			innerContainer.appendChild(inputBox);
 			document.getElementById(container.id).appendChild(innerContainer);
+			document.getElementById(vehSelect + i + "p";).setAttribute("class", "tablainputBoxes");
 		}
 			
 		// Tabla para encabezados de fila
