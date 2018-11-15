@@ -142,6 +142,7 @@
 	
 <div id="Diagrama" class="diagrama"></div>
 
+<script src="{{ "/javascripts/generarMenu.js" | prepend: site.baseurl}}"></script>
 <script src="{{ "/javascripts/configVeh.js" | prepend: site.baseurl}}"></script>
 <script src="{{ "/javascripts/calculadorDistribCargas.js" | prepend: site.baseurl}}"></script>
 
@@ -156,6 +157,7 @@
 </script>
 
 <script>
+	window.addEventListener("load", generarMenu("sidebar"));
 	window.addEventListener("load", inicializarMenu);
 	window.addEventListener("load", inicializarVeh(tiposVeh[0]));
 </script>
