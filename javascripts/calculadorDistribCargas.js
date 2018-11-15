@@ -955,6 +955,9 @@ var dimLines;
 		var posTop = 0;
 		var width = 0;
 		
+		document.getElementById("dropdownVehiculos").classList.add("dropdown-content"); //classList.toggle("show");
+		document.getElementById("dropdownVehiculos").classList.remove("dropdown-contentShow"); //classList.toggle("show");
+		
 		if (typeof vehSelect != 'string')
 			vehSelect = vehSelect.id; 
 		
