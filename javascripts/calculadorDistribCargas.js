@@ -852,7 +852,7 @@ var dimLines;
 		document.getElementById(diagAreaId).appendChild(container);
 			
 		var innerContainer = document.createElement("div");
-			innerContainer.style = "float: right; width: 100px; background-color: #6A6A6A";
+			innerContainer.style = "display: none; float: left; width: 100px; background-color: #6A6A6A";
 			inputBox = document.createElement("input");
 			inputBox.value = "Peso Calculado";
 			inputBox.style = "width: 100%; color: #C4D3DF; border-style: solid; border-color: #6A6A6A; background-color: #6A6A6A;";
@@ -862,7 +862,7 @@ var dimLines;
 		for (var i = 1; i < 3; i++) {
 			innerContainer = document.createElement("div");
 			innerContainer.id = vehSelect + i + "Peso";
-			innerContainer.style = "position: absolute; padding: 5px; width: 100px; background-color: #6A6A6A";
+			innerContainer.style = "display: none; position: absolute; padding: 5px; width: 100px; background-color: #6A6A6A";
 			
 			inputBox = document.createElement("input");
 				inputBox.id = vehSelect + i + "p";
@@ -884,14 +884,14 @@ var dimLines;
 		// Tabla para encabezados de fila
 		container = document.createElement("div");
 		container.id = vehSelect + 0;
-		container.style = "position: absolute; right: 0px; top: 400px; width: 100px; padding-top: 5px; padding-left: 5px; padding-right: 5px; background-color: #C4D3DF";
+		container.style = "position: absolute; left: 0px; top: 400px; width: 100px; padding-top: 5px; padding-left: 5px; padding-right: 5px; background-color: #C4D3DF";
 		document.getElementById(diagAreaId).appendChild(container);
 				
 		var tablaPesos = [  // [i][0]
 			["Peso Calculado", "p", "input", ""],
-			["Configuración", "e", "select", function(){cargarSelectConfig(this);}],
-			["Tipo de Ruedas", "c", "select", function(){cargarTablaPesos(this);}],
-			["Peso Máximo", "pMax", "input", ""],
+			["Config.", "e", "select", function(){cargarSelectConfig(this);}],
+			["Rodado", "c", "select", function(){cargarTablaPesos(this);}],
+			["Máximo", "pMax", "input", ""],
 			["Tolerancia", "pTol", "input", ""],
 			["Tara", "pTar", "input", ""]
 		];
