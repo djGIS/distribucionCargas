@@ -930,7 +930,7 @@ var dimLines;
 				}	
 				inputBox.onchange = tablaPesos[i][3];
 				if (tablaPesos[i][2] == "select") {
-					inputBox.style = "width: 100%; margin-bottom: 5px";
+					inputBox.style = "width: 100%; height: 20px; margin-bottom: 5px";
 				} else if (tablaPesos[i][2] == "input") {
 					var textBox = document.createElement("input");
 					textBox.value = "kg";
