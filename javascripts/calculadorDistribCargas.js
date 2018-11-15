@@ -821,7 +821,7 @@ var dimLines;
 			imagen.id = imgComposite[vehSelect][i][0]; 
 			imagen.src = imgComposite[vehSelect][i][1];	
 			posLeft = posBaseLine + imgComposite[vehSelect][i][3];
-			imagen.style = "position: absolute; left: " + posLeft + "px; height: 400px; display: " + imgComposite[vehSelect][i][2] + ";";
+			imagen.style = "box-shadow: 0px; position: absolute; left: " + posLeft + "px; height: 400px; display: " + imgComposite[vehSelect][i][2] + ";";
 			document.getElementById(diagAreaId).appendChild(imagen);
 		}
 		
