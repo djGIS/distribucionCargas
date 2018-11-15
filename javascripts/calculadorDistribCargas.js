@@ -878,7 +878,7 @@ var dimLines;
 				inputBox.disabled = true; 
 			innerContainer.appendChild(inputBox);
 			document.getElementById(container.id).appendChild(innerContainer);
-			document.getElementById(vehSelect + i + "p";).setAttribute("class", "tablainputBoxes");
+			document.getElementById(vehSelect + i + "p").setAttribute("class", "tablainputBoxes");
 		}
 			
 		// Tabla para encabezados de fila
