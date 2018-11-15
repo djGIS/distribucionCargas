@@ -69,6 +69,7 @@
 	/* Navbar container */
 	.navbar {
 		overflow: hidden;
+		position: fixed;
 		background-color: #333;
 		font-family: Arial;
 	}
