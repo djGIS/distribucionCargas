@@ -60,6 +60,7 @@
 .diagrama {
 		overflow: scroll;
 		position: relative;
+		z-index: 0;
 		height: 450px; 
 		width: 100%;
 	}
