@@ -2,7 +2,6 @@ title: Calculador
 description: Calculador de diagrama de carga estática para la distribución de carga en vehículos de transporte terrestre
 google_analytics: 
 show_downloads: false
-theme: jekyll-theme-architect
-
+theme: jekyll-theme-slate
 gems:
   - jekyll-mentions
