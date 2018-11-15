@@ -8,12 +8,23 @@
 	}
 	
 	.tablainputBoxes {
-		width:110px;
+		width:80%;
 		text-align: right; 
 		font-family: arial,helvetica,sans-serif; 
 		font-size: 10pt;
 		position: absolute;
 	}
+	
+	.tablaInputUnits {
+		float: right;
+		text-align: right;
+		color: #6A6A6A;
+		width: 20%;
+		margin-bottom: 5px;
+		border-style: solid;
+		border-color: #C4D3DF;
+		background-color: #C4D3DF;
+	}	
 	
 	.dimLineVert1 {
 		border-left-style: dashed;
