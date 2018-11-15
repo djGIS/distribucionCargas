@@ -938,7 +938,7 @@ var dimLines;
 					//textBox.style = "float: right; text-align: right; color: #6A6A6A; width: 20%; margin-bottom: 5px; border-style: solid; border-color: #C4D3DF; background-color: #C4D3DF;";
 					textBox.disabled = true; 
 					document.getElementById(vehSelect + g).appendChild(textBox);
-					inputBox.style = "float: left; text-align: right; width: 70%; margin-bottom: 5px";
+					inputBox.style = "float: left; text-align: right; width: 70%; padding-top: 1px; padding-bottom: 1px;margin-bottom: 5px";
 				}
 				
 					
