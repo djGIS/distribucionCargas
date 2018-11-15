@@ -69,7 +69,7 @@
 
 	/* Navbar container */
 	.navbar {
-		overflow: hidden;
+		overflow: visible;
 		position: relative;
 		z-index: 100;
 		background-color: #333;
