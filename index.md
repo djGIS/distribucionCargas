@@ -70,7 +70,7 @@
 	.navbar {
 		overflow: hidden;
 		position: relative;
-		z-index: 1;
+		z-index: 100;
 		background-color: #333;
 		font-family: Arial;
 	}
