@@ -1150,7 +1150,9 @@ var dimLines;
 		//	var menuButton = document.createElement("button");
 		//		menuButton.id = tiposVeh[i];
 		//		menuButton.value = tiposVeh[i];
-						
+				var container = document.createElement("div");
+				container.id = "container"+tiposVeh[i];
+				container.style = "height: 32px; vertical-align: middle;";	
 				var link = document.createElement("a"); //
 				link.id = tiposVeh[i];
 				var t = document.createTextNode(tiposVeh[i]);       // Create a text node
@@ -1162,7 +1164,8 @@ var dimLines;
 				link.onclick = function(){inicializarVeh(this);};
 				//link.style.display = 'none';
 				
-			document.getElementById("dropdownVehiculos").appendChild(link);
+			document.getElementById("dropdownVehiculos").appendChild(container);
+			document.getElementById(container.id).appendChild(link);
 			//alert(document.getElementById("dropdownVehiculos").children.length);
 		}
 	//	container.appendChild(menuButtonDropDownContent);
