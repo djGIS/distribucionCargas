@@ -7,7 +7,7 @@ function generarMenu (divId) {
     var text = document.createTextNode("Recalcular");
     button.appendChild(text); 
 	//document.getElementById(diagAreaId).appendChild(inputBox);
-	document.getElementByTagName("aside").appendChild(button);
+	document.getElementsByTagName("aside").appendChild(button);
     document.getElementById(button.id).setAttribute("class", "dropbtn");
 		
         
